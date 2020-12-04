@@ -1,0 +1,106 @@
+{
+  "url": "https://www.google.com/search?hl=en&q=angela%20merkel",
+
+  "mustContain": [{
+      "type": "humanweb",
+      "action": "query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "Angela Merkel",
+            "u": "https://www.angela-merkel.de/",
+            "age": null
+          },
+          "1": {
+            "t": "Angela Merkel – Wikipedia",
+            "u": "https://de.wikipedia.org/wiki/Angela_Merkel",
+            "age": "vor 10 Minuten — "
+          },
+          "2": {
+            "t": "Angela Merkel - Bundeskanzlerin",
+            "u": "https://www.bundeskanzlerin.de/bkin-de/angela-merkel",
+            "age": null
+          },
+          "3": {
+            "t": "Corona in Deutschland: Kanzlerin Merkel plant offenbar den ...",
+            "u": "https://www.t-online.de/nachrichten/deutschland/id_88821550/corona-in-deutschland-kanzlerin-merkel-plant-offenbar-den-lockdown-light-.html",
+            "age": "vor 5 Stunden — "
+          },
+          "4": {
+            "t": "Corona: Merkel plant für Deutschland „Lockdown Light“ - es ...",
+            "u": "https://www.merkur.de/politik/angela-merkel-corona-deutschland-regeln-lockdown-light-zahlen-aktuell-lockdown-impfstoff-news-zr-90080253.html",
+            "age": "vor 32 Minuten — "
+          },
+          "5": {
+            "t": "Angela Merkel (@bundeskanzlerin) • Instagram-Fotos und ...",
+            "u": "https://www.instagram.com/bundeskanzlerin/?hl=de",
+            "age": null
+          },
+          "6": {
+            "t": "Dr. Angela Merkel | Christlich Demokratische Union ...",
+            "u": "https://www.cdu.de/vorstand/dr-angela-merkel",
+            "age": null
+          }
+        },
+        "q": "angela merkel",
+        "qurl": "https://www.google.com/search?hl=en&q=angela%20merkel",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
+      "action": "top-stories",
+      "payload": {
+        "r": {
+          "0": {
+            "u": "https://www.merkur.de/politik/angela-merkel-corona-deutschland-regeln-lockdown-light-zahlen-aktuell-lockdown-impfstoff-news-zr-90080253.html",
+            "lu": "vor 32 Minuten",
+            "h": "Corona: Merkel plant für Deutschland „Lockdown Light“ - es drohen massive \nRegel-Beschränkungen"
+          },
+          "1": {
+            "u": "https://www.t-online.de/nachrichten/deutschland/id_88821550/corona-in-deutschland-kanzlerin-merkel-plant-offenbar-den-lockdown-light-.html",
+            "lu": "vor 5 Stunden",
+            "h": "Corona in Deutschland: Kanzlerin Merkel plant offenbar den \"Lockdown light\""
+          },
+          "2": {
+            "u": "https://www.infranken.de/ueberregional/politik/kommt-bald-der-lockdown-light-was-merkels-plan-fuer-uns-bedeuten-wuerde-art-5101460",
+            "lu": "vor 41 Minuten",
+            "h": "Kommt bald der Lockdown 'Light'? Was Merkels Plan für uns bedeuten würde"
+          }
+        },
+        "q": "angela merkel",
+        "qurl": "https://www.google.com/search?hl=en&q=angela%20merkel",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
+      "action": "videos-p",
+      "payload": {
+        "q": "angela merkel",
+        "qurl": "https://www.google.com/search?hl=en&q=angela%20merkel",
+        "r": {
+          "0": {
+            "t": "MERKEL PODCAST: Bundeskanzlerin Angela Merkel ruft ...",
+            "u": "https://www.youtube.com/watch?v=W40rQJxasW8"
+          },
+          "1": {
+            "t": "Pressekonferenz mit Bundeskanzlerin Angela Merkel zu den ...",
+            "u": "https://www.tagesschau.de/multimedia/video/video-763577.html"
+          },
+          "2": {
+            "t": "Angela Merkel wird im Bundestag plötzlich emotional ...",
+            "u": "https://www.youtube.com/watch?v=YS78xXvBkHQ"
+          },
+          "3": {
+            "t": "Videos",
+            "u": "https://www.bundeskanzlerin.de/bkin-de/mediathek/videos"
+          }
+        },
+        "ctry": "de"
+      }
+    }
+  ],
+
+  "mustNotContain": [{ "action": "ads_*" }]
+}

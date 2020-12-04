@@ -1,0 +1,48 @@
+{
+  "name": "Browser-core Test",
+  "description": "",
+  "version": "{{version}}",
+  "manifest_version": 2,
+  "default_locale": "de",
+  "applications": {
+    "gecko": {
+      "id": "test@cliqz.com",
+      "strict_min_version": "64"
+    }
+  },
+  "permissions": [
+    "<all_urls>",
+    "bookmarks",
+    "cookies",
+    "downloads",
+    "geolocation",
+    "idle",
+    "management",
+    "privacy",
+    "proxy",
+    "storage",
+    "tabs",
+    "activeTab",
+    "unlimitedStorage",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking",
+    "browsingData",
+    "dns"
+  ],
+  "background": {
+    "scripts": [
+      "modules/vendor/dexie.min.js",
+      "modules/webextension-specific/app.bundle.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "match_about_blank": true,
+      "all_frames": true,
+      "js": ["modules/core/content-script.bundle.js"]
+    }
+  ]
+}

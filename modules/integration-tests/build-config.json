@@ -1,0 +1,9 @@
+{
+  "subprojects": [
+    "chai",
+    "chai-dom",
+    "mocha",
+    "sinon",
+    "sinon-chai"
+  ]
+}

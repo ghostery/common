@@ -1,0 +1,166 @@
+{
+  "url": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+
+  "mustContain": [{
+    "type": "humanweb",
+    "action": "query",
+    "payload": {
+      "r": {
+        "0": {
+          "t": "Suchergebnis auf Amazon.de für: Großformat-Laserdrucker",
+          "u": "https://www.amazon.de/Gro%C3%9Fformat-Laserdrucker/s?k=Gro%C3%9Fformat-Laserdrucker",
+          "age": "Ergebnissen 1 - 16 von 127 — "
+        },
+        "1": {
+          "t": "Die Komplettlösung im Großformat von DIN A2 bis DIN A0 - Ihr ...",
+          "u": "https://www.ebt-buerotechnik.de/plotter-scanner-bundle",
+          "age": null
+        },
+        "2": {
+          "t": "Gibt es Großformat Laserdrucker? | Forum | Druckerchannel",
+          "u": "https://www.druckerchannel.de/forum.php?seite=beitrag&ID=86431&t=gibt_es_grossformat_laserdrucker",
+          "age": null
+        },
+        "3": {
+          "t": "HP LaserJet 9040N 40ppm 128MB LAN Großformat ...",
+          "u": "https://www.quantelectronic.de/Drucker-und-Kopierer/Laserdrucker/HP-sonstige/HP-LaserJet-9040N-40ppm-128MB-LAN-Grossformat-Laserdrucker-mit-Finisher-i89_36491.htm",
+          "age": null
+        },
+        "4": {
+          "t": "Finden Sie Hohe Qualität Großformat-laserdrucker Hersteller ...",
+          "u": "https://german.alibaba.com/g/large-format-laser-printer.html",
+          "age": null
+        },
+        "5": {
+          "t": "A2-Drucker für optimale und unkomplizierte Drucke im ...",
+          "u": "https://www.tonerpartner.de/a2-drucker/",
+          "age": null
+        },
+        "6": {
+          "t": "Großformatdrucker: Der ideale Partner für den Druck im ...",
+          "u": "https://www.tonerpartner.de/grossformatdrucker/",
+          "age": null
+        },
+        "7": {
+          "t": "Wide Format Printers - Canon Deutschland",
+          "u": "https://www.canon.de/business-printers-and-faxes/wide-format-printers/",
+          "age": null
+        },
+        "8": {
+          "t": "Großvolumen Großformat Multifunktionsdrucker - Xerox",
+          "u": "https://www.xerox.de/de-de/office-produkte/multifunktionsdrucker/paper-12x18-plus/vol-100000-plus",
+          "age": null
+        }
+      },
+      "q": "großformat laserdrucker",
+      "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+      "ctry": "de"
+    }
+  },
+
+  {
+    "type": "humanweb",
+    "action": "ads_C",
+    "payload": {
+      "r": {
+        "0": {
+          "u": "https://www.bueromarkt-ag.de/laserdrucker_brother_hl-l5100dntt,p-hl-l5100dntt,l-google-prd,pd-b2c.html"
+        },
+        "1": {
+          "u": "https://www.bueroshop24.de/epson-surecolor-sc-t3200-ohne-stand-plotter-886566?srpId=45c5cdd6f5cfd8025aba48da75072358&obt=11&fcv=c27243b43d84539c5c0a1fde91e836a5&storeType=B2C"
+        },
+        "2": {
+          "u": "https://www.schaefer-shop.de/p/kyocera-farblaser-multifunktionsgeraet-ecosys-m5521cdw-21-seiten-min-s-w?selectedItem=177471&b2borb2c=1&gshop=1"
+        },
+        "3": {
+          "u": "https://www.bueromarkt-ag.de/laserdrucker_brother_hl-l6400dwtt,p-hl-l6400dwtt,l-google-css,pd-b2c.html"
+        },
+        "4": {
+          "u": "https://www.galaxus.de/de/product/8355584"
+        },
+        "5": {
+          "u": "https://www.beamershop24.de/de/samsung-qh55r.html?channable=003073696400313030303031303233371e"
+        },
+        "6": {
+          "u": "https://samcopy.de/canon-ipf-750-din-a0-plotter.html"
+        },
+        "7": {
+          "u": "https://www.lfp-store.de/shop/canon-ta-30/"
+        },
+        "8": {
+          "u": "https://www.bueromarkt-ag.de/laserdrucker_kyocera_ecosys_p2040dn,p-p2040dn,l-google-prd,pd-b2c.html"
+        },
+        "9": {
+          "u": "https://www.bueroshop24.de/canon-imageprograf-ta-30-plotter-189393?srpId=b02571aab04aae2db664ccc6818abc47&obt=1&fcv=604c99a091b2789e300eee16fe2f942d&storeType=B2C"
+        },
+        "10": {
+          "u": "https://www.c-nw.de/epson-surecolor-sc-p8000-std.html?utm_source=guenstigerde&utm_medium=cpc&utm_campaign=guenstigerde"
+        },
+        "11": {
+          "u": "https://www.bueroshop24.de/hp-color-laserjet-pro-mfp-m479fnw-4-in-1-farblaser-multifunktionsdrucker-wei%C3%9F-803217?srpId=c6abf18dc4f4db1907d1268bb3269a80&obt=11&fcv=b1121d999f40ba85aa623075328bf1f6&storeType=B2C"
+        },
+        "12": {
+          "u": "https://www.bueroshop24.de/hp-designjet-t1700dr-1118-mm-(44-zoll)-plotter-169153?srpId=6766fc17a6d84bfbf9c1cb75bcdd5301&obt=11&fcv=b61dcbc6d17b4e66a14a51621af13063&storeType=B2C"
+        },
+        "13": {
+          "u": "https://www.recono.de/hp-color-laserjet-pro-400-mfp-m475dn-multifunktionsgeraet.html"
+        },
+        "14": {
+          "u": "https://www.bueroshop24.de/epson-surecolor-sc-t3100-plotter-672225?srpId=ed28e08d4b643bfd1dd4a90bed3dab99&lkz=225728&obt=0&storeType=B2C&utm_medium=psm&utm_source=guenstiger&utm_campaign=psm"
+        },
+        "15": {
+          "u": "https://www.bueromarkt-ag.de/multifunktionsgeraet_brother_mfc-l6800dw,p-mfc-l6800dw,l-google-prd,pd-b2c.html"
+        },
+        "16": {
+          "u": "https://www.bueroshop24.de/hp-laserjet-enterprise-mfp-m528dn-3-in-1-laser-multifunktionsdrucker-wei%C3%9F-910158?srpId=6ce1d31d3a7d23c05827ce0f730dcbf7&obt=11&fcv=655b4b941472d7ba189c77034fe46e54&storeType=B2C"
+        },
+        "17": {
+          "u": "https://www.bueroshop24.de/hp-designjet-t630-914-mm-(36-zoll)-plotter-302437?srpId=db5aa134634fd3562cba1bec3aa0ba39&obt=1&fcv=546cf0468b913e080a7bc8ef840b35e1&storeType=B2C"
+        },
+        "18": {
+          "u": "https://www.bueroshop24.de/hp-designjet-t630-610-mm-(24-zoll)-plotter-302412?srpId=e1b80fd37768ae40b37777fc83a79586&obt=1&fcv=c6c70c76d4c65a09f2e084ef70aba942&storeType=B2C"
+        },
+        "19": {
+          "u": "https://www.bueroshop24.de/hp-designjet-t650-610-mm-(24-zoll)-plotter-302424?srpId=cc1fb3c06c4718c3074e34a720246c2c&obt=1&fcv=87fb77db6e89be77eadec3ebef23eab7&storeType=B2C"
+        },
+        "20": {
+          "u": "https://www.cyberport.de/?DEEP=6505-1D7&APID=476"
+        },
+        "21": {
+          "u": "https://www.bueroshop24.de/hp-designjet-t230-610-mm-(24-zoll)-plotter-302197?srpId=bf14f75ab02fca6c4fb3a141e5966836&obt=1&fcv=a8d1582fcc1b4c9413a150c74454685e&storeType=B2C"
+        },
+        "22": {
+          "u": "https://www.jacob.de/product/6791095?ref=125"
+        },
+        "23": {
+          "u": "https://www.bueroshop24.de/hp-designjet-t250-610-mm-(24-zoll)-plotter-302402?srpId=45e0e225425b598dec7b2ed05e0f205f&obt=1&fcv=f5b8701f7ba34d0f3c2db00bd5885731&storeType=B2C"
+        },
+        "24": {
+          "u": "https://samcopy.de/canon-imageprograf-770-generalueberholt.html"
+        },
+        "25": {
+          "u": "https://www.pcv-plotter-shop.de/Plotter/HP-Plotter/HP-Designjet-Z6810-max-Druckbreite-152cm.html"
+        },
+        "26": {
+          "u": "https://www.bueroshop24.de/canon-imageprograf-tm-300-plotter-908660?srpId=995cb976f36f596d367e5db762e5b077&lkz=225728&obt=0&fcv=2259c377897c9743d43c307762c0c467&storeType=B2C&utm_medium=psm&utm_source=guenstiger&utm_campaign=psm"
+        },
+        "27": {
+          "u": "https://www.c-nw.de/hp-designjet-t630-a0-drucker.html?utm_source=guenstigerde&utm_medium=cpc&utm_campaign=guenstigerde"
+        },
+        "28": {
+          "u": "https://www.bueroshop24.de/hp-designjet-t1700-1118-mm-(44-zoll)-plotter-171324?srpId=75629c9963fa9b47c3372486fc3cce7a&obt=11&fcv=2bd5f4756850166b204c4d4d5113a955&storeType=B2C"
+        }
+      },
+      "q": "großformat laserdrucker",
+      "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+      "ctry": "de"
+    }
+  }],
+
+  "mustNotContain": [
+    { "action": "top-stories" },
+    { "action": "ads_A" },
+    { "action": "ads_B" },
+    { "action": "ads_D" }
+  ]
+}

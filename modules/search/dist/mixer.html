@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-dns-prefetch-control" content="off">
+    <title>Extension Mixer | Inspect</title>
+    <script type="text/javascript" src="../vendor/handlebars.runtime.min.js"></script>
+    <script type="text/javascript" src="../vendor/dexie.min.js"></script>
+    <script type="text/javascript" src="../vendor/math-expression-evaluator.min.js"></script>
+
+    <script type="text/javascript" src="./mixer.bundle.js"></script>
+    <style type="text/css">
+      body {
+        text-align: center;
+      }
+      #urlbar {
+        margin: 20px;
+        height: 26px;
+        font-size: 20px;
+      }
+
+      #mixer {
+        width: 1220px;
+        margin: 0 auto;
+      }
+
+      #mixer>div {
+        text-align: left;
+        width: 300px;
+        display: inline-block;
+        float: right;
+        border: 1px solid black;
+        margin: 1px;
+      }
+      .provider {
+        font-weight: bold;
+        text-align: center;
+        display: block;
+        padding: 5px;
+      }
+      .result {
+        border: 1px solid gray;
+        margin: 6px;
+        padding: 1px;
+        min-height: 90px;
+      }
+      .ellipsis {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .url {
+        color: #0000EE;
+      }
+
+      .description {
+        color: #ff39e1;
+      }
+
+      .kind {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+
+      #popup {
+        border: 1px solid black;
+        background-color: rgb(202, 202, 202);
+        position: absolute;
+        z-index: 10;
+        width: 800px;
+        height: 800px;
+        left: calc(50% - 400px);
+        top: 50px;
+      }
+
+      .close {
+        position: absolute;
+        right: 20px;
+        font-size: 2em;
+        cursor: pointer;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      #data-json {
+        position: absolute;
+        left: 0;
+        margin: 5%;
+        width: 90%;
+        height: 90%;
+      }
+
+      .image {
+        max-height: 75px;
+        margin: 5px;
+      }
+
+      img.image[src=''] {
+        display: none;
+      }
+
+      #full-json {
+        width: 90%;
+        height: 300px;
+      }
+    </style>
+</head>
+<body>
+    <input id="urlbar"/>
+    <div id="mixer">
+      <div id="results"></div>
+    </div>
+
+    <div id="fullJson">
+      <textarea id="full-json">{}</textarea>
+    </div>
+
+    <div id="popup" class="hidden">
+      <div class="close">X</div>
+      <textarea id="data-json" />
+    </div>
+</body>
+</html>

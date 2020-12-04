@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cliqz TESTS</title>
+    <link rel="stylesheet" href="/node_modules/mocha/mocha.css">
+    <script src="/node_modules/mocha/mocha.js"></script>
+    <script src="/node_modules/chai/chai.js"></script>
+    <script src="/node_modules/chai-dom/chai-dom.js"></script>
+    <script src="/testem.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <style>
+      .testFrame {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script>
+      window.chrome = Object.assign(window.chrome || {}, {
+        runtime: {
+          id: 'test',
+        },
+      });
+    </script>
+    {{#serve_files}}
+    <script src="/{{src}}"></script>
+    {{/serve_files}}
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>

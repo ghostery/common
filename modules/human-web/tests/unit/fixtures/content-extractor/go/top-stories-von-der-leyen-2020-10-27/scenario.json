@@ -1,0 +1,72 @@
+{
+  "url": "https://www.google.com/search?q=von+der+leyen",
+
+  "mustContain": [{
+    "type": "humanweb",
+    "action": "query",
+    "payload": {
+      "r": {
+        "0": {
+          "t": "Ursula von der Leyen - Wikipedia",
+          "u": "https://en.wikipedia.org/wiki/Ursula_von_der_Leyen",
+          "age": null
+        },
+        "1": {
+          "t": "Ursula von der Leyen | European Commission",
+          "u": "https://ec.europa.eu/commission/commissioners/2019-2024/president_en",
+          "age": null
+        },
+        "2": {
+          "t": "Von der Leyen faces unrest in own party ranks – POLITICO",
+          "u": "https://www.politico.eu/article/commission-president-ursula-von-der-leyen-faces-unrest-in-party-ranks-cdu-epp/",
+          "age": "5 days ago — "
+        },
+        "3": {
+          "t": "Commission President Ursula von der Leyen goes into ...",
+          "u": "https://www.politico.eu/article/von-der-leyen-self-isolates-after-coronavirus-contact/",
+          "age": "Oct 5, 2020 — "
+        },
+        "4": {
+          "t": "Ursula von der Leyen | Facts & Biography | Britannica",
+          "u": "https://www.britannica.com/biography/Ursula-von-der-Leyen",
+          "age": "Oct 4, 2020 — "
+        },
+        "5": {
+          "t": "Ursula von der Leyen - Bundesregierung",
+          "u": "https://www.bundesregierung.de/breg-en/federal-government/cabinet/ursula-von-der-leyen",
+          "age": null
+        }
+      },
+      "q": "von der leyen",
+      "qurl": "https://www.google.com/search?q=von+der+leyen",
+      "ctry": "de"
+    }
+  }, {
+    "type": "humanweb",
+    "action": "top-stories",
+    "payload": {
+      "r": {
+        "0": {
+          "u": "https://ec.europa.eu/commission/presscorner/detail/en/speech_20_1983",
+          "lu": "1 day ago",
+          "h": "President von der Leyen at the World Health Summit"
+        },
+        "1": {
+          "u": "https://ec.europa.eu/commission/presscorner/detail/en/speech_20_1987",
+          "lu": "23 hours ago",
+          "h": "Speech by the President at Spanish Conference of Presidents"
+        },
+        "2": {
+          "u": "https://www.express.co.uk/news/politics/1352339/EU-latest-Ursula-von-der-leyen-brexit-news-trade-deal-VN",
+          "lu": "21 hours ago",
+          "h": "Von der Leyen in 'stealth power grab' plot for total control of European \nspending"
+        }
+      },
+      "q": "von der leyen",
+      "qurl": "https://www.google.com/search?q=von+der+leyen",
+      "ctry": "de"
+    }
+  }],
+
+  "mustNotContain": [{ "action": "ads_*" }]
+}

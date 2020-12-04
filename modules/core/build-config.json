@@ -1,0 +1,9 @@
+{
+  "subprojects": [
+    "@cliqz-oss/dexie",
+    "math",
+    "moment",
+    "pako",
+    "ua-parser-js"
+  ]
+}

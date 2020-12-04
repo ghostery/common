@@ -1,0 +1,434 @@
+[{
+  "namespace": "testHelpers",
+  "description": "Test Helpers",
+  "types": [
+    {
+      "id": "UrlbarOverrideDetails",
+      "type": "object",
+      "description": "An object containing details of overriden omnibox.",
+      "properties": {
+        "focused": {
+          "type": "boolean",
+          "optional": true
+        },
+        "value": {
+          "type": "string",
+          "optional": true
+        },
+        "visibleValue": {
+          "type": "string",
+          "optional": true
+        },
+        "selectionStart": {
+          "type": "integer",
+          "optional": true
+        },
+        "selectionEnd": {
+          "type": "integer",
+          "optional": true
+        }
+      }
+    }, {
+      "id": "QueryNodeOptions",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "windowId": {
+          "type": "number",
+          "minimum": -2,
+          "optional": true
+        },
+        "attributes": {
+          "type": "boolean",
+          "default": true,
+          "optional": true
+        },
+        "classes": {
+          "type": "boolean",
+          "default": true,
+          "optional": true
+        },
+        "children": {
+          "type": "boolean",
+          "default": true,
+          "optional": true
+        },
+        "properties": {
+          "type": "array",
+          "optional": true,
+          "items": {
+            "type": "string",
+            "minimum": 0
+          }
+        },
+        "text": {
+          "type": "boolean",
+          "default": true,
+          "optional": true
+        },
+        "html": {
+          "type": "boolean",
+          "default": true,
+          "optional": true
+        },
+        "styles": {
+          "type": "array",
+          "optional": true,
+          "items": {
+            "type": "string",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "KeyEventOptions",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "windowId": {
+          "type": "number",
+          "minimum": -2,
+          "optional": true
+        },
+        "code": {
+          "type": "string",
+          "optional": true
+        },
+        "key": {
+          "type": "string",
+          "optional": true
+        },
+        "ctrlKey": {
+          "type": "boolean",
+          "default": false,
+          "optional": true
+        },
+        "shiftKey": {
+          "type": "boolean",
+          "default": false,
+          "optional": true
+        },
+        "altKey": {
+          "type": "boolean",
+          "default": false,
+          "optional": true
+        },
+        "metaKey": {
+          "type": "boolean",
+          "default": false,
+          "optional": true
+        }
+      }
+    }
+  ],
+  "functions": [{
+    "name": "sendString",
+    "type": "function",
+    "description": "Simulate typing a string into urlbar",
+    "async": "callback",
+    "parameters": [
+      {
+        "type": "number",
+        "name": "windowId",
+        "optional": true
+      },
+      {
+        "type": "string",
+        "name": "text"
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": []
+      }
+    ]
+  }, {
+    "name": "getDropdownHeight",
+    "type": "function",
+    "description": "Get dropdown height",
+    "async": "callback",
+    "parameters": [
+      {
+        "type": "number",
+        "name": "windowId",
+        "optional": true
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "height",
+          "type": "number"
+        }]
+      }
+    ]
+  }, {
+    "name": "getLastQuery",
+    "type": "function",
+    "description": "Get last query parameters",
+    "async": "callback",
+    "parameters": [
+      {
+        "type": "number",
+        "name": "windowId",
+        "optional": true
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "info",
+          "type": "any"
+
+        }]
+      }
+    ]
+  }, {
+    "name": "querySelector",
+    "type": "function",
+    "description": "rrrrrrrrr",
+    "async": "callback",
+    "parameters": [
+      {
+        "type": "string",
+        "name": "selector"
+      },
+      {
+        "name": "parameters",
+        "optional": true,
+        "$ref": "QueryNodeOptions"
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "dropdown",
+          "type": "any"
+        }]
+      }
+    ]
+  }, {
+    "name": "querySelectorAll",
+    "type": "function",
+    "description": "rrrrrrrrr",
+    "async": "callback",
+    "parameters": [
+      {
+        "type": "string",
+        "name": "selector"
+      },
+      {
+        "name": "parameters",
+        "optional": true,
+        "$ref": "QueryNodeOptions"
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "dropdown",
+          "type": "any"
+        }]
+      }
+    ]
+  }, {
+    "name": "callMethod",
+    "type": "function",
+    "description": "rrrrrrrrrooooooo",
+    "async": "callback",
+    "parameters": [
+      {
+        "type": "string",
+        "name": "selector"
+      },
+      {
+        "name": "method",
+        "type": "string"
+      },
+      {
+        "name": "args",
+        "type": "array",
+        "optional": true,
+        "items": {
+          "type": "any",
+          "minimum": 0
+        }
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "dropdown",
+          "type": "any"
+        }]
+      }
+    ]
+  }, {
+    "name": "callMethodExt",
+    "type": "function",
+    "description": "",
+    "async": "callback",
+    "parameters": [
+      {
+        "type": "string",
+        "name": "selector"
+      },
+      {
+        "name": "method",
+        "type": "string"
+      },
+      {
+        "name": "opt",
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "number",
+            "minimum": 0
+          },
+          "mouseEventOptions": {
+            "$ref": "KeyEventOptions",
+            "type": "object",
+            "optional": true
+          },
+          "args": {
+            "type": "array",
+            "optional": true,
+            "items":  {
+              "type":  "any",
+              "minimum":  0
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "dropdown",
+          "type": "any"
+        }]
+      }
+    ]
+  }, {
+    "name": "press",
+    "type": "function",
+    "description": "rrrrrrrrr",
+    "async": "callback",
+    "parameters": [
+      {
+        "name": "parameters",
+        "$ref": "KeyEventOptions"
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "dropdown",
+          "type": "any"
+        }]
+      }
+    ]
+  }, {
+    "name": "release",
+    "type": "function",
+    "description": "rrrrrrrrr",
+    "async": "callback",
+    "parameters": [
+      {
+        "name": "parameters",
+        "$ref": "KeyEventOptions"
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "dropdown",
+          "type": "any"
+        }]
+      }
+    ]
+  }, {
+    "name": "focus",
+    "type": "function",
+    "description": "Focus urlbar in given window.",
+    "async": "callback",
+    "parameters": [{
+        "name": "windowId",
+        "type": "number",
+        "minimum": -2,
+        "optional": true
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "type": "any"
+        }]
+      }
+    ]
+  }, {
+    "name": "blur",
+    "type": "function",
+    "description": "Remove focus from urlbar in given window.",
+    "async": "callback",
+    "parameters": [{
+        "name": "windowId",
+        "type": "number",
+        "minimum": -2,
+        "optional": true
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "type": "any"
+        }]
+      }
+    ]
+  }, {
+    "name": "get",
+    "type": "function",
+    "description": "Get dropdown params for given window",
+    "async": "callback",
+    "parameters": [{
+        "name": "windowId",
+        "type": "number",
+        "minimum": -2,
+        "optional": true
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "status",
+          "type": "object"
+        }]
+      }
+    ]
+  }, {
+    "name": "update",
+    "type": "function",
+    "description": "Get omnibox API for current window",
+    "async": "callback",
+    "parameters": [{
+        "name": "windowId",
+        "type": "number",
+        "minimum": -2,
+        "optional": true
+      },
+      {
+        "name": "details",
+        "$ref": "UrlbarOverrideDetails"
+      },
+      {
+        "type": "function",
+        "name": "callback",
+        "parameters": [{
+          "name": "omnibox",
+          "type": "object"
+        }]
+      }
+    ]
+  }]
+}]
