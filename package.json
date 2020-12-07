@@ -4,6 +4,7 @@
   "description": "Common modules for Ghostery extension and browsers",
   "scripts": {
     "test": "npm run unit-tests",
+    "lint": "./fern.js lint",
     "unit-tests": "./fern.js test configs/ci/unit-tests.js -l unit-node",
     "build-gbe": "CLIQZ_OUTPUT_PATH=./build/gbe ./fern.js build configs/ghostery.js",
     "build-ios": "CLIQZ_OUTPUT_PATH=./build/ios ./fern.js build configs/user-agent-ios.js",
@@ -18,6 +19,17 @@
   "license": "MPL-2.0",
   "bugs": {
     "url": "https://github.com/ghostery/common/issues"
+  },
+  "main": "build/gbe/index.js",
+  "files": [
+    "build",
+    "configs",
+    "modules",
+    "platforms",
+    "specific"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "browserslist": [
     "defaults",
