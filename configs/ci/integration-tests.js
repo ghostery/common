@@ -14,15 +14,13 @@ module.exports = {
   specific: 'browser',
   baseURL: '/modules/',
   testsBasePath: './build/modules',
-  settings: Object.assign({}, urls, {
+  settings: { ...urls,
     channel: '99',
     ALLOWED_COUNTRY_CODES: ['de', 'at', 'ch', 'es', 'us', 'fr', 'nl', 'gb', 'it', 'se'],
     HW_CHANNEL: 'test',
     INSIGHTS_INTERNAL: true,
-  }, ciUrl),
-  default_prefs: Object.assign({}, {
-
-  }),
+    ...ciUrl },
+  default_prefs: { },
   modules: [
     'core',
     'webextension-specific',
@@ -58,4 +56,4 @@ module.exports = {
       chai: 'chai',
     },
   },
-}
+};

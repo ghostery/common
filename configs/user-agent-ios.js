@@ -26,7 +26,7 @@ module.exports = {
   ].join(' && '),
   publish: publish.toEdge('browser-core-user-agent-ios', 'user-agent-ios'),
   isMobile: true,
-  settings: Object.assign({}, urls, {
+  settings: { ...urls,
     ALLOWED_COUNTRY_CODES: ['de', 'at', 'ch', 'es', 'us', 'fr', 'nl', 'gb', 'it', 'se'],
     RESULTS_PROVIDER_ORDER: ['calculator', 'history', 'cliqz', 'querySuggestions', 'instant'],
     CLEAR_RESULTS_AT_SESSION_START: false,
@@ -41,8 +41,7 @@ module.exports = {
         name: 'browser',
         platform: 'ios',
       },
-    },
-  }),
+    } },
   default_prefs: {
   },
   modules: [

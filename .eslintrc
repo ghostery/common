@@ -24,25 +24,6 @@
         ],
         "max-classes-per-file": "off",
         "no-multiple-empty-lines": "off",
-        "jsx-a11y/control-has-associated-label": "off",
-        "jsx-a11y/mouse-events-have-key-events": "off",
-        "jsx-a11y/click-events-have-key-events": "off",
-        "jsx-a11y/label-has-for": "off",
-        "jsx-a11y/label-has-associated-control": [
-            "error",
-            {
-                "controlComponents": [
-                    "RadioInput",
-                    "TextInput"
-                ],
-                "required": {
-                    "some": [
-                        "nesting",
-                        "id"
-                    ]
-                }
-            }
-        ],
         "implicit-arrow-linebreak": "off",
         "prefer-destructuring": "off",
         "object-curly-newline": [
@@ -66,24 +47,14 @@
             "imports": "always-multiline",
             "functions": "ignore"
         }],
-        "react/require-default-props": "off",
-        "react/prop-types": "off",
-        "react/destructuring-assignment": "off",
 
         "no-underscore-dangle": "off",
         "import/no-unresolved": "off",
         "no-restricted-globals": ["error", "Worker"],
-        "react/sort-comp": "off",
-        "react/forbid-prop-types": "off",
-        "react/jsx-fragments": "off",
-        "react/jsx-props-no-spreading": "off",
-        "react/state-in-constructor": "off",
-        "react/jsx-curly-newline": "off",
-        "react/jsx-one-expression-per-line": "off"
     },
     "overrides": [
         {
-            files: ["**/*.ts", "**/*.tsx"],
+            files: ["**/*.ts"],
             "extends": [
                 "airbnb",
                 "airbnb/hooks",
@@ -94,17 +65,7 @@
             parser: "@typescript-eslint/parser",
             plugins: ["@typescript-eslint"],
             rules: {
-                "lines-between-class-members": "off",
-                "react/jsx-filename-extension": "off",
-                "react/prop-types": "off"
-            }
-        },
-        {
-            "files": [
-                "modules/mobile-cards/**/*.*"
-            ],
-            "rules" : {
-                "jsx-a11y/anchor-is-valid": "off"
+                "lines-between-class-members": "off"
             }
         },
         {
