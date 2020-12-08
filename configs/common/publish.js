@@ -9,9 +9,7 @@
 const edgeBucket = 's3://cdncliqz/update/edge';
 const edgeBucketPrefix = 'https://s3.amazonaws.com/cdncliqz/update/edge';
 
-const upload = function (name) {
-  return `echo "Uploading version: ${name}"`;
-};
+const upload = name => `echo "Uploading version: ${name}"`;
 
 module.exports = {
   toEdge(artifact, configName, extension = 'tgz') {

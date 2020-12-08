@@ -232,7 +232,7 @@ module.exports = (() => {
   // but we should keep all the previous steps in place to ensure
   // that all the locale files are in sync and compatible for
   // all the configs
-  let supportedLangs = config.settings.SUPPORTED_LANGS || LANGUAGES;
+  const supportedLangs = config.settings.SUPPORTED_LANGS || LANGUAGES;
   return new MergeTrees(
     supportedLangs.map(lang => writeFile(`_locales/${lang}/messages.json`, formatLocales(LOCALES[lang] || {}))),
   );

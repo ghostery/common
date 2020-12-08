@@ -16,18 +16,18 @@ const cliqzConfig = require('../config');
 const cliqzEnv = require('../cliqz-env');
 const util = require('../util');
 
-const subprojects = require(path.resolve(__dirname, '../../configs/common/subprojects/bundles'));
+const subprojects = require(path.resolve(
+  __dirname,
+  '../../configs/common/subprojects/bundles'
+));
 
 const UnwatchedDir = broccoliSource.UnwatchedDir;
 
 const FILES_WITH_PLACEHOLDERS = {
-  freshtab: [
-    'home.html',
-  ],
+  freshtab: ['home.html'],
 };
 
 module.exports = function getDistTree(modulesTree) {
-  const minify = !cliqzEnv.DEVELOPMENT;
   const exclude = ['**/dist/locale/**/*']; // remove translations;
 
   if (!cliqzEnv.DEBUG_PAGES) {
@@ -41,13 +41,16 @@ module.exports = function getDistTree(modulesTree) {
       getDestinationPath(_path) {
         return _path.replace('/dist', '');
       },
-    })
+    }),
   ];
 
   const suprojectsSet = new Set();
   const getSubprojects = (moduleName) => {
     try {
-      const { subprojects = [] } = require(path.resolve(__dirname, `../../modules/${moduleName}/build-config`));
+      const { subprojects = [] } = require(path.resolve(
+        __dirname,
+        `../../modules/${moduleName}/build-config`
+      ));
       subprojects.forEach((project) => {
         suprojectsSet.add(project);
       });
@@ -69,7 +72,9 @@ module.exports = function getDistTree(modulesTree) {
           include: subproject.include || ['**/*'],
           destDir: subproject.dest,
           getDestinationPath(filename) {
-            return filename.replace('.development', '').replace('.production.min', '');
+            return filename
+              .replace('.development', '')
+              .replace('.production.min', '');
           },
         })
     )
@@ -80,14 +85,18 @@ module.exports = function getDistTree(modulesTree) {
   const config = writeFile('cliqz.json', JSON.stringify(cliqzConfig));
 
   const files = cliqzConfig.modules.reduce((all, module) => {
-    const fileNames = (FILES_WITH_PLACEHOLDERS[module] || []).map(name => `${module}/${name}`);
+    const fileNames = (FILES_WITH_PLACEHOLDERS[module] || []).map(
+      name => `${module}/${name}`
+    );
     return all.concat(fileNames);
   }, []);
 
-  const distWithConfig = util.injectConfig(distTree, config, 'cliqz.json', files);
-
-  return new MergeTrees([
+  const distWithConfig = util.injectConfig(
     distTree,
-    distWithConfig,
-  ], { overwrite: true });
+    config,
+    'cliqz.json',
+    files
+  );
+
+  return new MergeTrees([distTree, distWithConfig], { overwrite: true });
 };

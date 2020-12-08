@@ -85,8 +85,7 @@ function TAP(runner) {
 }
 
 
-TAP.prototype = Object.assign({}, Mocha.reporters.HTML.prototype, {
+TAP.prototype = { ...Mocha.reporters.HTML.prototype,
   title(test) {
     return test.fullTitle().replace(/#/g, '');
-  },
-});
+  } };

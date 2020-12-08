@@ -17,7 +17,7 @@ module.exports = {
   publish: publish.toEdge('browser-core', 'ghostery'),
   sourceMaps: false,
   format: 'common',
-  settings: Object.assign({}, urls, {
+  settings: { ...urls,
     channel: 'CH80',
     MSGCHANNEL: 'web-extension',
     URL_CHANGED_EVENT_DEBOUNCE: 500,
@@ -33,8 +33,7 @@ module.exports = {
       },
     },
     HUMAN_WEB_LITE_COLLECTOR_VIA_PROXY: 'https://collector-hpn.ghostery.net',
-    HUMAN_WEB_LITE_COLLECTOR_DIRECT: 'https://collector-hpn.ghostery.net',
-  }),
+    HUMAN_WEB_LITE_COLLECTOR_DIRECT: 'https://collector-hpn.ghostery.net' },
   default_prefs: {
     'modules.human-web.enabled': true,
     'modules.antitracking.enabled': true,

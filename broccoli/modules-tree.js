@@ -37,14 +37,17 @@ const targets = cliqzConfig.buildTargets || {
 const babelOptions = {
   babelrc: false,
   presets: [
-    ['@babel/env', {
-      targets,
-      modules: false,
-      exclude: [
-        '@babel/plugin-transform-template-literals',
-        '@babel/plugin-transform-regenerator'
-      ]
-    }],
+    [
+      '@babel/env',
+      {
+        targets,
+        modules: false,
+        exclude: [
+          '@babel/plugin-transform-template-literals',
+          '@babel/plugin-transform-regenerator',
+        ],
+      },
+    ],
     ['@babel/typescript'],
   ],
   compact: false,
@@ -53,8 +56,12 @@ const babelOptions = {
   plugins: [
     '@babel/plugin-proposal-class-properties',
     ...(cliqzConfig.babelPlugins || []),
-    ...(cliqzConfig.format === 'common' ? ['@babel/plugin-transform-modules-commonjs'] : []),
-    ...(cliqzConfig.format === 'system' ? ['@babel/plugin-transform-modules-systemjs'] : []),
+    ...(cliqzConfig.format === 'common'
+      ? ['@babel/plugin-transform-modules-commonjs']
+      : []),
+    ...(cliqzConfig.format === 'system'
+      ? ['@babel/plugin-transform-modules-systemjs']
+      : []),
   ],
   throwUnlessParallelizable: true,
 };
@@ -64,7 +71,6 @@ const eslintOptions = {
   persist: true,
 };
 
-
 function getPlatformFunnel() {
   return new Funnel(new WatchedDir('platforms/'), {
     exclude: ['**/tests/**/*'],
@@ -73,14 +79,19 @@ function getPlatformFunnel() {
 
 function getTestsFunnel() {
   const inc1 = cliqzConfig.modules.map(name => `${name}/**/tests/**/*.es`);
-  const inc2 = cliqzConfig.modules.map(name => `${name}/**/tests/unit/dist/**/*`);
+  const inc2 = cliqzConfig.modules.map(
+    name => `${name}/**/tests/unit/dist/**/*`
+  );
   return new Funnel(modulesTree, {
     include: [...inc1, ...inc2],
-    exclude: cliqzConfig.modules.map(name => `${name}/**/tests/**/*lint-test.js`),
+    exclude: cliqzConfig.modules.map(
+      name => `${name}/**/tests/**/*lint-test.js`
+    ),
   });
 }
 
-const dirs = p => fs.readdirSync(p).filter(f => fs.statSync(path.join(p, f)).isDirectory());
+const dirs = p =>
+  fs.readdirSync(p).filter(f => fs.statSync(path.join(p, f)).isDirectory());
 
 function getPlatformTree() {
   const platformName = cliqzConfig.platform;
@@ -94,20 +105,24 @@ function getPlatformTree() {
       srcDir: platformName,
       destDir: 'platform',
     }),
-    ...platforms.map(p =>
-      new Funnel(platform, {
-        srcDir: p,
-        destDir: `platform-${p}`,
-      })),
+    ...platforms.map(
+      p =>
+        new Funnel(platform, {
+          srcDir: p,
+          destDir: `platform-${p}`,
+        })
+    ),
   ]);
 }
 
 function getSourceFunnel() {
   return new Funnel(modulesTree, {
-    include: cliqzConfig.modules.map(name => `${name}/sources/**/*.{es,ts,tsx,jsx}`),
+    include: cliqzConfig.modules.map(
+      name => `${name}/sources/**/*.{es,ts,tsx,jsx}`
+    ),
     getDestinationPath(_path) {
       return _path.replace('/sources', '');
-    }
+    },
   });
 }
 
@@ -118,7 +133,10 @@ function testGenerator(relativePath, errors, extra) {
   }
 
   return `
-System.register("tests/${`${fileName.substr(0, fileName.lastIndexOf('.'))}.lint-test.js`}", [], function (_export) {
+System.register("tests/${`${fileName.substr(
+    0,
+    fileName.lastIndexOf('.')
+  )}.lint-test.js`}", [], function (_export) {
   "use strict";
 
   return {
@@ -137,7 +155,6 @@ System.register("tests/${`${fileName.substr(0, fileName.lastIndexOf('.'))}.lint-
   `;
 }
 
-
 function getLintTestsTree() {
   if (process.env.CLIQZ_ESLINT !== 'true') {
     return new MergeTrees([]);
@@ -146,7 +163,9 @@ function getLintTestsTree() {
   // Load .eslintignore
   let eslintIgnore;
   try {
-    const lines = fs.readFileSync(`${process.cwd()}/.eslintignore`, 'utf8').split('\n');
+    const lines = fs
+      .readFileSync(`${process.cwd()}/.eslintignore`, 'utf8')
+      .split('\n');
     eslintIgnore = new Set(lines.map(l => l.replace('sources/', '')));
   } catch (e) {
     eslintIgnore = new Set();
@@ -191,10 +210,12 @@ function getLintTestsTree() {
   ]);
 }
 
-
 function getSourceTree() {
   let sources = getSourceFunnel();
-  const config = writeFile('core/config.es', `export default ${JSON.stringify(cliqzConfig, null, 2)}`);
+  const config = writeFile(
+    'core/config.es',
+    `export default ${JSON.stringify(cliqzConfig, null, 2)}`
+  );
 
   const includeTests = env.INCLUDE_TESTS;
 
@@ -211,21 +232,16 @@ function getSourceTree() {
     include: cliqzConfig.modules.map(name => `${name}/tests/**/*.es`),
     getDestinationPath(_path) {
       return _path.replace('/tests', '');
-    }
+    },
   });
 
-  const transpiledSources = Babel(
-    sources,
-    babelOptions
-  );
+  const transpiledSources = Babel(sources, babelOptions);
   const transpiledModuleTestsTree = Babel(
     new Funnel(moduleTestsTree, { destDir: 'tests' }),
     babelOptions
   );
 
-  const sourceTrees = [
-    transpiledSources,
-  ];
+  const sourceTrees = [transpiledSources];
 
   const exclude = ['**/*.jshint.js'];
 
@@ -239,30 +255,24 @@ function getSourceTree() {
   return new Funnel(
     new MergeTrees(sourceTrees), // , { overwrite: true }),
     {
-      exclude
+      exclude,
     }
   );
 }
 
 const sourceTreeOptions = {};
-const sourceTree = new MergeTrees([
-  getPlatformTree(),
-  getSourceTree(),
-], sourceTreeOptions);
+const sourceTree = new MergeTrees(
+  [getPlatformTree(), getSourceTree()],
+  sourceTreeOptions
+);
 
-const staticTree = new MergeTrees([
-  getDistTree(modulesTree),
-]);
+const staticTree = new MergeTrees([getDistTree(modulesTree)]);
 
 const styleCheckTestsTree = env.PRODUCTION
-  ? new MergeTrees([]) : getLintTestsTree();
+  ? new MergeTrees([])
+  : getLintTestsTree();
 
-const bundlesTree = getBundlesTree(
-  new MergeTrees([
-    sourceTree,
-    staticTree,
-  ])
-);
+const bundlesTree = getBundlesTree(new MergeTrees([sourceTree, staticTree]));
 
 module.exports = {
   static: staticTree,
