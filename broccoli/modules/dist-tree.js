@@ -47,11 +47,11 @@ module.exports = function getDistTree(modulesTree) {
   const suprojectsSet = new Set();
   const getSubprojects = (moduleName) => {
     try {
-      const { subprojectConfigs = [] } = require(path.resolve(
+      const { subprojects = [] } = require(path.resolve(
         __dirname,
         `../../modules/${moduleName}/build-config`
       ));
-      subprojectConfigs.forEach((project) => {
+      subprojects.forEach((project) => {
         suprojectsSet.add(project);
       });
     } catch (error) {
