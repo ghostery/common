@@ -55,6 +55,7 @@ export const DEFAULTS = {
   tokenTelemetry: {},
   databaseEnabled: true,
   cookieMode: COOKIE_MODE.THIRD_PARTY,
+  networkFetchEnabled: false,
 };
 
 export const PREFS = {
@@ -72,6 +73,7 @@ export const PREFS = {
   sendAntiTrackingHeader: 'attrackSendHeader',
   firstPartyIsolation: 'attrack.firstPartyIsolation',
   cookieMode: 'attrack.cookieMode',
+  networkFetchEnabled: 'attrack.networkFetchEnabled',
 };
 
 /**
@@ -147,12 +149,14 @@ export default class Config {
     const storedConfig = await asyncPrefs.multiGet(['attrack.configLastUpdate', 'attrack.config']);
     const lastUpdate = storedConfig.reduce((obj, kv) => Object.assign(obj, { [kv[0]]: kv[1] }), {});
     const day = prefs.get('config_ts', null) || getConfigTs();
-    if (storedConfig.length === 2 && lastUpdate['attrack.configLastUpdate'] === day) {
+    // use stored config if it was already updated today, or if remote fetch is disabled.
+    if (storedConfig.length === 2 && (lastUpdate['attrack.configLastUpdate'] === day || !this.networkFetchEnabled)) {
       this._updateConfig(JSON.parse(lastUpdate['attrack.config']));
       return;
     }
+    const fetchUrl = this.networkFetchEnabled ? CONFIG_URL : `${config.baseURL}antitracking/config.json`;
     try {
-      const conf = await (await fetch(CONFIG_URL)).json();
+      const conf = await (await fetch(fetchUrl)).json();
       this._updateConfig(conf);
       await asyncPrefs.multiSet([
         ['attrack.configLastUpdate', day],
