@@ -55,7 +55,7 @@ export const DEFAULTS = {
   tokenTelemetry: {},
   databaseEnabled: true,
   cookieMode: COOKIE_MODE.THIRD_PARTY,
-  networkFetchEnabled: false,
+  networkFetchEnabled: true,
 };
 
 export const PREFS = {
@@ -97,6 +97,7 @@ export default class Config {
     this.tokenDomainCountThreshold = 2;
     this.safeKeyExpire = 7;
     this.localBlockExpire = 24;
+    this.localBaseUrl = `${config.baseURL}antitracking`;
 
     Object.assign(this, defaults);
 
@@ -154,7 +155,7 @@ export default class Config {
       this._updateConfig(JSON.parse(lastUpdate['attrack.config']));
       return;
     }
-    const fetchUrl = this.networkFetchEnabled ? CONFIG_URL : `${config.baseURL}antitracking/config.json`;
+    const fetchUrl = this.networkFetchEnabled ? CONFIG_URL : `${this.localBaseUrl}/config.json`;
     try {
       const conf = await (await fetch(fetchUrl)).json();
       this._updateConfig(conf);
