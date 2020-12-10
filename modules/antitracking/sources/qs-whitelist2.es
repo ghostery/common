@@ -75,8 +75,6 @@ export default class QSWhitelist2 {
         logger.error('[QSWhitelist2] Error fetching bloom filter updates from remote', e);
       }
     }
-    // check for updates once per hour
-    this._updateChecker = pacemaker.everyHour(this._checkForUpdates.bind(this));
   }
 
   async _fetchUpdateURL() {
