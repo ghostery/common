@@ -1,9 +1,15 @@
 {
-  "name": "@ghostery/common",
-  "version": "2.0.0",
+  "name": "ghostery-common",
+  "version": "1.0.0",
   "description": "Common modules for Ghostery extension and browsers",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run unit-tests",
+    "lint": "./fern.js lint",
+    "unit-tests": "./fern.js test configs/ci/unit-tests.js -l unit-node",
+    "build-gbe": "CLIQZ_OUTPUT_PATH=./build/gbe ./fern.js build configs/ghostery.js",
+    "build-ios": "CLIQZ_OUTPUT_PATH=./build/ios ./fern.js build configs/user-agent-ios.js",
+    "prerelease": "npm run build-gbe && npm run build-ios",
+    "release": "auto shipit"
   },
   "repository": {
     "type": "git",
@@ -13,6 +19,17 @@
   "license": "MPL-2.0",
   "bugs": {
     "url": "https://github.com/ghostery/common/issues"
+  },
+  "main": "build/gbe/index.js",
+  "files": [
+    "build",
+    "configs",
+    "modules",
+    "platforms",
+    "specific"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "browserslist": [
     "defaults",
@@ -43,6 +60,7 @@
     "@types/punycode": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
+    "auto": "^10.4.2",
     "babel-eslint": "^10.1.0",
     "body-parser": "^1.19.0",
     "broccoli": "^3.4.1",
@@ -125,6 +143,7 @@
     "jsonschema": "^1.4.0",
     "math-expression-evaluator": "^1.3.4",
     "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
     "node-forge": "^0.10.0",
     "pako": "^2.0.2",
     "punycode": "^2.1.1",
@@ -134,5 +153,10 @@
     "tldts-experimental": "^5.6.74",
     "ua-parser-js": "^0.7.22",
     "webextension-polyfill": "^0.7.0"
+  },
+  "auto": {
+    "plugins": [
+      "npm"
+    ]
   }
 }
