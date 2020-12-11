@@ -155,6 +155,7 @@
     "webextension-polyfill": "^0.7.0"
   },
   "auto": {
+    "baseBranch": "main",
     "plugins": [
       "npm"
     ]
