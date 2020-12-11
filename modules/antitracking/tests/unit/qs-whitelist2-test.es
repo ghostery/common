@@ -119,7 +119,10 @@ export default describeModule('antitracking/qs-whitelist2',
 
     beforeEach(async function () {
       const QSWhitelist = this.module().default;
-      whitelist = new QSWhitelist(MOCK_CDN);
+      whitelist = new QSWhitelist(MOCK_CDN, {
+        networkFetchEnabled: true,
+        localBaseUrl: '/antitracking'
+      });
       fromBase64 = (await this.system.import('core/encoding')).fromBase64;
     });
 
@@ -136,6 +139,33 @@ export default describeModule('antitracking/qs-whitelist2',
         // bloom filter is an empty one
         chai.expect(whitelist.bloomFilter).to.be.not.null;
         chai.expect(whitelist.isTrackerDomain('example.com')).to.be.false;
+      });
+
+      it('local only', async () => {
+        const version = '2018-10-08';
+        whitelist.networkFetchEnabled = false;
+        mockFetchResults.set('/antitracking/update.json', mockUpdateFile(version));
+        mockFetchResults.set('/antitracking/bloom_filter.bin', {
+          ok: true,
+          arrayBuffer: () => fromBase64(MOCK_BF_B64).buffer,
+        });
+        await whitelist.init();
+        chai.expect(whitelist.bloomFilter).to.not.be.null;
+        chai.expect(whitelist.getVersion()).to.eql({ day: version });
+        testWhitelist(whitelist);
+      });
+
+      it('local fallback when CDN fails', async () => {
+        const version = '2018-10-08';
+        mockFetchResults.set('/antitracking/update.json', mockUpdateFile(version));
+        mockFetchResults.set('/antitracking/bloom_filter.bin', {
+          ok: true,
+          arrayBuffer: () => fromBase64(MOCK_BF_B64).buffer,
+        });
+        await whitelist.init();
+        chai.expect(whitelist.bloomFilter).to.not.be.null;
+        chai.expect(whitelist.getVersion()).to.eql({ day: version });
+        testWhitelist(whitelist);
       });
 
       it('missing remote bloom filter file', async () => {

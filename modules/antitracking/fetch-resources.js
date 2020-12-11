@@ -3,7 +3,7 @@ const path = require('path');
 const { writeFile } = require('fs').promises;
 
 const config = require('../../configs/ghostery.js')
-const { CDN_BASEURL, ANTITRACKING_BASE_URL } = config.settings;
+const { ANTITRACKING_BASE_URL } = config.settings;
 
 async function bundleCDNResource(url, path) {
   console.log(`Fetching ${url}`);

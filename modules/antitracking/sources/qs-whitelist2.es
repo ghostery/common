@@ -27,7 +27,7 @@ export default class QSWhitelist2 {
     this.bloomFilter = null;
     this.LOCAL_BASE_URL = localBaseUrl;
     this.CDN_BASE_URL = CDN_BASE_URL;
-    this.networkFetchEnabled = !!networkFetchEnabled;
+    this.networkFetchEnabled = networkFetchEnabled !== false;
     this._bfLoader = new Resource(['antitracking', 'bloom_filter2.json'], {
       dataType: 'json',
       remoteOnly: true,
@@ -62,7 +62,19 @@ export default class QSWhitelist2 {
         logger.error('[QSWhitelist2] Error fetching bloom filter from remote', e);
         // use bundled bloomfilter as a fallback
         this.networkFetchEnabled = false;
-        await this._fullUpdate((await this._fetchUpdateURL()).version);
+        try {
+          await this._fullUpdate((await this._fetchUpdateURL()).version);
+        } catch (e2) {
+          // local fetch also failed
+          // create empty bloom filter
+          const n = 1000;
+          const k = 10;
+          const buffer = new ArrayBuffer(5 + (n * 4));
+          const view = new DataView(buffer);
+          view.setUint32(0, n, false);
+          view.setUint8(4, k, false);
+          this.bloomFilter = new PackedBloomFilter(buffer);
+        }
       }
     } else {
       // we loaded the bloom filter, check for updates
