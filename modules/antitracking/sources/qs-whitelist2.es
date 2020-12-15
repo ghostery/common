@@ -23,9 +23,11 @@ async function fetchPackedBloomFilter(url) {
 }
 
 export default class QSWhitelist2 {
-  constructor(CDN_BASE_URL) {
+  constructor(CDN_BASE_URL, { networkFetchEnabled, localBaseUrl } = {}) {
     this.bloomFilter = null;
+    this.LOCAL_BASE_URL = localBaseUrl;
     this.CDN_BASE_URL = CDN_BASE_URL;
+    this.networkFetchEnabled = networkFetchEnabled !== false;
     this._bfLoader = new Resource(['antitracking', 'bloom_filter2.json'], {
       dataType: 'json',
       remoteOnly: true,
@@ -58,14 +60,21 @@ export default class QSWhitelist2 {
         await this._fullUpdate(update.version);
       } catch (e) {
         logger.error('[QSWhitelist2] Error fetching bloom filter from remote', e);
-        // create empty bloom filter
-        const n = 1000;
-        const k = 10;
-        const buffer = new ArrayBuffer(5 + (n * 4));
-        const view = new DataView(buffer);
-        view.setUint32(0, n, false);
-        view.setUint8(4, k, false);
-        this.bloomFilter = new PackedBloomFilter(buffer);
+        // use bundled bloomfilter as a fallback
+        this.networkFetchEnabled = false;
+        try {
+          await this._fullUpdate((await this._fetchUpdateURL()).version);
+        } catch (e2) {
+          // local fetch also failed
+          // create empty bloom filter
+          const n = 1000;
+          const k = 10;
+          const buffer = new ArrayBuffer(5 + (n * 4));
+          const view = new DataView(buffer);
+          view.setUint32(0, n, false);
+          view.setUint8(4, k, false);
+          this.bloomFilter = new PackedBloomFilter(buffer);
+        }
       }
     } else {
       // we loaded the bloom filter, check for updates
@@ -75,12 +84,13 @@ export default class QSWhitelist2 {
         logger.error('[QSWhitelist2] Error fetching bloom filter updates from remote', e);
       }
     }
-    // check for updates once per hour
-    this._updateChecker = pacemaker.everyHour(this._checkForUpdates.bind(this));
   }
 
   async _fetchUpdateURL() {
-    const request = await fetch(`${this.CDN_BASE_URL}/update.json.gz`);
+    const url = this.networkFetchEnabled
+      ? `${this.CDN_BASE_URL}/update.json.gz`
+      : `${this.LOCAL_BASE_URL}/update.json`;
+    const request = await fetch(url);
     if (!request.ok) {
       throw new Error(request.error);
     }
@@ -88,7 +98,10 @@ export default class QSWhitelist2 {
   }
 
   async _fullUpdate(version) {
-    const buffer = await fetchPackedBloomFilter(`${this.CDN_BASE_URL}/${version}/bloom_filter.gz`);
+    const url = this.networkFetchEnabled
+      ? `${this.CDN_BASE_URL}/${version}/bloom_filter.gz`
+      : `${this.LOCAL_BASE_URL}/bloom_filter.bin`;
+    const buffer = await fetchPackedBloomFilter(url);
     this.bloomFilter = new PackedBloomFilter(buffer);
     this.version = version;
     logger.debug(`[QSWhitelist2] Bloom filter fetched version ${version}`);

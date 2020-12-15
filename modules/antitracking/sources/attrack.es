@@ -206,7 +206,7 @@ export default class CliqzAttrack {
     // Large static caches (e.g. token whitelist) are loaded from sqlite
     // Smaller caches (e.g. update timestamps) are kept in prefs
 
-    this.qs_whitelist = new QSWhitelist2(this.config.whitelistUrl);
+    this.qs_whitelist = new QSWhitelist2(this.config.whitelistUrl, this.config);
 
     // load the whitelist async - qs protection will start once it is ready
     this.qs_whitelist.init();
