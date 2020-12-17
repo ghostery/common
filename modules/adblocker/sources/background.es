@@ -309,6 +309,10 @@ export default background({
             : [...this.adblocker.whitelist.whitelist].map(d => d.slice(2))
         ),
       };
+    },
+
+    setNetworkFetchEnabled(isEnabled) {
+      config.networkFetchEnabled = isEnabled;
     }
   },
 });

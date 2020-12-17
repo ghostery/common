@@ -148,7 +148,7 @@ export default class EngineManager {
       this.engine = await this.fetchFromCache();
     }
 
-    if (this.engine === null) {
+    if (this.engine === null && config.networkFetchEnabled) {
       this.engine = await this.fetchFromCDN();
     }
 
@@ -186,6 +186,10 @@ export default class EngineManager {
   async update() {
     this.lastUpdate = new Date();
     this.log('engine manager: update');
+    if (!config.networkFetchEnabled) {
+      this.log('engine manager update aborted: fetch disabled');
+      return null;
+    }
 
     // Update allowed-lists.json
     const allowedLists = await this.updateAllowedLists();

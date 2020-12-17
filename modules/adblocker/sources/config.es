@@ -16,6 +16,7 @@ export const ADB_PREF = 'cliqz-adb';
 export const ADB_PREF_STRICT = 'cliqz-adb-strict';
 export const ADB_USER_LANG = 'cliqz-adb-lang';
 export const ADB_MODE = 'cliqz_adb_mode';
+export const ADB_FETCH = 'cliqz-adb-fetch-enabled';
 
 const ADS_ONLY = 'ads';
 const ADS_AND_TRACKERS = 'ads-trackers';
@@ -110,6 +111,14 @@ class Config {
       configUrl: this.allowedListsUrl,
       regionsOverride: prefs.get(ADB_USER_LANG, ''),
     };
+  }
+
+  get networkFetchEnabled() {
+    return prefs.get(ADB_FETCH, true);
+  }
+
+  set networkFetchEnabled(value) {
+    prefs.set(ADB_FETCH, value);
   }
 }
 
