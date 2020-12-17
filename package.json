@@ -9,7 +9,7 @@
     "build-gbe": "CLIQZ_OUTPUT_PATH=./build/gbe ./fern.js build configs/ghostery.js",
     "build-ios": "CLIQZ_OUTPUT_PATH=./build/ios ./fern.js build configs/user-agent-ios.js",
     "fetch-resources": "node modules/antitracking/fetch-resources.js",
-    "prerelease": "npm run fetch-resources && npm run build-gbe && npm run build-ios",
+    "prerelease": "npm run build-gbe && npm run build-ios",
     "release": "auto shipit"
   },
   "repository": {

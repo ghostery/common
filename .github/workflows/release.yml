@@ -18,9 +18,6 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Bundle
-        run: npm run prerelease
-
       - name: Lint
         run: npm run lint
 
