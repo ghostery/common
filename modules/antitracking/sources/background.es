@@ -38,7 +38,7 @@ function humanwebExistsAndDisabled() {
 * @class Background
 */
 export default background({
-  requiresServices: ['cliqz-config', 'domainInfo', 'pacemaker', 'telemetry'],
+  requiresServices: ['domainInfo', 'pacemaker', 'telemetry'],
   telemetrySchemas: [
     ...popupActionsMetrics,
     ...tokensMetrics,
