@@ -1,3 +1,17 @@
+# v1.2.0 (Fri Dec 18 2020)
+
+#### 🚀 Enhancement
+
+- Update antitracking resources [#11](https://github.com/ghostery/common/pull/11) ([@sammacbeth](https://github.com/sammacbeth))
+- adblocker config pref to disable list update from CDN [#11](https://github.com/ghostery/common/pull/11) ([@sammacbeth](https://github.com/sammacbeth))
+- Drop cliqz-config from antitracking services. [#11](https://github.com/ghostery/common/pull/11) ([@sammacbeth](https://github.com/sammacbeth))
+
+#### Authors: 1
+
+- Sam Macbeth ([@sammacbeth](https://github.com/sammacbeth))
+
+---
+
 # v1.1.0 (Thu Dec 17 2020)
 
 #### 🚀 Enhancement
