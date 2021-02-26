@@ -100,7 +100,7 @@ export default class QSWhitelist2 {
   async _fullUpdate(version) {
     const url = this.networkFetchEnabled
       ? `${this.CDN_BASE_URL}/${version}/bloom_filter.gz`
-      : `${this.LOCAL_BASE_URL}/bloom_filter.bin`;
+      : `${this.LOCAL_BASE_URL}/bloom_filter.dat`;
     const buffer = await fetchPackedBloomFilter(url);
     this.bloomFilter = new PackedBloomFilter(buffer);
     this.version = version;
