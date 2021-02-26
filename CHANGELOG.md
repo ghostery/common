@@ -1,3 +1,15 @@
+# v1.2.2 (Fri Feb 26 2021)
+
+#### 🐛 Bug Fix
+
+- Rename bloom_filter.bin to bloom_filter.dat [#13](https://github.com/ghostery/common/pull/13) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.1 (Tue Jan 26 2021)
 
 ### Release Notes
