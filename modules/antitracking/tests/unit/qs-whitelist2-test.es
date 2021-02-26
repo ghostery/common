@@ -145,7 +145,7 @@ export default describeModule('antitracking/qs-whitelist2',
         const version = '2018-10-08';
         whitelist.networkFetchEnabled = false;
         mockFetchResults.set('/antitracking/update.json', mockUpdateFile(version));
-        mockFetchResults.set('/antitracking/bloom_filter.bin', {
+        mockFetchResults.set('/antitracking/bloom_filter.dat', {
           ok: true,
           arrayBuffer: () => fromBase64(MOCK_BF_B64).buffer,
         });
@@ -158,7 +158,7 @@ export default describeModule('antitracking/qs-whitelist2',
       it('local fallback when CDN fails', async () => {
         const version = '2018-10-08';
         mockFetchResults.set('/antitracking/update.json', mockUpdateFile(version));
-        mockFetchResults.set('/antitracking/bloom_filter.bin', {
+        mockFetchResults.set('/antitracking/bloom_filter.dat', {
           ok: true,
           arrayBuffer: () => fromBase64(MOCK_BF_B64).buffer,
         });

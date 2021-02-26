@@ -18,5 +18,5 @@ async function bundleCDNResource(url, path) {
   await bundleCDNResource(`${ANTITRACKING_BASE_URL}/config.json`, path.resolve(__dirname, 'dist', 'config.json'));
   const update = await bundleCDNResource(`${ANTITRACKING_BASE_URL}/whitelist/2/update.json.gz`, path.resolve(__dirname, 'dist', 'update.json'));
   const { version } = JSON.parse(Buffer.from(update).toString('utf-8'));
-  await bundleCDNResource(`${ANTITRACKING_BASE_URL}/whitelist/2/${version}/bloom_filter.gz`, path.resolve(__dirname, 'dist', 'bloom_filter.bin'));
+  await bundleCDNResource(`${ANTITRACKING_BASE_URL}/whitelist/2/${version}/bloom_filter.gz`, path.resolve(__dirname, 'dist', 'bloom_filter.dat'));
 })();
