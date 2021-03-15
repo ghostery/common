@@ -1,0 +1,102 @@
+{
+  "url": "https://www.google.com/search?hl=en&q=angela%20merkel",
+
+  "mustContain": [{
+      "type": "humanweb",
+      "action": "query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "Angela Merkel – Wikipedia",
+            "u": "https://de.wikipedia.org/wiki/Angela_Merkel",
+            "age": null
+          },
+          "1": {
+            "t": "Angela Merkel",
+            "u": "https://www.angela-merkel.de/",
+            "age": null
+          },
+          "2": {
+            "t": "Angela Merkel - Bundeskanzlerin",
+            "u": "https://www.bundeskanzlerin.de/bkin-de/angela-merkel",
+            "age": null
+          },
+          "3": {
+            "t": "Liveblog zum Coronavirus: ++ Merkel: Aktuelle Hilfen nicht ...",
+            "u": "https://www.tagesschau.de/newsticker/liveblog-coronavirus-samstag-181.html",
+            "age": "vor 23 Minuten — "
+          },
+          "4": {
+            "t": "Angela Merkel (@bundeskanzlerin) • Instagram photos and ...",
+            "u": "https://www.instagram.com/bundeskanzlerin/?hl=de",
+            "age": null
+          },
+          "5": {
+            "t": "LeMO Biografie Angela Merkel",
+            "u": "https://www.hdg.de/lemo/biografie/angela-merkel.html",
+            "age": null
+          },
+          "6": {
+            "t": "Angela Merkel - Bundesregierung",
+            "u": "https://www.bundesregierung.de/breg-de/bundesregierung/bundeskabinett/1131992-1131992",
+            "age": null
+          }
+        },
+        "q": "angela merkel",
+        "qurl": "https://www.google.com/search?hl=en&q=angela%20merkel",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
+      "action": "top-stories",
+      "payload": {
+        "r": {
+          "0": {
+            "u": "https://www.welt.de/politik/deutschland/article221853596/Merkel-vor-Haushaltsberatungen-Das-bisherige-Mass-an-Unterstuetzungen-ist-nicht-endlos-fortzusetzen.html",
+            "lu": "vor 1 Stunde",
+            "h": "Merkel vor Haushaltsberatungen: „Das bisherige Maß an Unterstützungen ist \nnicht endlos fortzusetzen“"
+          },
+          "1": {
+            "u": "https://www.rnd.de/politik/merkel-konnen-corona-hilfen-nicht-endlos-fortsetzen-YD3CU3WDMKZ6DLX6K6Z2DLMNRQ.html",
+            "lu": "vor 3 Stunden",
+            "h": "Merkel: Können Corona-Hilfen nicht endlos fortsetzen"
+          },
+          "2": {
+            "u": "https://www.sueddeutsche.de/politik/bundestag-merkel-hofft-auf-sieg-ueber-das-corona-virus-dpa.urn-newsml-dpa-com-20090101-201205-99-579611",
+            "lu": "vor 1 Stunde",
+            "h": "Merkel hofft auf Sieg über das Corona-Virus"
+          }
+        },
+        "q": "angela merkel",
+        "qurl": "https://www.google.com/search?hl=en&q=angela%20merkel",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
+      "action": "videos-p",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "Kanzlerin Merkel nach der Bund-Länder-Konferenz zur ...",
+            "u": "https://www.bundeskanzlerin.de/bkin-de/aktuelles/video-kanzlerin-bund-laender-1797564!mediathek"
+          },
+          "1": {
+            "t": "Angela Merkel on Instagram: “Wir können stolz darauf sein ...",
+            "u": "https://www.instagram.com/p/CIIO1PjDzW-/"
+          },
+          "2": {
+            "t": "\"Farbe bekennen\" mit Bundeskanzlerin Angela Merkel",
+            "u": "https://www.youtube.com/watch?v=WoaZBkTd-Go"
+          }
+        },
+        "q": "angela merkel",
+        "qurl": "https://www.google.com/search?hl=en&q=angela%20merkel",
+        "ctry": "de"
+      }
+    }
+  ],
+
+  "mustNotContain": [{ "action": "ads_*" }]
+}

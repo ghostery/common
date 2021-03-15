@@ -92,7 +92,7 @@
       },
       "#main div.g": {
         "t": {
-          "item": "div.yuRUbf > a > h3 > span",
+          "item": "div.yuRUbf > a > h3 span",
           "type": "arr",
           "etype": "textContent",
           "keyName": "t"
@@ -141,7 +141,7 @@
           ]
         }
       },
-      ".med #search": {
+      "#search": {
         "q": {
           "item": "#rso",
           "type": "searchQuery",
@@ -877,7 +877,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -901,7 +901,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -925,7 +925,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -949,7 +949,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -973,7 +973,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -997,7 +997,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1021,7 +1021,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1045,7 +1045,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1069,7 +1069,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1089,7 +1089,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1113,7 +1113,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1133,7 +1133,7 @@
             "join"
           ],
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1191,7 +1191,7 @@
         "action": "places2",
         "fields": [
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1257,7 +1257,7 @@
         "action": "img-p",
         "fields": [
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1281,7 +1281,7 @@
         "action": "img-p",
         "fields": [
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1305,7 +1305,7 @@
         "action": "video-p",
         "fields": [
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1329,7 +1329,7 @@
         "action": "video-p",
         "fields": [
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
@@ -1353,7 +1353,7 @@
         "action": "videos-p",
         "fields": [
           [
-            ".med #search",
+            "#search",
             "q"
           ],
           [
