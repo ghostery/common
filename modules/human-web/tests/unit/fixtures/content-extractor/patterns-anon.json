@@ -92,7 +92,7 @@
       },
       "#main div.g": {
         "t": {
-          "item": "div.yuRUbf > a > h3 span, div.yuRUbf > a > h3",
+          "item": "div.yuRUbf > a > h3",
           "type": "arr",
           "etype": "textContent",
           "keyName": "t"
