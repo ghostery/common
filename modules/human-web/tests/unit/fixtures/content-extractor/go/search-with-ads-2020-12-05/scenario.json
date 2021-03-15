@@ -1,0 +1,166 @@
+{
+  "url": "https://www.google.com/search?hl=en&q=kuckucksuhr%20kaufen",
+
+  "mustContain": [{
+    "type": "humanweb",
+    "action": "query",
+    "payload": {
+      "r": {
+        "0": {
+          "t": "Kuckucksuhren günstig kaufen | eBay",
+          "u": "https://www.ebay.de/b/Kuckucksuhren/79644/bn_2394739",
+          "age": "Ergebnissen 1 - 48 von 4313 — "
+        },
+        "1": {
+          "t": "Original Kuckucksuhren aus dem Schwarzwald",
+          "u": "https://www.schwarzwaldpalast.de/",
+          "age": null
+        },
+        "2": {
+          "t": "Kuckucksuhren Shop - Original Kuckucksuhren aus dem ...",
+          "u": "https://www.hausder1000uhren.de/",
+          "age": null
+        },
+        "3": {
+          "t": "Der Kuckucksuhren-Shop für original Kuckucksuhren aus dem ...",
+          "u": "https://www.kuckucksuhr.net/",
+          "age": null
+        },
+        "4": {
+          "t": "Kuckucksuhren - Amazon.de",
+          "u": "https://www.amazon.de/Kuckucksuhren/b?ie=UTF8&node=2970892031",
+          "age": null
+        },
+        "5": {
+          "t": "Kuckucksuhren günstig online kaufen | LadenZeile",
+          "u": "https://www.ladenzeile.de/uhren/kuckucksuhr/",
+          "age": null
+        },
+        "6": {
+          "t": "Kuckucksuhren vom Uhrmachermeister » uhren-park.de",
+          "u": "https://www.uhren-park.de/index.php/cat/c1_Kuckucksuhren.html",
+          "age": null
+        },
+        "7": {
+          "t": "deine-kuckucksuhr.de: Kuckucksuhren aus dem Schwarzwald ...",
+          "u": "https://www.deine-kuckucksuhr.de/",
+          "age": null
+        },
+        "8": {
+          "t": "Kuckucksuhren München - Herrmann Geschenke München",
+          "u": "https://www.herrmann-geschenke.de/sortiment/kuckucksuhren/",
+          "age": null
+        },
+        "9": {
+          "t": "Kuckucksuhr, Kunst und Antiquitäten gebraucht kaufen | eBay ...",
+          "u": "https://www.ebay-kleinanzeigen.de/s-kunst/kuckucksuhr/k0c240",
+          "age": null
+        }
+      },
+      "q": "kuckucksuhr kaufen",
+      "qurl": "https://www.google.com/search?hl=en&q=kuckucksuhr%20kaufen",
+      "ctry": "de"
+    }
+  },
+
+  {
+    "type": "humanweb",
+    "action": "ads_C",
+    "payload": {
+      "r": {
+        "0": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Kuckucksuhr-Kettenzug-Uhrwerk-25cm-von-Trenkle-Uhren::813.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "1": {
+          "u": "https://www.manufactum.de/manufactum-kuckucksuhr-a86900/"
+        },
+        "2": {
+          "u": "https://www.uhren-park.de/product_info.php/refID/99/info/p14183_Engstler--Holzhacker-32cm--4091.html"
+        },
+        "3": {
+          "u": "https://www.schwarzwaldpalast.de/Geschnitzte-Schwarzwaelder-Kuckucksuhren/Kuckucksuhr-Quarz-Uhrwerk-geschnitzt-35cm-von-Trenkle-Uhren::334.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "4": {
+          "u": "https://www.uhren4you.de/uhren/schneider/Q_509.htm?lead=merchant"
+        },
+        "5": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Kuckucksuhr-Kettenzug-Uhrwerk-25cm-von-Trenkle-Uhren::814.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "6": {
+          "u": "https://www.schwarzwaldpalast.de/Chalet-Kuckucksuhren/Kuckucksuhr-Quarz-Uhrwerk-Chalet-Stil-22cm-von-Trenkle-Uhren::1295.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "7": {
+          "u": "https://www.pearl.de/a-NX3211-3040.shtml?vid=917&wa_id=40&wa_num=5119&utm_source=googleps&utm_medium=cpc"
+        },
+        "8": {
+          "u": "https://www.wish.com/c/5dfdb8165524b5086d720f35?hide_login_modal=true&from_ad=goog_shopping&_display_country_code=DE&_force_currency_code=EUR&pid=googleadwords_int&c=%7BcampaignId%7D&ad_cid=5dfdb8165524b5086d720f35&ad_cc=DE&ad_lang=DE&ad_curr=EUR&ad_price=27.00"
+        },
+        "9": {
+          "u": "https://www.uhren-park.de/product_info.php/refID/99/info/p505_Engstler--Schwarzwaldhaus-29cm--429-Q.html"
+        },
+        "10": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Schwarzwaelder-Pendeluhr-25cm-Quarz-Uhrwerk-von-Trenkle::441.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "11": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Schwarzwaelder-Pendeluhr-17cm-Quarz-Uhrwerk-von-Trenkle::451.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "12": {
+          "u": "https://www.schwarzwaldpalast.de/Geschnitzte-Schwarzwaelder-Kuckucksuhren/Kuckucksuhr-Quarz-Uhrwerk-geschnitzt-36cm-von-Trenkle-Uhren::328.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "13": {
+          "u": "https://www.schwarzwaldpalast.de/Geschnitzte-Schwarzwaelder-Kuckucksuhren/Kuckucksuhr-Quarz-Uhrwerk-geschnitzt-23cm-von-Anton-Schneider::105.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "14": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Schwarzwaelder-Pendeluhr-25cm-Quarz-Uhrwerk-von-Trenkle::449.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "15": {
+          "u": "https://www.schwarzwaldpalast.de/Geschnitzte-Schwarzwaelder-Kuckucksuhren/Kuckucksuhr-Quarz-Uhrwerk-geschnitzt-35cm-von-Trenkle-Uhren::817.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "16": {
+          "u": "https://www.schwarzwaldpalast.de/Geschnitzte-Schwarzwaelder-Kuckucksuhren/Kuckucksuhr-Quarz-Uhrwerk-geschnitzt-35cm-von-Trenkle-Uhren::329.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "17": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Kuckucksuhr-Kuckulino-Quarz-Uhrwerk-Schwarzwaelder-Pendeluhr-16cm-von-Trenkle-Uhren::924.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "18": {
+          "u": "https://www.schwarzwaldpalast.de/Geschnitzte-Schwarzwaelder-Kuckucksuhren/Kuckucksuhr-Quarz-Uhrwerk-geschnitzt-24cm-von-Trenkle-Uhren::332.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "19": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Kuckucksuhr-Kuckulino-Quarz-Uhrwerk-Schwarzwaelder-Pendeluhr-19cm-von-Trenkle-Uhren::932.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "20": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Schwarzwaelder-Pendeluhr-18cm-Quarz-Uhrwerk-von-Trenkle::438.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "21": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Schwarzwaelder-Pendeluhr-14cm-Quarz-Uhrwerk-von-Trenkle::443.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "22": {
+          "u": "https://www.uhren-park.de/product_info.php/refID/99/info/p22766_Eble--Schwarzwaldhaus-21cm--60850000.html"
+        },
+        "23": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Kuckucksuhr-Kettenzug-Uhrwerk-25cm-von-Trenkle-Uhren::816.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "24": {
+          "u": "https://www.amazon.de/Trenkle-Schwarzwalduhr-Kuckuckruf-2018-PQ/dp/B003CRPWCO?source=ps-sl-shoppingads-lpcontext&psc=1?source=ps-sl-shoppingads-lpcontext&psc=1"
+        },
+        "25": {
+          "u": "https://www.schwarzwaldpalast.de/Chalet-Kuckucksuhren/Kuckucksuhr-Quarz-Uhrwerk-Chalet-Stil-27cm-von-Trenkle-Uhren::1297.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "26": {
+          "u": "https://www.bradford.de/chopper-freiheit-auf-zwei-raedern.html"
+        },
+        "27": {
+          "u": "https://www.schwarzwaldpalast.de/Preisguenstige-Souvenir-Kuckucksuhren-Wetterhaeusschen/Schwarzwaelder-Schaukeluhr-Kuckulino-Quarz-Uhrwerk-20cm-von-Trenkle-Uhren::929.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        },
+        "28": {
+          "u": "https://www.schwarzwaldpalast.de/Chalet-Kuckucksuhren/Kuckucksuhr-Quarz-Uhrwerk-Chalet-Stil-23cm-von-Trenkle-Uhren::1296.html?utm_campaign=shopping&utm_source=merchantcenter&utm_medium=googleshopping&utm_content=google-de"
+        }
+      },
+      "q": "kuckucksuhr kaufen",
+      "qurl": "https://www.google.com/search?hl=en&q=kuckucksuhr%20kaufen",
+      "ctry": "de"
+    }
+  }],
+
+  "mustNotContain": [{ "action": "top-stories" }]
+}
