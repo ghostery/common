@@ -1,3 +1,20 @@
+# v1.2.3 (Tue Mar 16 2021)
+
+#### 🐛 Bug Fix
+
+- Update tests + fix title pattern [#16](https://github.com/ghostery/common/pull/16) ([@remusao](https://github.com/remusao))
+
+#### 🧪 Tests
+
+- Update Human Web tests [#15](https://github.com/ghostery/common/pull/15) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 2
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+- Rémi ([@remusao](https://github.com/remusao))
+
+---
+
 # v1.2.2 (Fri Feb 26 2021)
 
 #### 🐛 Bug Fix
