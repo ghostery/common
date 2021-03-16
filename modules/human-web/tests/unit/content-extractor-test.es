@@ -205,7 +205,7 @@ export default describeModule('human-web/content-extractor',
 
         describe('when searching in Google for "Angela Merkel"', function () {
           beforeEach(function () {
-            initFixture('go/angela-merkel-2020-12-05');
+            initFixture('go/angela-merkel-2021-03-15');
           });
 
           it('should not find any data (ruleset: "normal")', function () {
@@ -255,7 +255,7 @@ export default describeModule('human-web/content-extractor',
 
         describe('when searching in Google for "Angela Merkel"', function () {
           beforeEach(function () {
-            initFixture('go/angela-merkel-2020-12-05');
+            initFixture('go/angela-merkel-2021-03-15');
           });
 
           it('should find search results (ruleset: "normal")', function () {
