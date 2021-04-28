@@ -92,13 +92,13 @@
       },
       "#main div.g": {
         "t": {
-          "item": "div.yuRUbf > a > h3",
+          "item": "div.yuRUbf > a > h3, div.DOqJne > g-link > a > h3",
           "type": "arr",
           "etype": "textContent",
           "keyName": "t"
         },
         "u": {
-          "item": "div.yuRUbf > a",
+          "item": "div.yuRUbf > a, div.DOqJne > g-link > a",
           "type": "arr",
           "etype": "href",
           "keyName": "u"
