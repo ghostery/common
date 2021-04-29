@@ -1,3 +1,15 @@
+# v1.2.4 (Thu Apr 29 2021)
+
+#### 🐛 Bug Fix
+
+- Fix HW patterns [#17](https://github.com/ghostery/common/pull/17) ([@remusao](https://github.com/remusao))
+
+#### Authors: 1
+
+- Rémi ([@remusao](https://github.com/remusao))
+
+---
+
 # v1.2.3 (Tue Mar 16 2021)
 
 #### 🐛 Bug Fix
