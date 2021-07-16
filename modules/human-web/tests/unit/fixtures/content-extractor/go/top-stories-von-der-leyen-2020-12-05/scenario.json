@@ -17,18 +17,13 @@
           "age": null
         },
         "2": {
-          "t": "Heiko von der Leyen – Wikipedia",
-          "u": "https://de.wikipedia.org/wiki/Heiko_von_der_Leyen",
-          "age": null
-        },
-        "3": {
-          "t": "Ursula von der Leyen | Europäische Kommission",
-          "u": "https://ec.europa.eu/commission/commissioners/2019-2024/president_de",
-          "age": null
+          "t": "Von der Leyen will Aus für herkömmliche Benzin- und ... - WELT",
+          "u": "https://www.welt.de/politik/ausland/article232489247/Von-der-Leyen-will-Aus-fuer-herkoemmliche-Benzin-und-Dieselautos.html",
+          "age": "vor 2 Tagen — "
         },
         "4": {
-          "t": "Dr. Ursula von der Leyen - Deutscher Bundestag",
-          "u": "https://www.bundestag.de/abgeordnete/biografien/L/leyen_ursula-521602",
+          "t": "Ursula von der Leyen | Europäische Kommission",
+          "u": "https://ec.europa.eu/commission/commissioners/2019-2024/president_de",
           "age": null
         },
         "5": {
@@ -37,8 +32,8 @@
           "age": null
         },
         "6": {
-          "t": "Ursula von der Leyen - Bundesregierung",
-          "u": "https://www.bundesregierung.de/breg-de/bundesregierung/bundeskabinett/ursula-von-der-leyen-422328",
+          "t": "Dr. Ursula von der Leyen - Deutscher Bundestag",
+          "u": "https://www.bundestag.de/abgeordnete/biografien/L/leyen_ursula-521602",
           "age": null
         },
         "7": {
@@ -57,19 +52,19 @@
     "payload": {
       "r": {
         "0": {
-          "u": "https://www.welt.de/politik/ausland/article221860408/Handelspakt-Brexit-Deal-auf-Messers-Schneide-Jetzt-uebernehmen-Johnson-und-von-der-Leyen.html",
-          "lu": "vor 2 Stunden",
-          "h": "Handelspakt: Brexit-Deal auf Messers Schneide – Jetzt übernehmen Johnson \nund von der Leyen"
+          "u": "https://www.spiegel.de/wirtschaft/soziales/klimaschutz-ursula-von-der-leyen-sorgt-mit-dem-fit-for-55-paket-fuer-konflikte-in-eu-a-52959871-06ca-4e5c-9175-6211e35f840e",
+          "lu": "vor 1 Tag",
+          "h": "Klimaschutzpaket der EU-Kommission: Der grüne Spaltpilz"
         },
         "1": {
-          "u": "https://www.zeit.de/politik/ausland/2020-12/brexit-handelsabkommen-ursula-von-der-leyen-boris-johnson-verhandlung",
-          "lu": "vor 7 Stunden",
-          "h": "Brexit: Von der Leyen und Johnson wollen direkt miteinander verhandeln"
+          "u": "https://www.welt.de/politik/ausland/article232489247/Von-der-Leyen-will-Aus-fuer-herkoemmliche-Benzin-und-Dieselautos.html",
+          "lu": "vor 2 Tagen",
+          "h": "Von der Leyen will Aus für herkömmliche Benzin- und Dieselautos"
         },
         "2": {
-          "u": "https://www.tagesschau.de/ausland/brexit-verhandlungen-211.html",
-          "lu": "vor 19 Stunden",
-          "h": "Brexit-Verhandlungen: Von der Leyen und Johnson müssen reden"
+          "u": "https://www.wiwo.de/my/politik/europa/differenzen-um-eu-klimapaket-deal-or-no-deal-fuer-ursula-von-der-leyen/27421576.html",
+          "lu": "vor 1 Tag",
+          "h": "Green Deal: Was auf die Ursula von der Leyen noch zukommt"
         }
       },
       "q": "von der leyen",
@@ -84,16 +79,16 @@
       "qurl": "https://www.google.com/search?q=von+der+leyen",
       "r": {
         "0": {
-          "t": "BREXIT WIRD CHEFSACHE: Boris Johnson versucht nun mit ...",
-          "u": "https://www.youtube.com/watch?v=2TLUydG7k4I"
+          "t": "EU-USA-Gipfel: Pressekonferenz mit Ursula von der Leyen ...",
+          "u": "https://www.youtube.com/watch?v=-1Ptos4vKFQ"
         },
         "1": {
-          "t": "Berateraffäre: Wichtige Handydaten von Ex-Ministerin von der ...",
-          "u": "https://www.youtube.com/watch?v=Yc2BGoRq5qg"
+          "t": "Konferenz zur Zukunft Europas – Grußwort von Ursula von der ...",
+          "u": "https://www.youtube.com/watch?v=bK2PKeHXtGM"
         },
         "2": {
-          "t": "Ursula von der Leyen hält erste Rede zur Lage der EU | DW ...",
-          "u": "https://www.youtube.com/watch?v=efePPJETAlc"
+          "t": "Der grosse Wurf der Ursula von der Leyen",
+          "u": "https://www.youtube.com/watch?v=Trm0aybK8Vs"
         }
       },
       "ctry": "de"
