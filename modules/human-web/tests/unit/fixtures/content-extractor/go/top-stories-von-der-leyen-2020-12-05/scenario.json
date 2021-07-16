@@ -12,14 +12,19 @@
           "age": null
         },
         "1": {
+          "t": "Ursula von der Leyen – Wikipedia",
+          "u": "https://de.wikipedia.org/wiki/Ursula_von_der_Leyen",
+          "age": null
+        },
+        "2": {
           "t": "Ursula von der Leyen (@vonderleyen) · Twitter",
           "u": "https://twitter.com/vonderleyen?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
           "age": null
         },
-        "2": {
-          "t": "Von der Leyen will Aus für herkömmliche Benzin- und ... - WELT",
-          "u": "https://www.welt.de/politik/ausland/article232489247/Von-der-Leyen-will-Aus-fuer-herkoemmliche-Benzin-und-Dieselautos.html",
-          "age": "vor 2 Tagen — "
+        "3": {
+          "t": "Ursula von der Leyen - Wikipedia",
+          "u": "https://en.wikipedia.org/wiki/Ursula_von_der_Leyen",
+          "age": null
         },
         "4": {
           "t": "Ursula von der Leyen | Europäische Kommission",
@@ -27,17 +32,12 @@
           "age": null
         },
         "5": {
-          "t": "Dr. Ursula von der Leyen, CDU - Deutscher Bundestag",
-          "u": "https://www.bundestag.de/blueprint/servlet/redirect/258710",
+          "t": "Jak przebiegła rozmowa Morawiecki-von der Leyen? Pytanie ...",
+          "u": "https://www.rp.pl/Dyplomacja/210719644-Jak-przebiegla-rozmowa-Morawiecki-von-der-Leyen-Pytanie-bylych-premierow.html",
           "age": null
         },
         "6": {
-          "t": "Dr. Ursula von der Leyen - Deutscher Bundestag",
-          "u": "https://www.bundestag.de/abgeordnete/biografien/L/leyen_ursula-521602",
-          "age": null
-        },
-        "7": {
-          "t": "Ursula von der Leyen - Konrad-Adenauer-Stiftung",
+          "t": "Konrad-Adenauer-Stiftung - Ursula von der Leyen",
           "u": "https://www.kas.de/de/web/geschichte-der-cdu/personen/biogramm-detail/-/content/ursula-von-der-leyen-1",
           "age": null
         }
@@ -52,19 +52,19 @@
     "payload": {
       "r": {
         "0": {
-          "u": "https://www.spiegel.de/wirtschaft/soziales/klimaschutz-ursula-von-der-leyen-sorgt-mit-dem-fit-for-55-paket-fuer-konflikte-in-eu-a-52959871-06ca-4e5c-9175-6211e35f840e",
-          "lu": "vor 1 Tag",
-          "h": "Klimaschutzpaket der EU-Kommission: Der grüne Spaltpilz"
+          "u": "https://www.sueddeutsche.de/politik/von-der-leyen-klimaplaene-interview-sozial-abfedern-1.5351065",
+          "lu": "vor 2 Tagen",
+          "h": "Von der Leyen: „Energie und Transport müssen erschwinglich bleiben“"
         },
         "1": {
+          "u": "https://www.zdf.de/nachrichten/wirtschaft/auto-motor-diesel-leyen-verbrennungsmotor-100.html",
+          "lu": "vor 2 Tagen",
+          "h": "Klimaschutz: EU plant Aus für Benzin- und Dieselautos"
+        },
+        "2": {
           "u": "https://www.welt.de/politik/ausland/article232489247/Von-der-Leyen-will-Aus-fuer-herkoemmliche-Benzin-und-Dieselautos.html",
           "lu": "vor 2 Tagen",
           "h": "Von der Leyen will Aus für herkömmliche Benzin- und Dieselautos"
-        },
-        "2": {
-          "u": "https://www.wiwo.de/my/politik/europa/differenzen-um-eu-klimapaket-deal-or-no-deal-fuer-ursula-von-der-leyen/27421576.html",
-          "lu": "vor 1 Tag",
-          "h": "Green Deal: Was auf die Ursula von der Leyen noch zukommt"
         }
       },
       "q": "von der leyen",
@@ -83,12 +83,12 @@
           "u": "https://www.youtube.com/watch?v=-1Ptos4vKFQ"
         },
         "1": {
-          "t": "Konferenz zur Zukunft Europas – Grußwort von Ursula von der ...",
-          "u": "https://www.youtube.com/watch?v=bK2PKeHXtGM"
+          "t": "Ważne przesłanie Ursuli von der Leyen w Parlamencie ...",
+          "u": "https://ro-ro.facebook.com/komisjaeuropejska/videos/wa%C5%BCne-przes%C5%82anie-ursuli-von-der-leyen-w-parlamencie-europejskim/2638156536406528/?extid=SEO----"
         },
         "2": {
-          "t": "Der grosse Wurf der Ursula von der Leyen",
-          "u": "https://www.youtube.com/watch?v=Trm0aybK8Vs"
+          "t": "Press conference by President von der Leyen & Janez JANŠA ...",
+          "u": "https://www.youtube.com/watch?v=_xjL7zh5W58"
         }
       },
       "ctry": "de"

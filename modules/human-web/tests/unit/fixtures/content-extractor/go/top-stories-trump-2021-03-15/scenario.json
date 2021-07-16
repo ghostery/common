@@ -1,6 +1,5 @@
 {
   "url": "https://www.google.com/search?q=trump",
-
   "mustContain": [
     {
       "type": "humanweb",
@@ -50,7 +49,7 @@
         },
         "q": "trump",
         "qurl": "https://www.google.com/search?q=trump",
-        "ctry": "pl"
+        "ctry": "de"
       }
     },
     {
@@ -103,6 +102,9 @@
       }
     }
   ],
-
-  "mustNotContain": [{ "action": "ads_*" }]
+  "mustNotContain": [
+    {
+      "action": "ads_*"
+    }
+  ]
 }
