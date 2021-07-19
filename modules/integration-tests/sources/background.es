@@ -93,7 +93,7 @@ export default {
     const prefix = 'data:text/plain,';
     let grep = '';
     let forceExtensionReload = false;
-    let autostart = false;
+    let autostart = true;
     if (url.startsWith(prefix)) {
       const options = JSON.parse(url.substr(prefix.length));
       grep = options.grep;
