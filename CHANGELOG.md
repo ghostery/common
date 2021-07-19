@@ -1,3 +1,15 @@
+# v1.2.5 (Mon Jul 19 2021)
+
+#### 🐛 Bug Fix
+
+- HumanWeb: update videos-p pattern tests [#18](https://github.com/ghostery/common/pull/18) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.4 (Thu Apr 29 2021)
 
 #### 🐛 Bug Fix
