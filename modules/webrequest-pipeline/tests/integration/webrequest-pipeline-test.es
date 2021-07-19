@@ -250,7 +250,8 @@ export default () => {
     if (!isChromium) {
       // This test is not run in chrome because it the unload event does not trigger the requests
       // when a cross-origin navigation is made. This then only works for the iframe test.
-      it('Beacon', async () => {
+      // TODO: flaky in CI
+      xit('Beacon', async () => {
         await addPipeline((ctx) => {
           collectRequestDetails(ctx);
         });
@@ -322,7 +323,8 @@ export default () => {
       });
     }
 
-    it('Beacon in iframe', async () => {
+    // TODO: flaky in CI
+    xit('Beacon in iframe', async () => {
       await addPipeline((ctx) => {
         collectRequestDetails(ctx);
       });
