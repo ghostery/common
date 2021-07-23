@@ -485,7 +485,7 @@
           "keyName": "u"
         }
       },
-      "#main div.o0igqc div.RzdJxc": {
+      "#main div.o0igqc .RzdJxc div[data-index]": {
         "t": {
           "item": "div.p5AXld",
           "type": "arr",
@@ -1347,7 +1347,7 @@
           ]
         ]
       },
-      "#main div.o0igqc div.RzdJxc": {
+      "#main div.o0igqc .RzdJxc div[data-index]": {
         "type": "query",
         "results": "clustered",
         "action": "videos-p",
@@ -1361,7 +1361,7 @@
             "qurl"
           ],
           [
-            "#main div.o0igqc div.RzdJxc",
+            "#main div.o0igqc .RzdJxc div[data-index]",
             "r",
             "join"
           ],
