@@ -1,3 +1,15 @@
+# v1.2.7 (Thu Jul 29 2021)
+
+#### 🐛 Bug Fix
+
+- Human Web: img action pattern fix [#21](https://github.com/ghostery/common/pull/21) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.6 (Thu Jul 29 2021)
 
 #### 🐛 Bug Fix
