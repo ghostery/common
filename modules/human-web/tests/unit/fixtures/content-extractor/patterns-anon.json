@@ -48,35 +48,23 @@
           "keyName": "ctry"
         }
       },
-      "table.GpQGbf tbody > tr > td.e3goi > div.svla5d": {
+      "div.isv-r": {
         "u": {
-          "item": "a",
+          "item": "a[title]",
           "type": "arr",
           "etype": "href",
-          "keyName": "u",
-          "functionsApplied": [
-            [
-              "splitF",
-              "/url?q=",
-              1
-            ],
-            [
-              "splitF",
-              "&sa=",
-              0
-            ]
-          ]
+          "keyName": "u"
         },
         "ru": {
-          "item": "a > div > span.F9iS2e",
+          "item": "a[title] .fxgdke",
           "type": "arr",
           "etype": "textContent",
           "keyName": "ru"
         },
         "t": {
-          "item": "a > div > span.x3G5ab",
+          "item": "a[title]",
           "type": "arr",
-          "etype": "textContent",
+          "etype": "title",
           "keyName": "t"
         }
       }
@@ -854,7 +842,7 @@
             "qurl"
           ],
           [
-            "table.GpQGbf tbody > tr > td.e3goi > div.svla5d",
+            "div.isv-r",
             "r",
             "join"
           ],
