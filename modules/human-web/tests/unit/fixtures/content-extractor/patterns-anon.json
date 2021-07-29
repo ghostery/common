@@ -48,23 +48,35 @@
           "keyName": "ctry"
         }
       },
-      "div.isv-r": {
+      ".IkMU6e": {
         "u": {
-          "item": "a[title]",
+          "item": "a",
           "type": "arr",
           "etype": "href",
-          "keyName": "u"
+          "keyName": "u",
+          "functionsApplied": [
+            [
+              "splitF",
+              "/url?q=",
+              1
+            ],
+            [
+              "splitF",
+              "&sa=",
+              0
+            ]
+          ]
         },
         "ru": {
-          "item": "a[title] .fxgdke",
+          "item": ".F9iS2e",
           "type": "arr",
           "etype": "textContent",
           "keyName": "ru"
         },
         "t": {
-          "item": "a[title]",
+          "item": ".x3G5ab",
           "type": "arr",
-          "etype": "title",
+          "etype": "textContent",
           "keyName": "t"
         }
       }
@@ -842,7 +854,7 @@
             "qurl"
           ],
           [
-            "div.isv-r",
+            ".IkMU6e",
             "r",
             "join"
           ],
