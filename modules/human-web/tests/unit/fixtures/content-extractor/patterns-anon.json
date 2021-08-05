@@ -104,7 +104,7 @@
           "keyName": "u"
         },
         "age": {
-          "item": "div.IsZvec > div > span > span.f",
+          "item": "div.IsZvec > div > span.MUxGbd",
           "type": "arr",
           "etype": "textContent",
           "keyName": "age"
