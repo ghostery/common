@@ -1,3 +1,15 @@
+# v1.2.8 (Thu Aug 05 2021)
+
+#### 🐛 Bug Fix
+
+- Human Web: Fix 'age' pattern [#22](https://github.com/ghostery/common/pull/22) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.7 (Thu Jul 29 2021)
 
 #### 🐛 Bug Fix
