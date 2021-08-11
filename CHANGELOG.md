@@ -1,3 +1,15 @@
+# v1.2.9 (Wed Aug 11 2021)
+
+#### 🐛 Bug Fix
+
+- Human-web: update img-p pattern tests [#23](https://github.com/ghostery/common/pull/23) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.8 (Thu Aug 05 2021)
 
 #### 🐛 Bug Fix
