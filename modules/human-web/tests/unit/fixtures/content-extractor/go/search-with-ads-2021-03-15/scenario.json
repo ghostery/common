@@ -176,38 +176,6 @@
         },
         "ctry": "de"
       }
-    },
-    {
-      "type": "humanweb",
-      "action": "img-p",
-      "payload": {
-        "q": "kuckucksuhr kaufen",
-        "qurl": "https://www.google.com/search?hl=en&q=kuckucksuhr%20kaufen",
-        "r": {
-          "0": {
-            "u": "https://www.herrmann-geschenke.de/sortiment/kuckucksuhren/"
-          },
-          "1": {
-            "u": "https://www.herrmann-geschenke.de/sortiment/kuckucksuhren/"
-          },
-          "2": {
-            "u": "https://www.herrmann-geschenke.de/sortiment/kuckucksuhren/"
-          },
-          "3": {
-            "u": "https://www.kuckucksuhr.net/"
-          },
-          "4": {
-            "u": "https://www.herrmann-geschenke.de/sortiment/kuckucksuhren/"
-          },
-          "5": {
-            "u": "https://www.kuckucksuhr.net/"
-          },
-          "6": {
-            "u": "https://kuckucksuhren.shop/"
-          }
-        },
-        "ctry": "de"
-      }
     }
   ],
 

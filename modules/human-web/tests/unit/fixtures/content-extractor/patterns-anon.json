@@ -437,10 +437,10 @@
           "keyName": "u"
         }
       },
-      "div.bkWMgd g-section-with-header #iur img[id^='dimg_']": {
+      "div.EyBRub div[data-lpage]": {
         "u": {
           "type": "arr",
-          "etype": "title",
+          "etype": "data-lpage",
           "keyName": "u"
         }
       },
@@ -1275,7 +1275,7 @@
           ]
         ]
       },
-      "div.bkWMgd g-section-with-header #iur img[id^='dimg_']": {
+      "div.EyBRub div[data-lpage]": {
         "type": "query",
         "results": "clustered",
         "action": "img-p",
@@ -1289,7 +1289,7 @@
             "qurl"
           ],
           [
-            "div.bkWMgd g-section-with-header #iur img[id^='dimg_']",
+            "div.EyBRub div[data-lpage]",
             "r",
             "join"
           ],
