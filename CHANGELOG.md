@@ -1,3 +1,15 @@
+# v1.2.10 (Thu Sep 02 2021)
+
+#### 🐛 Bug Fix
+
+- HumanWeb: query-am pattern update [#24](https://github.com/ghostery/common/pull/24) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.9 (Wed Aug 11 2021)
 
 #### 🐛 Bug Fix
