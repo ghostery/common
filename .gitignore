@@ -3,3 +3,5 @@
 build/
 node_modules/
 .DS_Store
+mocha.log
+testem.log

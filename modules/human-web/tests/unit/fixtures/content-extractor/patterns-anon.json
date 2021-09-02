@@ -730,14 +730,21 @@
           "keyName": "query"
         }
       },
-      "#search div.s-result-item[data-component-type='s-search-result'] div.sg-col-inner div > div > div > h2 > a": {
+      "#search div.s-result-item[data-component-type='s-search-result']": {
         "t": {
-          "item": "span",
+          "item": "div.sg-col-inner div > div > div > h2 > a span",
           "type": "arr",
           "etype": "textContent",
           "keyName": "t"
         },
+        "a": {
+          "item": ".a-declarative .s-label-popover-default span",
+          "type": "arr",
+          "etype": "textContent",
+          "keyName": "a"
+        },
         "u": {
+          "item": "div.sg-col-inner div > div > div > h2 > a",
           "type": "arr",
           "etype": "href",
           "keyName": "u",
@@ -1452,13 +1459,13 @@
       }
     },
     "6": {
-      "#search div.s-result-item[data-component-type='s-search-result'] div.sg-col-inner div > div > div > h2 > a": {
+      "#search div.s-result-item[data-component-type='s-search-result']": {
         "type": "query",
         "results": "clustered",
         "action": "query-am",
         "fields": [
           [
-            "#search div.s-result-item[data-component-type='s-search-result'] div.sg-col-inner div > div > div > h2 > a",
+            "#search div.s-result-item[data-component-type='s-search-result']",
             "r",
             "join"
           ],
