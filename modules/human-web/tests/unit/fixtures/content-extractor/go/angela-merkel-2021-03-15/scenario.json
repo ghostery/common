@@ -4,6 +4,49 @@
   "mustContain": [
     {
       "type": "humanweb",
+      "action": "rel-query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "ulrich merkel",
+            "u": "https://www.google.com/search?q=Ulrich+Merkel"
+          },
+          "1": {
+            "t": "joachim sauer",
+            "u": "https://www.google.com/search?q=Joachim+Sauer"
+          },
+          "2": {
+            "t": "horst kasner",
+            "u": "https://www.google.com/search?q=Horst+Kasner"
+          },
+          "3": {
+            "t": "angela merkel kinder",
+            "u": "https://www.google.com/search?q=Angela+Merkel+Kinder"
+          },
+          "4": {
+            "t": "angela merkel trennung",
+            "u": "https://www.google.com/search?q=Angela+Merkel+Trennung"
+          },
+          "5": {
+            "t": "angela merkel wiki",
+            "u": "https://www.google.com/search?q=Angela+Merkel+wiki"
+          },
+          "6": {
+            "t": "angela merkel gehalt",
+            "u": "https://www.google.com/search?q=Angela+Merkel+Gehalt"
+          },
+          "7": {
+            "t": "angela merkel wohnung",
+            "u": "https://www.google.com/search?q=Angela+Merkel+Wohnung"
+          }
+        },
+        "q": "angela merkel",
+        "qurl": "https://www.google.com/search?hl=en&q=angela%20merkel",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
       "action": "query",
       "payload": {
         "r": {
