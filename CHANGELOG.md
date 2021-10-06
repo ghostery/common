@@ -1,3 +1,18 @@
+# v1.2.11 (Wed Oct 06 2021)
+
+#### 🐛 Bug Fix
+
+- Human Web: ads_D tests [#25](https://github.com/ghostery/common/pull/25) ([@chrmod](https://github.com/chrmod))
+- Human Web: fix ads_A pattern [#25](https://github.com/ghostery/common/pull/25) ([@chrmod](https://github.com/chrmod))
+- Human Web: add missing keyword to query action [#25](https://github.com/ghostery/common/pull/25) ([@chrmod](https://github.com/chrmod))
+- Human Web: new action rel-query [#25](https://github.com/ghostery/common/pull/25) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.10 (Thu Sep 02 2021)
 
 #### 🐛 Bug Fix
