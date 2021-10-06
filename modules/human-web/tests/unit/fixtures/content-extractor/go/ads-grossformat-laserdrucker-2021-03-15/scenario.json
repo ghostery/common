@@ -75,6 +75,23 @@
     },
     {
       "type": "humanweb",
+      "action": "ads_A",
+      "payload": {
+        "r": {
+          "0": {
+            "u": "https://www.complott.com/hp-latex-700-und-800-druckerserien"
+          },
+          "1": {
+            "u": "https://www.bahe.de/produkte-leistungen/konica-minolta-bizhub/"
+          }
+        },
+        "q": "großformat laserdrucker",
+        "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
       "action": "ads_C",
       "payload": {
         "r": {
@@ -171,7 +188,6 @@
 
   "mustNotContain": [
     { "action": "top-stories" },
-    { "action": "ads_A" },
     { "action": "ads_B" },
     { "action": "ads_D" }
   ]

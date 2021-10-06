@@ -186,12 +186,24 @@
           ]
         }
       },
-      "#tads .ads-ad": {
+      "#tads div[data-text-ad]": {
         "u": {
-          "item": ".ads-visurl cite",
+          "item": "a.Krnil",
           "type": "multiple",
-          "etype": "textContent",
-          "keyName": "u"
+          "etype": "href",
+          "keyName": "u",
+          "functionsApplied": [
+            [
+              "parseU",
+              "qs",
+              "adurl"
+            ],
+            [
+              "maskU",
+              false,
+              false
+            ]
+          ]
         }
       },
       "#search .rSr7Wd .So9e7d": {
@@ -946,13 +958,13 @@
           ]
         ]
       },
-      "#tads .ads-ad": {
+      "#tads div[data-text-ad]": {
         "type": "query",
         "results": "clustered",
         "action": "ads_A",
         "fields": [
           [
-            "#tads .ads-ad",
+            "#tads div[data-text-ad]",
             "r",
             "join"
           ],
