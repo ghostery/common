@@ -293,26 +293,6 @@
           "functionsApplied": []
         }
       },
-      "#mbEnd .ads-ad": {
-        "u": {
-          "item": "a[id^=s1p]",
-          "type": "multiple",
-          "etype": "href",
-          "keyName": "u",
-          "functionsApplied": [
-            [
-              "parseU",
-              "qs",
-              "adurl"
-            ],
-            [
-              "maskU",
-              false,
-              false
-            ]
-          ]
-        }
-      },
       ".pla-unit-title": {
         "u": {
           "item": ".pla-unit-title-link",
@@ -965,30 +945,6 @@
         "fields": [
           [
             "#tads div[data-text-ad]",
-            "r",
-            "join"
-          ],
-          [
-            "#search",
-            "q"
-          ],
-          [
-            "qurl",
-            "qurl"
-          ],
-          [
-            "ctry",
-            "ctry"
-          ]
-        ]
-      },
-      "#mbEnd .ads-ad": {
-        "type": "query",
-        "results": "clustered",
-        "action": "ads_B",
-        "fields": [
-          [
-            "#mbEnd .ads-ad",
             "r",
             "join"
           ],

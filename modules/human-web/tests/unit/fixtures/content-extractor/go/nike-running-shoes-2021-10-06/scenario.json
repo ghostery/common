@@ -4,94 +4,6 @@
   "mustContain": [
     {
       "type": "humanweb",
-      "action": "query",
-      "payload": {
-        "r": {
-          "0": {
-            "t": "Suchergebnis auf Amazon.de für: Großformat-Laserdrucker",
-            "u": "https://www.amazon.de/Gro%C3%9Fformat-Laserdrucker/s?k=Gro%C3%9Fformat-Laserdrucker",
-            "age": null,
-            "m": null
-          },
-          "1": {
-            "t": "Gibt es Großformat Laserdrucker? | Forum | Druckerchannel",
-            "u": "https://www.druckerchannel.de/forum.php?seite=beitrag&ID=86431&t=gibt_es_grossformat_laserdrucker",
-            "age": null,
-            "m": null
-          },
-          "2": {
-            "t": "Die Komplettlösung im Großformat von DIN A2 bis DIN A0 - Ihr ...",
-            "u": "https://www.ebt-buerotechnik.de/plotter-scanner-bundle",
-            "age": null,
-            "m": null
-          },
-          "3": {
-            "t": "HP LaserJet 9040N 40ppm 128MB LAN Großformat ...",
-            "u": "https://www.quantelectronic.de/Drucker-und-Kopierer/Laserdrucker/HP-sonstige/HP-LaserJet-9040N-40ppm-128MB-LAN-Grossformat-Laserdrucker-mit-Finisher-i89_36491.htm",
-            "age": null,
-            "m": null
-          },
-          "4": {
-            "t": "Großformat Multifunktionsdrucker - Xerox",
-            "u": "https://www.xerox.de/de-de/office-produkte/multifunktionsdrucker/paper-12x18-plus",
-            "age": null,
-            "m": null
-          },
-          "5": {
-            "t": "Großformatdrucker: Der ideale Partner für den Druck im ...",
-            "u": "https://www.tonerpartner.de/grossformatdrucker/",
-            "age": null,
-            "m": null
-          },
-          "6": {
-            "t": "Großformat-Drucksysteme - Canon Deutschland",
-            "u": "https://www.canon.de/business-printers-and-faxes/wide-format-printers/",
-            "age": null,
-            "m": null
-          },
-          "7": {
-            "t": "HP DesignJet Großformatdrucker - HP Store Deutschland",
-            "u": "https://store.hp.com/GermanyStore/Merch/Offer.aspx?p=b-gsb-designjet-grossformat-drucker-plotter-buero",
-            "age": null,
-            "m": null
-          },
-          "8": {
-            "t": "Finden Sie Hohe Qualität Großformat-laserdrucker Hersteller ...",
-            "u": "https://german.alibaba.com/g/large-format-laser-printer.html",
-            "age": null,
-            "m": null
-          },
-          "9": {
-            "t": "KIP Großformat-Systeme - Jörg Metzner Kopier- und ...",
-            "u": "https://www.metzner-kopiersysteme.de/produkte/kip-gro%C3%9Fformat-systeme.html",
-            "age": null,
-            "m": null
-          }
-        },
-        "q": "großformat laserdrucker",
-        "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
-        "ctry": "de"
-      }
-    },
-    {
-      "type": "humanweb",
-      "action": "ads_A",
-      "payload": {
-        "r": {
-          "0": {
-            "u": "https://www.complott.com/hp-latex-700-und-800-druckerserien"
-          },
-          "1": {
-            "u": "https://www.bahe.de/produkte-leistungen/konica-minolta-bizhub/"
-          }
-        },
-        "q": "großformat laserdrucker",
-        "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
-        "ctry": "de"
-      }
-    },
-    {
-      "type": "humanweb",
       "action": "ads_C",
       "payload": {
         "r": {
@@ -187,7 +99,5 @@
   ],
 
   "mustNotContain": [
-    { "action": "top-stories" },
-    { "action": "ads_D" }
   ]
 }
