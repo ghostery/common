@@ -1,3 +1,17 @@
+# v1.2.12 (Tue Oct 12 2021)
+
+#### 🐛 Bug Fix
+
+- Human Web Lite: update patterns [#27](https://github.com/ghostery/common/pull/27) ([@chrmod](https://github.com/chrmod))
+- removed new test page [#26](https://github.com/ghostery/common/pull/26) ([@chrmod](https://github.com/chrmod))
+- Human Web: remove ads_b action [#26](https://github.com/ghostery/common/pull/26) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.11 (Wed Oct 06 2021)
 
 #### 🐛 Bug Fix
