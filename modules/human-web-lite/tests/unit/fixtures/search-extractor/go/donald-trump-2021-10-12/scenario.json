@@ -1,0 +1,62 @@
+{
+  "url": "https://www.google.com/search?q=donald+trump&oq=donald+trump",
+  "type": "search-go",
+  "query": "donald trump",
+  "ctry": "de",
+
+  "mustContain": [
+    {
+      "type": "humanweb",
+      "action": "hwlite.query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "Donald Trump - Wikipedia",
+            "u": "https://en.wikipedia.org/wiki/Donald_Trump",
+            "age": "1 hour ago — ",
+            "m": null
+          },
+          "1": {
+            "t": "Donald J. Trump: Home",
+            "u": "https://www.donaldjtrump.com/",
+            "age": null,
+            "m": null
+          },
+          "2": {
+            "t": "Donald J. Trump - Home | Facebook",
+            "u": "https://www.facebook.com/DonaldTrump/",
+            "age": null,
+            "m": null
+          },
+          "3": {
+            "t": "Donald Trump | TheHill",
+            "u": "https://thehill.com/people/donald-trump",
+            "age": "16 hours ago — ",
+            "m": null
+          },
+          "4": {
+            "t": "The Trump Organization | Luxury Real Estate Portfolio",
+            "u": "https://www.trump.com/",
+            "age": null,
+            "m": null
+          },
+          "5": {
+            "t": "Donald J. Trump | The White House",
+            "u": "https://www.whitehouse.gov/about-the-white-house/presidents/donald-j-trump/",
+            "age": null,
+            "m": null
+          },
+          "6": {
+            "t": "Donald Trump | US news | The Guardian",
+            "u": "https://www.theguardian.com/us-news/donaldtrump",
+            "age": "6 hours ago — ",
+            "m": null
+          }
+        },
+        "q": "donald trump",
+        "qurl": "https://www.google.com/search?q=donald+trump&oq=donald+trump",
+        "ctry": "de"
+      }
+    }
+  ]
+}

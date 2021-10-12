@@ -109,12 +109,13 @@ export default class SearchExtractor {
     }
 
     const results = [];
-    [].forEach.call(rso.querySelectorAll('div.mnr-c.xpd.O9g5cc.uUPGi'), (x) => {
-      const url = (x.querySelector('a.C8nzq') || {}).href;
-      const title = (x.querySelector('a > div > div') || { textContent: '' }).textContent;
-      const age = (x.querySelector('div[id^=tsuid] span.MUxGbd.wuQ4Ob.WZ8Tjf') || { textContent: '' }).textContent;
+    [].forEach.call(rso.querySelectorAll('#main div.g'), (x) => {
+      const url = (x.querySelector('div.yuRUbf > a, div.DOqJne > g-link > a') || {}).href;
+      const title = (x.querySelector('div.yuRUbf > a > h3, div.DOqJne > g-link > a > h3') || { textContent: '' }).textContent;
+      const age = (x.querySelector('div.IsZvec > div > span.MUxGbd') || { textContent: '' }).textContent;
+      const missingKeyword = (x.querySelector('.TXwUJf a.fl') || { textContent: '' }).textContent;
       if (url && title) {
-        results.push({ t: title, u: url, age: age || null });
+        results.push({ t: title, u: url, age: age || null, m: missingKeyword || null });
       }
     });
     if (results.length === 0) {
