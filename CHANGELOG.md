@@ -1,3 +1,15 @@
+# v1.2.14 (Wed Oct 13 2021)
+
+#### 🐛 Bug Fix
+
+- Human Web Lite: simplify the pattern [#29](https://github.com/ghostery/common/pull/29) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.13 (Wed Oct 13 2021)
 
 #### 🐛 Bug Fix
