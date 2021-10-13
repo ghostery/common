@@ -110,7 +110,7 @@ export default class SearchExtractor {
 
     const results = [];
     [].forEach.call(rso.querySelectorAll('div.mnr-c.xpd.O9g5cc.uUPGi'), (x) => {
-      const url = (x.querySelector('a.C8nzq') || {}).href;
+      const url = (x.querySelector('a') || {}).href;
       const title = (x.querySelector('a > div > div') || { textContent: '' }).textContent;
       const age = (x.querySelector('.BmP5tf .wuQ4Ob') || { textContent: '' }).textContent.split('·')[0];
       const missingKeyword = (x.querySelector('.TXwUJf a.fl') || { textContent: '' }).textContent;
