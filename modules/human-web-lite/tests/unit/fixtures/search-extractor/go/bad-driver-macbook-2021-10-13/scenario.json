@@ -1,0 +1,86 @@
+{
+  "url": "https://www.google.com/search?hl=en&q=how%20to%20delete%20a%20bad%20driver%20macbook",
+  "type": "search-go",
+  "query": "how to delete a bad driver macbook",
+  "ctry": "de",
+
+  "mustContain": [
+    {
+      "type": "humanweb",
+      "action": "hwlite.query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "How to find and uninstall drivers. - Apple Support Communities",
+            "u": "https://discussions.apple.com/thread/3562907",
+            "age": "11 gru 2011 ",
+            "m": null
+          },
+          "1": {
+            "t": "Here's how to uninstall drivers on your Mac - MacPaw",
+            "u": "https://macpaw.com/amp/how-to/uninstall-drivers-mac",
+            "age": "16 kwi 2021 — ",
+            "m": "bad"
+          },
+          "2": {
+            "t": "How to remove a driver on Mac: MacOS - Reddit",
+            "u": "https://amp.reddit.com/r/MacOS/comments/52x7jq/how_to_remove_a_driver_on_mac/",
+            "age": null,
+            "m": null
+          },
+          "3": {
+            "t": "How to Uninstall Drivers on Mac - Cyclonis",
+            "u": "https://www.cyclonis.com/how-to-uninstall-drivers-on-mac/",
+            "age": null,
+            "m": null
+          },
+          "4": {
+            "t": "How do I uninstall different Mac OS drivers that I don't need? - Quora",
+            "u": "https://www.quora.com/How-do-I-uninstall-different-Mac-OS-drivers-that-I-dont-need",
+            "age": "4 odpowiedzi",
+            "m": null
+          },
+          "5": {
+            "t": "Uninstall the drivers. (Mac OS X 10.6 or greater) | Brother",
+            "u": "https://support.brother.com/g/b/sp/faqend.aspx?c=as_ot&lang=en&prod=dcpt300_all&faqid=faq00000314_004",
+            "age": "17 gru 2020 — ",
+            "m": "bad"
+          },
+          "6": {
+            "t": "How do I manually uninstall a driver in Windows 10? - OS Today",
+            "u": "https://ostoday.org/windows/how-do-i-manually-uninstall-a-driver-in-windows-10.html",
+            "age": null,
+            "m": null
+          },
+          "7": {
+            "t": "How do I manually uninstall a driver in Windows 10? - OS Today",
+            "u": "https://ostoday.org/windows/how-do-i-manually-uninstall-a-driver-in-windows-10.html",
+            "age": null,
+            "m": null
+          },
+          "8": {
+            "t": "How do I remove unwanted drivers in Windows 10? - OS Today",
+            "u": "https://ostoday.org/other/how-do-i-remove-unwanted-drivers-in-windows-10.html",
+            "age": null,
+            "m": null
+          },
+          "9": {
+            "t": "How to Uninstall a Corrupt Driver that Blocks Windows Startup | ITIGIC",
+            "u": "https://itigic.com/uninstall-corrupt-driver-that-blocks-windows-startup/",
+            "age": null,
+            "m": null
+          },
+          "10": {
+            "t": "How to Remove a Print Driver From a Mac Computer - Small Business ...",
+            "u": "https://smallbusiness.chron.com/remove-print-driver-mac-computer-45817.html",
+            "age": null,
+            "m": "bad"
+          }
+        },
+        "q": "how to delete a bad driver macbook",
+        "qurl": "https://www.google.com/search?hl=en&q=how%20to%20delete%20a%20bad%20driver%20macbook",
+        "ctry": "de"
+      }
+    }
+  ]
+}
