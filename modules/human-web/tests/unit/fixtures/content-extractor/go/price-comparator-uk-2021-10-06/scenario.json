@@ -4,6 +4,40 @@
   "mustContain": [
     {
       "type": "humanweb",
+      "action": "bolded",
+      "payload": {
+        "r": {
+          "0": { "k": "prices" },
+          "1": { "k": "UK" },
+          "2": { "k": "Compare UK prices" },
+          "3": { "k": "price comparison" },
+          "4": { "k": "Compare prices" },
+          "5": { "k": "Price comparison" },
+          "6": { "k": "Compare" },
+          "7": { "k": "compare" },
+          "8": { "k": "Compare" },
+          "9": { "k": "price comparison" },
+          "10": { "k": "Price comparison" },
+          "11": { "k": "UK" },
+          "12": { "k": "Price comparison" },
+          "13": { "k": "compare" },
+          "14": { "k": "price" },
+          "15": { "k": "UK's price comparison" },
+          "16": { "k": "prices" },
+          "17": { "k": "UK's" },
+          "18": { "k": "price comparison" },
+          "19": { "k": "uk" },
+          "20": { "k": "price comparison" },
+          "21": { "k": "compare" },
+          "22": { "k": "UK" }
+        },
+        "q": "price comparison uk",
+        "qurl": "https://www.google.com/search?hl=en&q=price%20comparison%20uk",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
       "action": "ads_A",
       "payload": {
         "r": {
