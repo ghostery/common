@@ -1,3 +1,15 @@
+# v1.2.15 (Thu Oct 21 2021)
+
+#### 🐛 Bug Fix
+
+- Human Web: new action 'bolded' [#30](https://github.com/ghostery/common/pull/30) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.14 (Wed Oct 13 2021)
 
 #### 🐛 Bug Fix
