@@ -116,6 +116,13 @@
           "keyName": "m"
         }
       },
+      "div.IsZvec > div > span > em": {
+        "k": {
+          "type": "arr",
+          "etype": "textContent",
+          "keyName": "k"
+        }
+      },
       "a.k8XOCe": {
         "t": {
           "type": "arr",
@@ -897,6 +904,30 @@
         "fields": [
           [
             "#main div.g",
+            "r",
+            "join"
+          ],
+          [
+            "#search",
+            "q"
+          ],
+          [
+            "qurl",
+            "qurl"
+          ],
+          [
+            "ctry",
+            "ctry"
+          ]
+        ]
+      },
+      "div.IsZvec > div > span > em": {
+        "type": "query",
+        "results": "clustered",
+        "action": "bolded",
+        "fields": [
+          [
+            "div.IsZvec > div > span > em",
             "r",
             "join"
           ],
