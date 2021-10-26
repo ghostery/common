@@ -1,3 +1,15 @@
+# v1.2.16 (Tue Oct 26 2021)
+
+#### 🐛 Bug Fix
+
+- Human Web: rel-query remove urls [#31](https://github.com/ghostery/common/pull/31) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Jan Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.15 (Thu Oct 21 2021)
 
 #### 🐛 Bug Fix
