@@ -128,23 +128,6 @@
           "type": "arr",
           "etype": "textContent",
           "keyName": "t"
-        },
-        "u": {
-          "type": "arr",
-          "etype": "href",
-          "keyName": "u",
-          "functionsApplied": [
-            [
-              "splitF",
-              "&sa=",
-              0
-            ],
-            [
-              "maskU",
-              false,
-              false
-            ]
-          ]
         }
       },
       ".g .r": {
