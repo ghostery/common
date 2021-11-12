@@ -1,0 +1,199 @@
+{
+  "url": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+
+  "mustContain": [
+    {
+      "type": "humanweb",
+      "action": "query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "Suchergebnis auf Amazon.de für: Großformat-Laserdrucker",
+            "u": "https://www.amazon.de/Gro%C3%9Fformat-Laserdrucker/s?k=Gro%C3%9Fformat-Laserdrucker",
+            "age": "Ergebnissen 1 - 16 von 81 — ",
+            "m": null
+          },
+          "1": {
+            "t": "Gibt es Großformat Laserdrucker? | Forum | Druckerchannel",
+            "u": "https://www.druckerchannel.de/forum.php?seite=beitrag&ID=86431&t=gibt_es_grossformat_laserdrucker",
+            "age": null,
+            "m": null
+          },
+          "2": {
+            "t": "Gibt es Großformat Laserdrucker? | Forum | Druckerchannel",
+            "u": "https://www.druckerchannel.de/forum.php?seite=beitrag&ID=86431&t=gibt_es_grossformat_laserdrucker",
+            "age": null,
+            "m": null
+          },
+          "3": {
+            "t": "Gibt es Grossformatige Farblaserdrucker? | Forum",
+            "u": "https://www.druckerchannel.de/forum.php?seite=beitrag&ID=252551&t=gibt_es_grossformatige_farblaserdrucker",
+            "age": null,
+            "m": null
+          },
+          "4": {
+            "t": "Plotter | Scanner-Bundle - EBT Bürotechnik",
+            "u": "https://www.ebt-buerotechnik.de/plotter-scanner-bundle",
+            "age": null,
+            "m": null
+          },
+          "5": {
+            "t": "Großformat Multifunktionsdrucker - Xerox Office",
+            "u": "https://www.xerox.de/de-de/office-produkte/multifunktionsdrucker/paper-12x18-plus",
+            "age": null,
+            "m": null
+          },
+          "6": {
+            "t": "Großformatdrucker: Funktionen, Eigenschaften und Vorteile",
+            "u": "https://www.tonerpartner.de/grossformatdrucker/",
+            "age": null,
+            "m": null
+          },
+          "7": {
+            "t": "HP DesignJet Großformatdrucker - HP Store Deutschland",
+            "u": "https://www.hp.com/de-de/shop/offer.aspx?p=b-gsb-designjet-grossformat-drucker-plotter-buero",
+            "age": null,
+            "m": null
+          },
+          "8": {
+            "t": "Großformat-Drucksysteme - Canon Deutschland",
+            "u": "https://www.canon.de/business-printers-and-faxes/wide-format-printers/",
+            "age": null,
+            "m": null
+          },
+          "9": {
+            "t": "großformat-laserdrucker - Alibaba",
+            "u": "https://german.alibaba.com/g/large-format-laser-printer.html",
+            "age": null,
+            "m": null
+          },
+          "10": {
+            "t": "Großformat-Endlos-Laserdrucker - Beschaffung aktuell",
+            "u": "https://beschaffung-aktuell.industrie.de/allgemein/grossformat-endlos-laserdrucker/",
+            "age": "01.11.1999 — ",
+            "m": null
+          }
+        },
+        "q": "großformat laserdrucker",
+        "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
+      "action": "rel-query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "laserdrucker farbig"
+          },
+          "1": {
+            "t": "laser oder tintenstrahldrucker"
+          },
+          "2": {
+            "t": "laserdrucker schwarz weiß"
+          },
+          "3": {
+            "t": "laserdrucker test"
+          }
+        },
+        "q": "großformat laserdrucker",
+        "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
+      "action": "ads_A",
+      "payload": {
+        "r": {
+          "0": {
+            "u": "https://www.hp.com/drucker/designjet",
+            "t": "24\" Großformatdrucker - Offizielles HP® Produkt"
+          },
+          "1": {
+            "u": "https://www.tradingtwins.com/",
+            "t": "Laserdrucker kaufen - Gezielt für Unternehmen"
+          },
+          "2": {
+            "u": "https://www.proffice.cc/großformat/systeme",
+            "t": "Großformat Drucker - Ihr Erfolg ist unser Ziel"
+          },
+          "3": {
+            "u": "https://www.brother.de/",
+            "t": "Brother - Laser-Multifunktionsdrucker - Für Home-Office & Büro"
+          }
+        },
+        "q": "großformat laserdrucker",
+        "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
+      "action": "ads_C",
+      "payload": {
+        "r": {
+          "0": {
+            "u": "https://www.coolblue.de/produkt/861239/hp-neverstop-laser-mfp-1202nw.html?region_id=274402",
+            "t": "HP Neverstop Laser MFP 1202nw Drucker"
+          },
+          "1": {
+            "u": "https://www.c-nw.de/epson-surecolor-sc-t3100.html",
+            "t": "Epson SureColor SC-T3100 Plotter Großformatdrucker DIN A1 61 cm 24 Zoll Netzwerk WLAN Kompakt weiss CAD Pläne GIS Unterstand"
+          },
+          "2": {
+            "u": "https://www.bueromarkt-ag.de/farblaserdrucker_kyocera_ecosys_p5026cdw,p-p5026cdw,l-google-prd,pd-b2c.html",
+            "t": "Kyocera ECOSYS P5026cdw Farblaserdrucker"
+          },
+          "3": {
+            "u": "https://www.bueromarkt-ag.de/multifunktionsgeraet_brother_dcp_l3550cdw,p-dcp-l3550cdw,l-google-css,pd-b2c.html",
+            "t": "Brother DCP L3550CDW Multifunktionsgerät"
+          },
+          "4": {
+            "u": "https://www.bueromarkt-ag.de/laserdrucker_hp_laserjet_enterprise_700_m712dn,p-cf236a,l-google-css,pd-b2c.html",
+            "t": "HP Laserdrucker LaserJet Enterprise 700 M712dn, Druck/Minute: s/w 41 Seiten"
+          },
+          "5": {
+            "u": "http://bauer-pk.net/Epson-ColorWorks-CW-C6000Ae-Cutter-Disp.-USB-Ethernet-schwarz-C31CH76102/C31CH76102",
+            "t": "Epson ColorWorks CW-C6000Ae, Cutter, Disp., USB, Ethernet, schwarz, C31CH76102"
+          },
+          "6": {
+            "u": "https://www.bueromarkt-ag.de/multifunktionsgeraet_brother_mfc_l3730cdn,p-mfc-l3730cdn,l-google-css,pd-b2c.html",
+            "t": "Brother MFC L3730CDN Multifunktionsgerät"
+          },
+          "7": {
+            "u": "https://www.kautbullinger.de/shop/engineering-lfp/lfp-drucker-lfp-plotter~c33157/rollendrucker-graphic-arts~c1145491/grossformatdrucker-hp-designjet-t730~p4520779",
+            "t": "Großformatdrucker HP DesignJet T730"
+          },
+          "8": {
+            "u": "https://www.bueromarkt-ag.de/laserdrucker_hp_laserjet_pro_m501dn,p-j8h61a,l-google-css,pd-b2c.html",
+            "t": "HP LaserJet Pro M501dn Laserdrucker J8H61A"
+          }
+        },
+        "q": "großformat laserdrucker",
+        "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
+      "action": "ads_D",
+      "payload": {
+        "r": {
+          "0": {
+            "u": "http://www.deluca-partner.de/",
+            "t": "Plotten De Luca & Partner"
+          }
+        },
+        "q": "großformat laserdrucker",
+        "qurl": "https://www.google.com/search?hl=en&q=großformat%20laserdrucker",
+        "ctry": "de"
+      }
+    }
+  ],
+
+  "mustNotContain": [
+    { "action": "top-stories" }
+  ]
+}

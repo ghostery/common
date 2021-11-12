@@ -50,7 +50,7 @@
       },
       ".IkMU6e": {
         "u": {
-          "item": "a",
+          "item": "tbody > tr > td > a",
           "type": "arr",
           "etype": "href",
           "keyName": "u",
@@ -59,6 +59,11 @@
               "splitF",
               "/url?q=",
               1
+            ],
+            [
+              "splitF",
+              "&amp;sa=U&amp;ved",
+              0
             ],
             [
               "splitF",
@@ -178,22 +183,23 @@
       },
       "#tads div[data-text-ad]": {
         "u": {
-          "item": "a.Krnil",
+          "item": "a.sVXRqc > div.d8lRkd > span[role='text']",
           "type": "multiple",
-          "etype": "href",
+          "etype": "textContent",
           "keyName": "u",
           "functionsApplied": [
-            [
-              "parseU",
-              "qs",
-              "adurl"
-            ],
             [
               "maskU",
               false,
               false
             ]
           ]
+        },
+        "t": {
+          "item": "a.sVXRqc > div.CCgQ5[role='heading'] > span",
+          "etype": "multiple",
+          "etype": "textContent",
+          "keyName": "t"
         }
       },
       "#search .rSr7Wd .So9e7d": {
@@ -285,7 +291,7 @@
       },
       ".pla-unit-title": {
         "u": {
-          "item": ".pla-unit-title-link",
+          "item": "a.pla-unit-title-link",
           "type": "multiple",
           "etype": "href",
           "keyName": "u",
@@ -301,13 +307,19 @@
               false
             ]
           ]
+        },
+        "t": {
+          "item": "a.pla-unit-title-link span.pymv4e[style='-webkit-line-clamp:2']",
+          "type": "multiple",
+          "etype": "textContent",
+          "keyName": "t"
         }
       },
       "#bottomads div.cUezCb": {
         "u": {
-          "item": "a.Krnil",
+          "item": "a.sVXRqc > div.d8lRkd > span[role='text']",
           "type": "arr",
-          "etype": "href",
+          "etype": "textContent",
           "keyName": "u",
           "functionsApplied": [
             [
@@ -316,6 +328,12 @@
               false
             ]
           ]
+        },
+        "t": {
+          "item": "a.sVXRqc > div.CCgQ5[role='heading'] > span",
+          "type": "arr",
+          "etype": "textContent",
+          "keyName": "t"
         }
       },
       "qurl": {
@@ -436,7 +454,7 @@
           "keyName": "t"
         },
         "addr": {
-          "item": "div span.rllt__details.lqhpac > div:nth-child(2) > span:not(.BTtC6e):nth-child(1)",
+          "item": "div.cXedhc > div.rllt__details > div:nth-child(2)",
           "type": "arr",
           "etype": "textContent",
           "keyName": "addr"
@@ -497,7 +515,7 @@
           "keyName": "u"
         }
       },
-      "#main div.o0igqc div.LYyupc": {
+      "#main div.o0igqc div.mLmaBd": {
         "t": {
           "item": "div.p5AXld",
           "type": "arr",
@@ -1385,7 +1403,7 @@
           ]
         ]
       },
-      "#main div.o0igqc div.LYyupc": {
+      "#main div.o0igqc div.mLmaBd": {
         "type": "query",
         "results": "clustered",
         "action": "videos-p",
@@ -1399,7 +1417,7 @@
             "qurl"
           ],
           [
-            "#main div.o0igqc div.LYyupc",
+            "#main div.o0igqc div.mLmaBd",
             "r",
             "join"
           ],
