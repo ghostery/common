@@ -1,3 +1,15 @@
+# v1.2.17 (Mon Nov 15 2021)
+
+#### 🐛 Bug Fix
+
+- Update tests [#32](https://github.com/ghostery/common/pull/32) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.16 (Tue Oct 26 2021)
 
 #### 🐛 Bug Fix
