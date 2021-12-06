@@ -260,9 +260,8 @@
           "functionsApplied": []
         }
       },
-      "#search g-scrolling-carousel div.fhQnRd g-inner-card": {
+      "#rso a.WlydOe": {
         "u": {
-          "item": "a",
           "type": "arr",
           "etype": "href",
           "keyName": "u",
@@ -517,7 +516,7 @@
       },
       "#main div.o0igqc div.mLmaBd": {
         "t": {
-          "item": "div.p5AXld",
+          "item": "div.fc9yUc",
           "type": "arr",
           "etype": "textContent",
           "keyName": "t"
@@ -1042,13 +1041,13 @@
           ]
         ]
       },
-      "#search g-scrolling-carousel div.fhQnRd g-inner-card": {
+      "#rso a.WlydOe": {
         "type": "query",
         "results": "clustered",
         "action": "top-stories",
         "fields": [
           [
-            "#search g-scrolling-carousel div.fhQnRd g-inner-card",
+            "#rso a.WlydOe",
             "r",
             "join"
           ],

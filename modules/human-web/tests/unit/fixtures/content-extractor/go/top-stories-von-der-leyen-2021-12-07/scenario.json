@@ -1,0 +1,84 @@
+{
+  "url": "https://www.google.com/search?q=von+der+leyen",
+
+  "mustContain": [{
+    "type": "humanweb",
+    "action": "query",
+    "payload": {
+      "r": {
+        "0": {
+          "t": "Ursula von der Leyen - Wikipedia",
+          "u": "https://de.wikipedia.org/wiki/Ursula_von_der_Leyen",
+          "age": null,
+          "m": null
+        },
+        "1": {
+          "t": "Ursula von der Leyen (@vonderleyen) · Twitter",
+          "u": "https://twitter.com/vonderleyen?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+          "age": null,
+          "m": null
+        },
+        "2": {
+          "t": "Geschichte der CDU - Ursula von der Leyen - Konrad ...",
+          "u": "https://www.kas.de/de/web/geschichte-der-cdu/personen/biogramm-detail/-/content/ursula-von-der-leyen-1",
+          "age": null,
+          "m": null
+        },
+        "3": {
+          "t": "Impfpflicht in der EU: Von der Leyens Ablenkungsmanöver",
+          "u": "https://www.tagesschau.de/kommentar/eu-impfpflicht-101.html",
+          "age": "vor 6 Tagen — ",
+          "m": null
+        },
+        "4": {
+          "t": "Dr. Ursula von der Leyen, CDU - Deutscher Bundestag",
+          "u": "https://www.bundestag.de/webarchiv/abgeordnete/biografien18/L/leyen_ursula-258710",
+          "age": null,
+          "m": null
+        },
+        "5": {
+          "t": "Dr. Ursula von der Leyen, CDU/CSU - Deutscher Bundestag",
+          "u": "https://www.bundestag.de/webarchiv/abgeordnete/biografien19/L/leyen_ursula-521602",
+          "age": null,
+          "m": null
+        },
+        "6": {
+          "t": "Rede der Präsidentin von der Leyen zur Lage der Union – 2021",
+          "u": "https://ec.europa.eu/commission/presscorner/detail/de/SPEECH_21_4701",
+          "age": "15.09.2021 — ",
+          "m": null
+        }
+      },
+      "q": "von der leyen",
+      "qurl": "https://www.google.com/search?q=von+der+leyen",
+      "ctry": "de"
+    }
+  }, {
+    "type": "humanweb",
+    "action": "top-stories",
+    "payload": {
+      "r": {
+         "0": {
+          "u": "https://www.tagesspiegel.de/politik/neue-sanktionen-wegen-ukraine-krise-angedroht-von-der-leyen-wirft-russland-zynische-machtspiele-vor/27870434.html",
+          "lu": "vor 12 Minuten",
+          "h": "Neue Sanktionen wegen Ukraine-Krise angedroht: Von der Leyen wirft Russland \n„zynische Machtspiele“ vor"
+        },
+        "1": {
+          "u": "https://www.tagesspiegel.de/politik/ezb-urteil-des-bundesverfassungsgerichts-warum-der-konflikt-zwischen-karlsruhe-und-europa-etwas-zu-still-beerdigt-wurde/27864242.html",
+          "lu": "vor 1 Tag",
+          "h": "EZB-Urteil des Bundesverfassungsgerichts: Warum der Konflikt zwischen \nKarlsruhe und Europa etwas zu still beerdigt wurde"
+        },
+        "2": {
+          "u": "https://www.finanzen.net/nachricht/aktien/von-der-leyen-eu-hat-mehr-als-350-millionen-impfdosen-gespendet-10816665",
+          "lu": "vor 1 Tag",
+          "h": "Von der Leyen: EU hat mehr als 350 Millionen Impfdosen gespendet"
+        }
+      },
+      "q": "von der leyen",
+      "qurl": "https://www.google.com/search?q=von+der+leyen",
+      "ctry": "de"
+    }
+  }],
+
+  "mustNotContain": [{ "action": "ads_*" }]
+}
