@@ -1,0 +1,5 @@
+{
+  "url": "https://www.google.com/search?q=is+covid-19+worse+than+the+flu%3F",
+
+  "mustNotContain": [{ "action": "snippet" }]
+}
