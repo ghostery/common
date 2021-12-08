@@ -376,7 +376,7 @@
           "keyName": "mu"
         }
       },
-      ".kp-blk": {
+      ".kp-blk.EyBRub": {
         "ent": {
           "item": "div[role=\"heading\"] > :nth-child(1)",
           "type": "arr",
@@ -1133,13 +1133,13 @@
           ]
         ]
       },
-      ".kp-blk": {
+      ".kp-blk.EyBRub": {
         "type": "query",
         "results": "clustered",
         "action": "snippet",
         "fields": [
           [
-            ".kp-blk",
+            ".kp-blk.EyBRub",
             "r",
             "join"
           ],
