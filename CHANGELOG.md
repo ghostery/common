@@ -1,3 +1,16 @@
+# v1.2.19 (Wed Dec 08 2021)
+
+#### 🐛 Bug Fix
+
+- Human Web: tests for action snippet [#34](https://github.com/ghostery/common/pull/34) ([@chrmod](https://github.com/chrmod) [@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 2
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.18 (Wed Dec 08 2021)
 
 #### 🐛 Bug Fix
