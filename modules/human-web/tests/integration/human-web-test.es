@@ -88,13 +88,13 @@ export default function () {
 
       notAllowed.forEach((e) => {
         it(`'${e}'is not allowed`, function () {
-          expect(CliqzHumanWeb.sanitizeCounrtyCode(e)).to.equal('--');
+          expect(CliqzHumanWeb.sanitizeCountryCode(e)).to.equal('--');
         });
       });
 
       allowed.forEach((e) => {
         it(`'${e}' is allowed`, function () {
-          expect(CliqzHumanWeb.sanitizeCounrtyCode(e)).to.equal(e);
+          expect(CliqzHumanWeb.sanitizeCountryCode(e)).to.equal(e);
         });
       });
     });

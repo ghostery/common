@@ -7,7 +7,7 @@
  */
 
 import webrequest, { VALID_RESPONSE_PROPERTIES } from '../platform/webrequest';
-import { isEdge } from './platform';
+import { isLegacyEdge } from './platform';
 
 export default webrequest;
 
@@ -34,7 +34,7 @@ function getOptionArray(options) {
 }
 
 // build allowed extraInfo options from <Step>Options objects.
-export const EXTRA_INFO_SPEC = !isEdge ? {
+export const EXTRA_INFO_SPEC = !isLegacyEdge ? {
   onBeforeRequest: getOptionArray(webrequest.OnBeforeRequestOptions),
   onBeforeSendHeaders: getOptionArray(webrequest.OnBeforeSendHeadersOptions),
   onSendHeaders: getOptionArray(webrequest.OnSendHeadersOptions),

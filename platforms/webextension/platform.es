@@ -16,11 +16,19 @@ function checkUserAgent(pattern) {
   }
 }
 
+// Note: Chrome-forks such as Edge or Opera will also be reported
+// as Chromium ("isChromium" will be true). Technically, there should
+// be no difference, so most parts in the code will only test for
+// isFirefox vs isChromium vs isMobile .
+//
+// If you need the fine grained resolution, start with testing the
+// more specific ones (e.g. isEdge) before the generic "isChromium".
 const def = {
   isMobile: checkUserAgent('Mobile'),
   isFirefox: checkUserAgent('Firefox'),
   isChromium: checkUserAgent('Chrome'),
-  isEdge: checkUserAgent('Edge'),
+  isEdge: checkUserAgent('Edg') && !checkUserAgent('Edge'), // chromium-based edge
+  isLegacyEdge: checkUserAgent('Edge'),
   platformName: 'webextension',
 };
 
