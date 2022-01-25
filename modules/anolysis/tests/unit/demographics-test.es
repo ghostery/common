@@ -38,6 +38,10 @@ const INSTALL_DATE_TESTS = [
 
 const OS_TESTS = [
   // NOTE: Not handled properly by the user agent parsing library
+  // (put your commented out tests here):
+  // ...
+
+  // The rest is properly handled:
   { signal: { agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36' }, result: 'desktop/windows/7' },
   { signal: { agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36' }, result: 'desktop/windows/10' },
   { signal: { agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36' }, result: 'desktop/windows/10' },
@@ -314,7 +318,7 @@ const OS_TESTS = [
   { signal: { agent: 'Mozilla/5.0 (compatible; Konqueror/3.5; Linux; X11; i686; en_US) KHTML/3.5.3 (like Gecko)' }, result: 'desktop/linux' },
   { signal: { agent: 'Mozilla/5.0 (compatible; Konqueror/4.0; Microsoft Windows) KHTML/4.0.80 (like Gecko)' }, result: 'other/mozilla/5.0-(compatible;-konqueror/4.0;-microsoft-windows)-khtml/4.0.80-(like-gecko)' },
   { signal: { agent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; SLCC2; .NET CLR 2.0.<NUMBER>; .NET CLR 3.5.<NUMBER>; .NET CLR 3.0.<NUMBER>; Media Center PC 6.0; InfoPath.2; .NET4.0C)' }, result: 'desktop/windows/7' },
-  { signal: { agent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; Xbox; Xbox One)' }, result: 'desktop/windows/8' },
+  { signal: { agent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; Xbox; Xbox One)' }, result: 'other/xbox' },
   { signal: { agent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 930' }, result: 'other/windows-phone' },
   { signal: { agent: 'Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.<NUMBER>; .NET CLR 2.0.<NUMBER>) 3gpp-gba UNTRUSTED/1.0' }, result: 'desktop/windows/7' },
   { signal: { agent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)' }, result: 'desktop/windows/7' },
