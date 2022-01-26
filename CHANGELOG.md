@@ -1,3 +1,15 @@
+# v1.2.20 (Wed Jan 26 2022)
+
+#### 🐛 Bug Fix
+
+- Improve monitoring ("alive" signal in HW & Edge browser detection in Antitracking) [#35](https://github.com/ghostery/common/pull/35) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.19 (Wed Dec 08 2021)
 
 #### 🐛 Bug Fix
