@@ -67,7 +67,7 @@
     "broccoli": "^3.4.1",
     "broccoli-babel-transpiler": "^7.4.0",
     "broccoli-concat": "^4.2.4",
-    "broccoli-config-replace": "github:cliqz-oss/broccoli-config-replace#nested-paths",
+    "broccoli-config-replace": "git+https://github.com/cliqz-oss/broccoli-config-replace.git#b98f1d0b7ee69a96f86c7d7fcdaf0b6ff111b2fa",
     "broccoli-file-creator": "^2.1.1",
     "broccoli-funnel": "^2.0.2",
     "broccoli-imagemin": "^2.0.1",
