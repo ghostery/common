@@ -6,7 +6,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import { isEdge } from '../core/platform';
+import { isLegacyEdge } from '../core/platform';
 import {
   RemoteResourceWatcher,
   ResourceUpdatedCallback
@@ -36,7 +36,7 @@ ZpJDPOb9RzbPMOawfjPhkayRb9yvU0f6pLvKm6kmKLsoblsaeLFbhu1igO8nXP4X
 -----END PUBLIC KEY-----`,
   },
 
-  // fallback for Edge
+  // fallback for legacy Edge (before Chrome)
   '2019-10-24-human-web-edge.pub': {
     algorithm: 'RSASSA-PKCS1-v1_5',
     pem: `-----BEGIN PUBLIC KEY-----
@@ -74,7 +74,7 @@ export default class SignedPatternsLoader {
 
   constructor(url: string, onUpdate: ResourceUpdatedCallback) {
     const publicKeyName =
-      isEdge ? '2019-10-24-human-web-edge.pub' : '2019-10-24-human-web.pub';
+      isLegacyEdge ? '2019-10-24-human-web-edge.pub' : '2019-10-24-human-web.pub';
     const { algorithm, pem } = trustedSigningKeys[publicKeyName];
 
     this.verifier = new SignatureVerifier({

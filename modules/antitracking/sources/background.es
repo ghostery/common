@@ -20,7 +20,7 @@ import Config, { TELEMETRY } from './config';
 import { updateTimestamp } from './time';
 import { bindObjectFunctions } from '../core/helpers/bind-functions';
 import inject from '../core/kord/inject';
-import { isEdge } from '../core/platform';
+import { isLegacyEdge } from '../core/platform';
 import { parse } from '../core/url';
 
 // Telemetry schemas
@@ -74,7 +74,7 @@ export default background({
 
     // load config
     this.config = new Config({}, () => this.core.action('refreshAppState'));
-    if (isEdge) {
+    if (isLegacyEdge) {
       this.config.databaseEnabled = false;
     }
     this.attrack.webRequestPipeline.action('getPageStore').then((pageStore) => {

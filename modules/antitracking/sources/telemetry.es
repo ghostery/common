@@ -27,10 +27,12 @@ function getPlatformConstants() {
     let userAgent = '';
     if (pltfrm.isFirefox) {
       userAgent = 'firefox';
-    } else if (pltfrm.isChromium) {
-      userAgent = 'chrome';
     } else if (pltfrm.isEdge) {
       userAgent = 'edge';
+    } else if (pltfrm.isLegacyEdge) {
+      userAgent = 'legacy-edge';
+    } else if (pltfrm.isChromium) {
+      userAgent = 'chrome';
     }
     return {
       platform: pltfrm.isMobile ? 'mobile' : '',

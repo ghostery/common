@@ -13,6 +13,7 @@ export default {
   isFirefox: false,
   isChromium: false,
   isEdge: false,
+  isLegacyEdge: false,
   platformName: 'mobile',
 };
 

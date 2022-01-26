@@ -26,6 +26,7 @@ export const isFirefox = platform.isFirefox;
 export const isMobile = platform.isMobile || Boolean(config.isMobile);
 export const isChromium = platform.isChromium;
 export const isEdge = platform.isEdge;
+export const isLegacyEdge = platform.isLegacyEdge;
 export const platformName = platform.platformName;
 export const isCliqzBrowser = channel === '40' || channel === '99';
 export const isGhosteryExtension = channel.startsWith('CH');

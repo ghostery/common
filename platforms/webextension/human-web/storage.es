@@ -68,6 +68,8 @@ const humanWebChromeDB = {
   },
 };
 
+const ALIVE_CONFIG_KEY = 'hw:alive-config';
+
 export default class {
   constructor(CliqzHumanWeb) {
     this.CliqzHumanWeb = CliqzHumanWeb;
@@ -207,6 +209,33 @@ export default class {
     this.dbConn.remove('usafe', url, () => {
       // Need to find better error handling for chrome storage.
       callback(true);
+    });
+  }
+
+  loadAliveConfig() {
+    return new Promise((resolve, reject) => {
+      chrome.storage.local.get(ALIVE_CONFIG_KEY, (value) => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+          return;
+        }
+        resolve(value[ALIVE_CONFIG_KEY]);
+      });
+    });
+  }
+
+  storeAliveConfig(config) {
+    return new Promise((resolve, reject) => {
+      const entry = {
+        [ALIVE_CONFIG_KEY]: config,
+      };
+      chrome.storage.local.set(entry, () => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+          return;
+        }
+        resolve();
+      });
     });
   }
 }

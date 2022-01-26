@@ -23,11 +23,12 @@ import DoublefetchHandler from './doublefetch-handler';
 import ContentExtractionPatternsLoader from './content-extraction-patterns-loader';
 import HumanWebPatternsLoader from './human-web-patterns-loader';
 import { ContentExtractor, parseQueryString } from './content-extractor';
+import AliveMessageGenerator from './alive-message-generator';
 import logger from './logger';
 import { parseHtml, getContentDocument } from './html-helpers';
 import { parseURL, Network } from './network';
 import prefs from '../core/prefs';
-import { isEdge } from '../core/platform';
+import isLegacyEdge from '../core/platform';
 import Worker from '../platform/worker';
 import { toUTF8 } from '../core/encoding';
 import pacemaker from '../core/services/pacemaker';
@@ -2832,23 +2833,9 @@ const CliqzHumanWeb = {
           was active or not. We treat the user to be active if in the
           last hour, the user visited two non search pages.
           Get the active usage from DB.
-          hen generate & send payload.
+          Then generate & send payload.
           Update the time last sent, and reset the value to 0.
-
-          Sample payload:
-            {
-            "action": "alive",
-            "ver": "2.7",
-            "type": "humanweb",
-            "payload": {
-            "status": true,
-            "ctry": "de",
-            "t": "2016110909"
-            },
-            "ts": "2016110909"
-            }
         */
-
         const tDiff = parseInt((new Date().getTime() - CliqzHumanWeb.activeUsageLastSent) / 1000);
         if (tDiff > 3600) {
             const activeHours = Object.keys(CliqzHumanWeb.activeUsage);
@@ -2867,20 +2854,20 @@ const CliqzHumanWeb = {
         }
 
     },
-    sendAliveMessage: function(h) {
-        const payload = {
-            status: true,
-            t: h,
-            ctry: CliqzHumanWeb.getCountryCode() // Need to fix this.
-        };
+    async sendAliveMessage(hour) {
+      try {
+        const ctry = CliqzHumanWeb.getCountryCode();
+        const payload = await this.aliveMessageGenerator.generateMessage(ctry, hour);
+        _log('Sending alive message for the hour:', hour, '->', payload);
 
-        _log(`Sending alive message for the hour: ${h} , ${JSON.stringify(payload)}`);
-
-        CliqzHumanWeb.telemetry({
-            type: CliqzHumanWeb.msgType,
-            action: 'alive',
-            payload:payload
+        await CliqzHumanWeb.telemetry({
+          type: CliqzHumanWeb.msgType,
+          action: 'alive',
+          payload,
         });
+      } catch (e) {
+        _log('Failed to send alive signal', e);
+      }
     },
     loadActionStats: function() {
         CliqzHumanWeb.db.loadRecordTelemetry('actionStats', function(data) {
@@ -3248,6 +3235,8 @@ const CliqzHumanWeb = {
         }
         return false;
     },
+
+    // for "page" messages
     async safeQuorumCheck(msg) {
       if (!CliqzHumanWeb.performQC(msg)) {
         _log("Perform QC: quorum check not needed");
@@ -3255,12 +3244,17 @@ const CliqzHumanWeb = {
       }
 
       _log("Perform QC: quorum confirmation required");
-      const hash = await CliqzHumanWeb.sha1(msg.payload.url);
+      return CliqzHumanWeb._quorumCheckAnyString(msg.payload);
+    },
+
+    async _quorumCheckAnyString(str) {
+      const hash = await CliqzHumanWeb.sha1(str);
       await CliqzHumanWeb.sendQuorumIncrement(hash);
 
       const quorumReached = await CliqzHumanWeb.getQuorumConsent(hash);
       return quorumReached;
     },
+
     initWorker: function() {
       if (!CliqzHumanWeb.rushaWorker) {
         CliqzHumanWeb.rushaWorker = new Worker(`${config.baseURL}human-web/rusha.bundle.js`);
@@ -3277,8 +3271,8 @@ const CliqzHumanWeb = {
         };
       }
     },
-    sha1: function(s) {
-      if (isEdge) {
+    sha1(s) {
+      if (isLegacyEdge) {
         CliqzHumanWeb.initWorker();
         return new Promise((resolve, reject) => {
           const id = Math.random() * (2 ** 53);
@@ -3419,7 +3413,7 @@ const CliqzHumanWeb = {
     },
     getCountryCode: function() {
         let ctryCode = prefs.get('config_location', null);
-        return CliqzHumanWeb.sanitizeCounrtyCode(ctryCode);
+        return CliqzHumanWeb.sanitizeCountryCode(ctryCode);
     },
     getTS: function() {
         try {
@@ -3429,7 +3423,7 @@ const CliqzHumanWeb = {
           return null;
         }
     },
-    sanitizeCounrtyCode: function(ctryCode){
+    sanitizeCountryCode: function(ctryCode){
         let _countryCode = ctryCode;
         if(allowedCountryCodes.indexOf(_countryCode) === -1) {
             _countryCode = '--';
@@ -3840,5 +3834,28 @@ const CliqzHumanWeb = {
   }
 };
 CliqzHumanWeb.contentExtractor = new ContentExtractor(CliqzHumanWeb);
+
+const initAliveMessageGenerator = () => {
+  const quorumChecker = (stringifiedConfig) => {
+    return CliqzHumanWeb._quorumCheckAnyString(stringifiedConfig);
+  };
+  const aliveConfigStorage = {
+    async load() {
+      if (!CliqzHumanWeb.db) {
+        return null;
+      }
+      return CliqzHumanWeb.db.loadAliveConfig();
+    },
+    async store(config, hasQuorum) {
+      if (!CliqzHumanWeb.db) {
+        return;
+      }
+      await CliqzHumanWeb.db.storeAliveConfig(config, hasQuorum);
+      return;
+    }
+  };
+  return new AliveMessageGenerator(quorumChecker, aliveConfigStorage);
+};
+CliqzHumanWeb.aliveMessageGenerator = initAliveMessageGenerator();
 
 export default CliqzHumanWeb;
