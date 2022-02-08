@@ -22,6 +22,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Upgrade npm
+      run: npm install -g npm
     - run: npm ci
     - run: ./fern.js build configs/ci/unit-tests.js
     - run: ./fern.js test configs/ci/unit-tests.js -l unit-node --environment testing --no-build --ci report.xml

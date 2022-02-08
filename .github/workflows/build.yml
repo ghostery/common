@@ -23,5 +23,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Upgrade npm
+      run: npm install -g npm
     - run: npm ci
     - run: ./fern.js build ${{ matrix.config }}
