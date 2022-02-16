@@ -97,19 +97,19 @@
       },
       "#main div.g": {
         "t": {
-          "item": "div.yuRUbf > a > h3, div.DOqJne > g-link > a > h3",
+          "item": "div.yuRUbf > a > h3, div.ct3b9e > a > h3",
           "type": "arr",
           "etype": "textContent",
           "keyName": "t"
         },
         "u": {
-          "item": "div.yuRUbf > a, div.DOqJne > g-link > a",
+          "item": "div.yuRUbf > a, div.ct3b9e > a",
           "type": "arr",
           "etype": "href",
           "keyName": "u"
         },
         "age": {
-          "item": "div.IsZvec > div > span.MUxGbd",
+          "item": "div > span.MUxGbd > span, div.mSA5Bd > div.P7xzyf > span > span",
           "type": "arr",
           "etype": "textContent",
           "keyName": "age"
@@ -274,7 +274,7 @@
           ]
         },
         "lu": {
-          "item": "p.S1FAPd > span",
+          "item": "div.OSrXXb.ZE0LJd > span",
           "type": "arr",
           "etype": "textContent",
           "keyName": "lu",
@@ -308,7 +308,7 @@
           ]
         },
         "t": {
-          "item": "a.pla-unit-title-link span.pymv4e[style='-webkit-line-clamp:2']",
+          "item": "a.pla-unit-title-link span.hCK2Zc > span, a.pla-unit-title-link > span.pymv4e",
           "type": "multiple",
           "etype": "textContent",
           "keyName": "t"
@@ -453,7 +453,7 @@
           "keyName": "t"
         },
         "addr": {
-          "item": "div.cXedhc > div.rllt__details > div:nth-child(2)",
+          "item": "div.cXedhc.uQ4NLd > div + div.rllt__details > [role=\"heading\"] + div + div, a.rllt__link > div.cXedhc > div.rllt__tile-label + div.rllt__details > [role=\"heading\"] + div, a.rllt__link > div.cXedhc > div.rllt__details > [role=\"heading\"] + div + div",
           "type": "arr",
           "etype": "textContent",
           "keyName": "addr"
