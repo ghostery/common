@@ -197,7 +197,6 @@
         },
         "t": {
           "item": "a.sVXRqc > div.CCgQ5[role='heading'] > span",
-          "etype": "multiple",
           "etype": "textContent",
           "keyName": "t"
         }
