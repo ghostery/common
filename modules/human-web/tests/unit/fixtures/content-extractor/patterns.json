@@ -131,12 +131,18 @@
       }
     },
     "7": {
+      ".nav-search-field > input": {
+        "q": {
+          "type": "searchQuery",
+          "etype": "value",
+          "keyName": "query"
+        }
+      },
       "#wayfinding-breadcrumbs_container": {
         "c": {
           "item": "div",
-          "type": "searchQuery",
           "etype": "textContent",
-          "keyName": "query"
+          "keyName": "c"
         }
       },
       "ctry": {
@@ -146,9 +152,8 @@
           "keyName": "ctry"
         }
       },
-      "head": {
+      "link[rel='canonical']": {
         "curl": {
-          "item": "link[rel='canonical']",
           "etype": "href",
           "keyName": "curl"
         }
@@ -184,7 +189,7 @@
             "c"
           ],
           [
-            "head",
+            "link[rel='canonical']",
             "curl"
           ],
           [
