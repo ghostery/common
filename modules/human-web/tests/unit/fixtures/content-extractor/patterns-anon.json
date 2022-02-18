@@ -375,7 +375,7 @@
           "keyName": "mu"
         }
       },
-      ".kp-blk.EyBRub": {
+      "#rso block-component div.JnwWd div.ifM9O": {
         "ent": {
           "item": "div[role=\"heading\"] > :nth-child(1)",
           "type": "arr",
@@ -389,7 +389,7 @@
           "keyName": "pred"
         },
         "ans": {
-          "item": ".kp-header div[data-attrid] > div",
+          "item": "div.kno-fb-ctx.KBXm4e, .kp-header div[data-attrid] > div",
           "type": "arr",
           "etype": "textContent",
           "keyName": "ans"
@@ -1132,13 +1132,13 @@
           ]
         ]
       },
-      ".kp-blk.EyBRub": {
+      "#rso block-component div.JnwWd div.ifM9O": {
         "type": "query",
         "results": "clustered",
         "action": "snippet",
         "fields": [
           [
-            ".kp-blk.EyBRub",
+            "#rso block-component div.JnwWd div.ifM9O",
             "r",
             "join"
           ],

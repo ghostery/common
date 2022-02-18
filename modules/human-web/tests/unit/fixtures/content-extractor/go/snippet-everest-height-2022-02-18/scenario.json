@@ -9,8 +9,8 @@
         "r": {
           "0": {
             "ent": "Mount Everest",
-            "pred": "Elevation",
-            "ans": "8,849 m"
+            "pred": "Höhe",
+            "ans": "8.849 m"
           }
         },
         "q": "how tall is mount everest",
