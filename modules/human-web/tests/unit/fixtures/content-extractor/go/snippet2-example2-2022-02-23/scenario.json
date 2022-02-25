@@ -1,0 +1,21 @@
+{
+  "url": "https://www.google.com/search?q=what+is+the+spanish+opening%3F",
+
+  "mustContain": [
+    {
+      "type": "humanweb",
+      "action": "snippet2",
+      "payload": {
+        "r": {
+          "0": {
+            "u": "https://www.ichess.net/blog/ruy-lopez-spanish-opening/"
+          }
+        },
+        "q": "what is the spanish opening?",
+        "qurl": "https://www.google.com/search?q=what+is+the+spanish+opening%3F",
+        "ctry": "de"
+      }
+    }
+  ],
+  "mustNotContain": [{ "action": "snippet" }, { "action": "snippet3" }]
+}

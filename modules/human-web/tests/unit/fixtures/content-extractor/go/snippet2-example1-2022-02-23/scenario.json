@@ -1,0 +1,21 @@
+{
+  "url": "https://www.google.com/search?q=unused+supplies+adjusting+entry",
+
+  "mustContain": [
+    {
+      "type": "humanweb",
+      "action": "snippet2",
+      "payload": {
+        "r": {
+          "0": {
+            "u": "https://smallbusiness.chron.com/adjusting-entry-unused-supplies-80453.html"
+          }
+        },
+        "q": "unused supplies adjusting entry",
+        "qurl": "https://www.google.com/search?q=unused+supplies+adjusting+entry",
+        "ctry": "de"
+      }
+    }
+  ],
+  "mustNotContain": [{ "action": "snippet" }, { "action": "snippet3" }]
+}
