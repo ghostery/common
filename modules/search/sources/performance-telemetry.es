@@ -15,11 +15,15 @@ export default {
     this.onVisited = () => {
       telemetry.push({ visitsCount: 1 }, 'metrics.history.visits.count');
     };
-    chrome.history.onVisited.addListener(this.onVisited);
+    if (chrome.history && chrome.history.onVisited) {
+      chrome.history.onVisited.addListener(this.onVisited);
+    }
   },
 
   unload() {
-    chrome.history.onVisited.removeListener(this.onVisited);
+    if (chrome.history && chrome.history.removeListener) {
+      chrome.history.onVisited.removeListener(this.onVisited);
+    }
   },
 
   events: {
