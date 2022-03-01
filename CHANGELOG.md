@@ -1,3 +1,22 @@
+# v1.2.21 (Tue Mar 01 2022)
+
+#### 🐛 Bug Fix
+
+- Upgrade npm on the CI to avoid [#38](https://github.com/ghostery/common/pull/38) ([@philipp-classen](https://github.com/philipp-classen))
+- Regenerate package-lock.json with newer npm version [#38](https://github.com/ghostery/common/pull/38) ([@philipp-classen](https://github.com/philipp-classen))
+- Fixes warnings reported by "npm audit" as critical. [#38](https://github.com/ghostery/common/pull/38) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### 🧪 Tests
+
+- Update test for "snippet" [#40](https://github.com/ghostery/common/pull/40) ([@philipp-classen](https://github.com/philipp-classen))
+- Update hw tests [#39](https://github.com/ghostery/common/pull/39) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.20 (Wed Jan 26 2022)
 
 #### 🐛 Bug Fix
