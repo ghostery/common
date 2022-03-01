@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+// ---
+// dummy change to test if the integrations tests
+// work on the unmodified main
+// ---
+
 const program = require('commander');
 const colors = require('colors');
 
