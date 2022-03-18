@@ -1,3 +1,15 @@
+# v1.2.22 (Fri Mar 18 2022)
+
+#### 🐛 Bug Fix
+
+- Do not require the history API to be present [#41](https://github.com/ghostery/common/pull/41) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.21 (Tue Mar 01 2022)
 
 #### 🐛 Bug Fix
