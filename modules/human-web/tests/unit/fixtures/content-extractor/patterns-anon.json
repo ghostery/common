@@ -375,7 +375,7 @@
           "keyName": "mu"
         }
       },
-      "#rso block-component div.JnwWd div.ifM9O": {
+      "#search #rso div > block-component > div.JnwWd > div.EyBRub div.ifM9O > div": {
         "ent": {
           "item": "div[role=\"heading\"] > :nth-child(1)",
           "type": "arr",
@@ -395,9 +395,9 @@
           "keyName": "ans"
         }
       },
-      "div#rcnt.GyAeWb": {
+      "div#rcnt.GyAeWb div#rso > div.ULSxyf, div#rcnt.GyAeWb > div.M8OgIe": {
         "u": {
-          "item": "div.g.mnr-c.JnwWd.g-blk div.dG2XIf.XzTjhb.c2xzTb div.xpdopen div.ifM9O div div.yp1CPe.wDYxhc.NFQFxe.viOShc.LKPcQc div div.V3FYCf div.g div div.tF2Cxc div.yuRUbf a",
+          "item": "div.yuRUbf a",
           "type": "arr",
           "etype": "href",
           "keyName": "u",
@@ -427,6 +427,26 @@
           "type": "arr",
           "etype": "textContent",
           "keyName": "pred"
+        }
+      },
+      "#cnt div.ifM9O div[data-attrid=\"wa:/description\"][role=\"heading\"] > span.ILfuVd > span.hgKElc": {
+        "t": {
+          "etype": "textContent",
+          "keyName": "t"
+        }
+      },
+      "#cnt div.ifM9O div[data-attrid=\"wa:/description\"][role=\"heading\"] > span.ILfuVd > span.hgKElc > b": {
+        "k": {
+          "type": "arr",
+          "etype": "textContent",
+          "keyName": "k"
+        }
+      },
+      "div.ULSxyf div.AuVD.cUnQKe[data-initq] div.Wt5Tfe div div[jsname] > span": {
+        "t": {
+          "type": "arr",
+          "etype": "textContent",
+          "keyName": "t"
         }
       },
       "#main": {
@@ -1144,13 +1164,13 @@
           ]
         ]
       },
-      "#rso block-component div.JnwWd div.ifM9O": {
+      "#search #rso div > block-component > div.JnwWd > div.EyBRub div.ifM9O > div": {
         "type": "query",
         "results": "clustered",
         "action": "snippet",
         "fields": [
           [
-            "#rso block-component div.JnwWd div.ifM9O",
+            "#search #rso div > block-component > div.JnwWd > div.EyBRub div.ifM9O > div",
             "r",
             "join"
           ],
@@ -1168,13 +1188,13 @@
           ]
         ]
       },
-      "div#rcnt.GyAeWb": {
+      "div#rcnt.GyAeWb div#rso > div.ULSxyf, div#rcnt.GyAeWb > div.M8OgIe": {
         "type": "query",
         "results": "clustered",
         "action": "snippet2",
         "fields": [
           [
-            "div#rcnt.GyAeWb",
+            "div#rcnt.GyAeWb div#rso > div.ULSxyf, div#rcnt.GyAeWb > div.M8OgIe",
             "r",
             "join"
           ],
@@ -1199,6 +1219,58 @@
         "fields": [
           [
             "#extabar div.EyBRub > div.LXqMce",
+            "r",
+            "join"
+          ],
+          [
+            "#search",
+            "q"
+          ],
+          [
+            "qurl",
+            "qurl"
+          ],
+          [
+            "ctry",
+            "ctry"
+          ]
+        ]
+      },
+      "#cnt div.ifM9O div[data-attrid=\"wa:/description\"][role=\"heading\"] > span.ILfuVd > span.hgKElc > b": {
+        "type": "query",
+        "results": "clustered",
+        "action": "snippet4",
+        "fields": [
+          [
+            "#cnt div.ifM9O div[data-attrid=\"wa:/description\"][role=\"heading\"] > span.ILfuVd > span.hgKElc > b",
+            "r",
+            "join"
+          ],
+          [
+            "#cnt div.ifM9O div[data-attrid=\"wa:/description\"][role=\"heading\"] > span.ILfuVd > span.hgKElc",
+            "t"
+          ],
+          [
+            "#search",
+            "q"
+          ],
+          [
+            "qurl",
+            "qurl"
+          ],
+          [
+            "ctry",
+            "ctry"
+          ]
+        ]
+      },
+      "div.ULSxyf div.AuVD.cUnQKe[data-initq] div.Wt5Tfe div div[jsname] > span": {
+        "type": "query",
+        "results": "clustered",
+        "action": "faq",
+        "fields": [
+          [
+            "div.ULSxyf div.AuVD.cUnQKe[data-initq] div.Wt5Tfe div div[jsname] > span",
             "r",
             "join"
           ],
