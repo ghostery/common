@@ -15,6 +15,44 @@
         "qurl": "https://www.google.com/search?q=what+is+the+spanish+opening%3F",
         "ctry": "de"
       }
+    },
+    {
+      "type": "humanweb",
+      "action": "snippet4",
+      "payload": {
+        "r": {
+          "0": {
+            "k": "one of the oldest and most popular chess openings ever"
+          }
+        },
+        "t": "The Ruy Lopez chess opening, also known as the Spanish Opening, is one of the oldest and most popular chess openings ever. The opening is named after a Spanish priest from the 16th century, Ruy López de Segura. ... The Ruy Lopez is a classical opening based upon classical strategies and development.",
+        "q": "what is the spanish opening?",
+        "qurl": "https://www.google.com/search?q=what+is+the+spanish+opening%3F",
+        "ctry": "de"
+      }
+    },
+    {
+      "type": "humanweb",
+      "action": "faq",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "How do you play the Spanish Opening?"
+          },
+          "1": {
+            "t": "What is the Spanish Opening in chess?"
+          },
+          "2": {
+            "t": "How do you defend against the Spanish Opening?"
+          },
+          "3": {
+            "t": "What is the point of the Ruy Lopez opening?"
+          }
+        },
+        "q": "what is the spanish opening?",
+        "qurl": "https://www.google.com/search?q=what+is+the+spanish+opening%3F",
+        "ctry": "de"
+      }
     }
   ],
   "mustNotContain": [{ "action": "snippet" }, { "action": "snippet3" }]
