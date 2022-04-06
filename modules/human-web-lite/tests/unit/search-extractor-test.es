@@ -12,7 +12,7 @@ const expect = chai.expect;
 const path = require('path');
 const fs = require('fs');
 const zlib = require('zlib');
-const mockBrowser = require('mock-browser');
+const { JSDOM } = require('jsdom');
 const FileHound = require('filehound');
 const stripJsonComments = require('strip-json-comments');
 
@@ -78,7 +78,7 @@ export default describeModule('human-web-lite/search-extractor',
       let persistedHashes;
 
       const setupDocument = function (html) {
-        mockWindow = mockBrowser.mocks.MockBrowser.createWindow();
+        mockWindow = new JSDOM('<!DOCTYPE html><p>Test DOM</p>').window;
 
         doc = mockWindow.document;
         doc.open();

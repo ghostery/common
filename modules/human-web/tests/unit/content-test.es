@@ -12,7 +12,7 @@
 const fs = require('fs');
 const zlib = require('zlib');
 const R = require('ramda');
-const mockBrowser = require('mock-browser');
+const { JSDOM } = require('jsdom');
 
 const FIXTURES_BASE_PATH = 'modules/human-web/tests/unit/fixtures/content-test';
 
@@ -56,7 +56,7 @@ export default describeModule('human-web/content',
 
       beforeEach(function () {
         parseDom = this.module().parseDom;
-        mockWindow = mockBrowser.mocks.MockBrowser.createWindow();
+        mockWindow = new JSDOM('<!DOCTYPE html><p>Test DOM</p>').window;
       });
 
       afterEach(function () {
