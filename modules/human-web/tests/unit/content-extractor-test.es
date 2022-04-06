@@ -13,7 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
-const mockBrowser = require('mock-browser');
+const { JSDOM } = require('jsdom');
 
 const expect = chai.expect;
 const R = require('ramda');
@@ -96,7 +96,7 @@ export default describeModule('human-web/content-extractor',
       let fixture;
 
       const setupDocument = function (html) {
-        mockWindow = mockBrowser.mocks.MockBrowser.createWindow();
+        mockWindow = new JSDOM('<!DOCTYPE html><p>Test DOM</p>').window;
 
         document = mockWindow.document;
         document.open();
