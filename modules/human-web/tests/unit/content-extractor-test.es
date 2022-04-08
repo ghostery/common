@@ -10,16 +10,17 @@
 /* global describeModule */
 /* global sinon */
 
+const expect = chai.expect;
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
-const { JSDOM } = require('jsdom');
-
-const expect = chai.expect;
 const R = require('ramda');
 const FileHound = require('filehound');
-
 const stripJsonComments = require('strip-json-comments');
+
+const { mockDocumentWith /* allSupportedParsers */ } = require('./dom-parsers');
+
+const allSupportedParsers = ['jsdom']; // TODO: can we pass the tests with "allSupportedParsers"?
 
 function jsonParse(text) {
   return JSON.parse(stripJsonComments(text));
@@ -85,251 +86,253 @@ export default describeModule('human-web/content-extractor',
     },
   }),
   () => {
-    describe('ContentExtractor', function () {
-      this.timeout(20000);
+    describe('#ContentExtractor', function () {
+      allSupportedParsers.forEach((domParserLib) => {
+        describe(`with ${domParserLib}`, function () {
+          this.timeout(20000);
 
-      let ContentExtractor;
-      let CliqzHumanWeb;
-      let uut;
-      let mockWindow;
-      let document;
-      let fixture;
+          let ContentExtractor;
+          let CliqzHumanWeb;
+          let uut;
+          let mockWindow;
+          let document;
+          let fixture;
 
-      const setupDocument = function (html) {
-        mockWindow = new JSDOM('<!DOCTYPE html><p>Test DOM</p>').window;
+          const setupDocument = function (html) {
+            const result = mockDocumentWith[domParserLib](html);
+            mockWindow = result.window;
+            document = result.document;
+          };
 
-        document = mockWindow.document;
-        document.open();
-        document.write(html);
-        document.close();
-      };
+          const initFixture = function (_path) {
+            try {
+              fixture = readFixtureFromDisk(_path);
+              setupDocument(fixture.html);
+            } catch (e) {
+              throw new Error(`Failed to load test fixture "${_path}": ${e}`, e);
+            }
+          };
 
-      const initFixture = function (_path) {
-        try {
-          fixture = readFixtureFromDisk(_path);
-          setupDocument(fixture.html);
-        } catch (e) {
-          throw new Error(`Failed to load test fixture "${_path}": ${e}`, e);
-        }
-      };
-
-      const verifyFixtureExpectations = function () {
-        function groupTelemetryCallsByAction(sinonSpy) {
-          return R.pipe(
-            R.map((args) => {
-              expect(args.length).to.equal(1);
-              return args[0];
-            }),
-            R.groupBy(msg => msg.action)
-          )(sinonSpy.args);
-        }
-
-        const messages = groupTelemetryCallsByAction(CliqzHumanWeb.telemetry);
-        // uncomment to export expectations:
-        // fs.writeFileSync('/tmp/failing-test-expected-messages.json', JSON.stringify(messages));
-        if (fixture.mustContain) {
-          for (const check of fixture.mustContain) {
-            if (!messages[check.action]) {
-              throw new Error(`Missing message with action=${check.action}`);
+          const verifyFixtureExpectations = function () {
+            function groupTelemetryCallsByAction(sinonSpy) {
+              return R.pipe(
+                R.map((args) => {
+                  expect(args.length).to.equal(1);
+                  return args[0];
+                }),
+                R.groupBy(msg => msg.action)
+              )(sinonSpy.args);
             }
 
-            // simplification for now: assume we will not send more than
-            // one message of the same type. (If this assumption does not
-            // hold, this test code needs to be extended.)
-            expect(messages[check.action].length === 1);
+            const messages = groupTelemetryCallsByAction(CliqzHumanWeb.telemetry);
+            // uncomment to export expectations:
+            /* eslint-disable-next-line max-len */
+            // fs.writeFileSync('/tmp/failing-test-expected-messages.json', JSON.stringify(messages));
+            if (fixture.mustContain) {
+              for (const check of fixture.mustContain) {
+                if (!messages[check.action]) {
+                  throw new Error(`Missing message with action=${check.action}`);
+                }
 
-            const realPayload = messages[check.action][0].payload;
-            expect(realPayload).to.deep.equal(check.payload);
-          }
-        }
+                // simplification for now: assume we will not send more than
+                // one message of the same type. (If this assumption does not
+                // hold, this test code needs to be extended.)
+                expect(messages[check.action].length === 1);
 
-        if (fixture.mustNotContain) {
-          for (const check of fixture.mustNotContain) {
-            const blacklist = new RegExp(`^${check.action.replace('*', '.*')}$`);
-            const matches = Object.keys(messages).filter(x => blacklist.test(x));
-            if (matches.length > 0) {
-              throw new Error(`Expected no messages with action '${check.action}' `
-                              + `but got messages for the following actions: [${matches}]`);
+                const realPayload = messages[check.action][0].payload;
+                expect(realPayload).to.deep.equal(check.payload);
+              }
             }
-          }
-        }
-      };
 
-      const oldURL = global.URL;
-      beforeEach(function () {
-        /* eslint-disable-next-line global-require */
-        global.URL = global.URL || require('url').URL;
+            if (fixture.mustNotContain) {
+              for (const check of fixture.mustNotContain) {
+                const blacklist = new RegExp(`^${check.action.replace('*', '.*')}$`);
+                const matches = Object.keys(messages).filter(x => blacklist.test(x));
+                if (matches.length > 0) {
+                  throw new Error(`Expected no messages with action '${check.action}' `
+                                  + `but got messages for the following actions: [${matches}]`);
+                }
+              }
+            }
+          };
 
-        ContentExtractor = this.module().ContentExtractor;
-        CliqzHumanWeb = {
-          debug: enableLogging,
-          msgType: 'humanweb',
-          getCountryCode() {
-            return 'de';
-          },
-
-          maskURL(url) {
-            return url;
-          },
-
-          // args: msg, instantPush
-          telemetry: sinon.fake(),
-
-          // args: url, query
-          addStrictQueries: sinon.fake(),
-
-          queryCache: {},
-        };
-        uut = new ContentExtractor(CliqzHumanWeb);
-      });
-
-      afterEach(function () {
-        document = null;
-        fixture = null;
-        global.URL = oldURL;
-
-        if (mockWindow) {
-          mockWindow.close();
-          mockWindow = null;
-        }
-      });
-
-      describe('with an empty ruleset', function () {
-        describe('#isSearchEngineUrl', function () {
-          it('should not match any URL', function () {
-            expect(uut.isSearchEngineUrl('about:blank')).to.be.false;
-            expect(uut.isSearchEngineUrl('http://www.example.com/')).to.be.false;
-            expect(uut.isSearchEngineUrl('https://www.google.de/search?q=test')).to.be.false;
-          });
-        });
-
-        describe('when searching in Google for "Angela Merkel"', function () {
+          const oldURL = global.URL;
           beforeEach(function () {
-            initFixture('go/angela-merkel-2021-03-15');
+            /* eslint-disable-next-line global-require */
+            global.URL = global.URL || require('url').URL;
+
+            ContentExtractor = this.module().ContentExtractor;
+            CliqzHumanWeb = {
+              debug: enableLogging,
+              msgType: 'humanweb',
+              getCountryCode() {
+                return 'de';
+              },
+
+              maskURL(url) {
+                return url;
+              },
+
+              // args: msg, instantPush
+              telemetry: sinon.fake(),
+
+              // args: url, query
+              addStrictQueries: sinon.fake(),
+
+              queryCache: {},
+            };
+            uut = new ContentExtractor(CliqzHumanWeb);
           });
 
-          it('should not find any data (ruleset: "normal")', function () {
-            uut.checkURL(document, fixture.url, 'normal');
-            expect(CliqzHumanWeb.addStrictQueries.notCalled);
-            expect(CliqzHumanWeb.telemetry.notCalled);
+          afterEach(function () {
+            document = null;
+            fixture = null;
+            global.URL = oldURL;
+
+            if (mockWindow) {
+              mockWindow.close();
+              mockWindow = null;
+            }
           });
 
-          it('should not find any data (ruleset: "strict")', function () {
-            uut.checkURL(document, fixture.url, 'strict');
-            expect(CliqzHumanWeb.addStrictQueries.notCalled);
-            expect(CliqzHumanWeb.telemetry.notCalled);
-          });
-        });
-      });
+          describe('with an empty ruleset', function () {
+            describe('#isSearchEngineUrl', function () {
+              it('should not match any URL', function () {
+                expect(uut.isSearchEngineUrl('about:blank')).to.be.false;
+                expect(uut.isSearchEngineUrl('http://www.example.com/')).to.be.false;
+                expect(uut.isSearchEngineUrl('https://www.google.de/search?q=test')).to.be.false;
+              });
+            });
 
-      describe('with a realistic ruleset', function () {
-        beforeEach(function () {
-          uut.updatePatterns(DEFAULT_PATTERNS.normal, 'normal');
-          uut.updatePatterns(DEFAULT_PATTERNS.strict, 'strict');
-        });
+            describe('when searching in Google for "Angela Merkel"', function () {
+              beforeEach(function () {
+                initFixture('go/angela-merkel-2021-03-15');
+              });
 
-        describe('#isSearchEngineUrl', function () {
-          it('matches the configured search engines', function () {
-            // no match:
-            expect(uut.isSearchEngineUrl('about:blank')).to.be.false;
-            expect(uut.isSearchEngineUrl('http://www.example.com/')).to.be.false;
+              it('should not find any data (ruleset: "normal")', function () {
+                uut.checkURL(document, fixture.url, 'normal');
+                expect(CliqzHumanWeb.addStrictQueries.notCalled);
+                expect(CliqzHumanWeb.telemetry.notCalled);
+              });
 
-            // should match:
-            expect(uut.isSearchEngineUrl('https://www.google.de/search?q=test')).to.be.true;
-            expect(uut.isSearchEngineUrl('https://www.google.com/search?q=test')).to.be.true;
-          });
-        });
-
-        describe('in an empty HTML page', function () {
-          beforeEach(function () {
-            initFixture('empty-page');
+              it('should not find any data (ruleset: "strict")', function () {
+                uut.checkURL(document, fixture.url, 'strict');
+                expect(CliqzHumanWeb.addStrictQueries.notCalled);
+                expect(CliqzHumanWeb.telemetry.notCalled);
+              });
+            });
           });
 
-          it('should not find any data', function () {
-            uut.checkURL(document, fixture.url, 'normal');
-            uut.checkURL(document, fixture.url, 'strict');
-            expect(CliqzHumanWeb.addStrictQueries.notCalled);
-            expect(CliqzHumanWeb.telemetry.notCalled);
+          describe('with a realistic ruleset', function () {
+            beforeEach(function () {
+              uut.updatePatterns(DEFAULT_PATTERNS.normal, 'normal');
+              uut.updatePatterns(DEFAULT_PATTERNS.strict, 'strict');
+            });
+
+            describe('#isSearchEngineUrl', function () {
+              it('matches the configured search engines', function () {
+                // no match:
+                expect(uut.isSearchEngineUrl('about:blank')).to.be.false;
+                expect(uut.isSearchEngineUrl('http://www.example.com/')).to.be.false;
+
+                // should match:
+                expect(uut.isSearchEngineUrl('https://www.google.de/search?q=test')).to.be.true;
+                expect(uut.isSearchEngineUrl('https://www.google.com/search?q=test')).to.be.true;
+              });
+            });
+
+            describe('in an empty HTML page', function () {
+              beforeEach(function () {
+                initFixture('empty-page');
+              });
+
+              it('should not find any data', function () {
+                uut.checkURL(document, fixture.url, 'normal');
+                uut.checkURL(document, fixture.url, 'strict');
+                expect(CliqzHumanWeb.addStrictQueries.notCalled);
+                expect(CliqzHumanWeb.telemetry.notCalled);
+              });
+            });
+
+            describe('when searching in Google for "Angela Merkel"', function () {
+              beforeEach(function () {
+                initFixture('go/angela-merkel-2021-03-15');
+              });
+
+              it('should find search results (ruleset: "normal")', function () {
+                uut.checkURL(document, fixture.url, 'normal');
+                expect(CliqzHumanWeb.addStrictQueries.called);
+                expect(CliqzHumanWeb.telemetry.notCalled);
+              });
+
+              it('should find search results (ruleset: "strict")', function () {
+                uut.checkURL(document, fixture.url, 'strict');
+                expect(CliqzHumanWeb.addStrictQueries.notCalled);
+                expect(CliqzHumanWeb.telemetry.called);
+              });
+            });
           });
-        });
 
-        describe('when searching in Google for "Angela Merkel"', function () {
-          beforeEach(function () {
-            initFixture('go/angela-merkel-2021-03-15');
+          findAllFixtures().forEach((fixtureDir) => {
+            describe(`in scenario: ${fixtureDir}`, function () {
+              beforeEach(function () {
+                uut.updatePatterns(DEFAULT_PATTERNS.normal, 'normal');
+                uut.updatePatterns(DEFAULT_PATTERNS.strict, 'strict');
+              });
+
+              it('should pass the fixture\'s expections', function () {
+                // Given
+                initFixture(fixtureDir);
+                CliqzHumanWeb.telemetry = sinon.spy();
+
+                // When
+                uut.checkURL(document, fixture.url, 'strict');
+
+                // Then
+                verifyFixtureExpectations();
+              });
+            });
           });
 
-          it('should find search results (ruleset: "normal")', function () {
-            uut.checkURL(document, fixture.url, 'normal');
-            expect(CliqzHumanWeb.addStrictQueries.called);
-            expect(CliqzHumanWeb.telemetry.notCalled);
+          describe('#tryExtractCliqzSerpQuery', function () {
+            const expectNotFound = (url) => {
+              if (uut.tryExtractCliqzSerpQuery(url)) {
+                chai.assert.fail(`Expected not to find a query on url=${url}`);
+              }
+            };
+
+            it('should find search terms on beta.cliqz.com', function () {
+              expect(uut.tryExtractCliqzSerpQuery(
+                'https://beta.cliqz.com/search?lang=en&country=us&safe_search=on&q=harzer%20k%C3%A4se&news_edition=intl'
+              )).to.equal('harzer käse');
+
+              expect(uut.tryExtractCliqzSerpQuery(
+                'https://beta.cliqz.com/search?q=m%C3%BCnchen&lang=en&country=de#channel=website'
+              )).to.equal('münchen');
+            });
+
+            it('should find search terms on cliqz.com', function () {
+              expect(uut.tryExtractCliqzSerpQuery(
+                'https://cliqz.com/search?lang=en&country=us&safe_search=on&q=harzer%20k%C3%A4se&news_edition=intl'
+              )).to.equal('harzer käse');
+
+              expect(uut.tryExtractCliqzSerpQuery(
+                'https://cliqz.com/search?q=m%C3%BCnchen&lang=en&country=de#channel=website'
+              )).to.equal('münchen');
+            });
+
+            it('should not find false positives', function () {
+              [
+                'https://beta.cliqz.com/',
+                'https://example.test/?q=test',
+              ].forEach(expectNotFound);
+            });
+
+            it('should ignore broken URLs', function () {
+              expectNotFound('');
+              expectNotFound('no valid URL');
+            });
           });
-
-          it('should find search results (ruleset: "strict")', function () {
-            uut.checkURL(document, fixture.url, 'strict');
-            expect(CliqzHumanWeb.addStrictQueries.notCalled);
-            expect(CliqzHumanWeb.telemetry.called);
-          });
-        });
-      });
-
-      findAllFixtures().forEach((fixtureDir) => {
-        describe(`in scenario: ${fixtureDir}`, function () {
-          beforeEach(function () {
-            uut.updatePatterns(DEFAULT_PATTERNS.normal, 'normal');
-            uut.updatePatterns(DEFAULT_PATTERNS.strict, 'strict');
-          });
-
-          it('should pass the fixture\'s expections', function () {
-            // Given
-            initFixture(fixtureDir);
-            CliqzHumanWeb.telemetry = sinon.spy();
-
-            // When
-            uut.checkURL(document, fixture.url, 'strict');
-
-            // Then
-            verifyFixtureExpectations();
-          });
-        });
-      });
-
-      describe('#tryExtractCliqzSerpQuery', function () {
-        const expectNotFound = (url) => {
-          if (uut.tryExtractCliqzSerpQuery(url)) {
-            chai.assert.fail(`Expected not to find a query on url=${url}`);
-          }
-        };
-
-        it('should find search terms on beta.cliqz.com', function () {
-          expect(uut.tryExtractCliqzSerpQuery(
-            'https://beta.cliqz.com/search?lang=en&country=us&safe_search=on&q=harzer%20k%C3%A4se&news_edition=intl'
-          )).to.equal('harzer käse');
-
-          expect(uut.tryExtractCliqzSerpQuery(
-            'https://beta.cliqz.com/search?q=m%C3%BCnchen&lang=en&country=de#channel=website'
-          )).to.equal('münchen');
-        });
-
-        it('should find search terms on cliqz.com', function () {
-          expect(uut.tryExtractCliqzSerpQuery(
-            'https://cliqz.com/search?lang=en&country=us&safe_search=on&q=harzer%20k%C3%A4se&news_edition=intl'
-          )).to.equal('harzer käse');
-
-          expect(uut.tryExtractCliqzSerpQuery(
-            'https://cliqz.com/search?q=m%C3%BCnchen&lang=en&country=de#channel=website'
-          )).to.equal('münchen');
-        });
-
-        it('should not find false positives', function () {
-          [
-            'https://beta.cliqz.com/',
-            'https://example.test/?q=test',
-          ].forEach(expectNotFound);
-        });
-
-        it('should ignore broken URLs', function () {
-          expectNotFound('');
-          expectNotFound('no valid URL');
         });
       });
     });
