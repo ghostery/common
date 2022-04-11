@@ -44,5 +44,5 @@ const allAvailableParsers = Object.keys(mockDocumentWith);
 module.exports = {
   mockDocumentWith,
   allAvailableParsers,
-  allSupportedParsers: ['jsdom'], // TODO: currently "allSupportedParsers" fails
+  allSupportedParsers: allAvailableParsers,
 };

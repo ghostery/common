@@ -50,7 +50,7 @@
       },
       ".IkMU6e": {
         "u": {
-          "item": "tbody > tr > td > a",
+          "item": "tr > td > a",
           "type": "arr",
           "etype": "href",
           "keyName": "u",
@@ -95,18 +95,25 @@
           "keyName": "q"
         }
       },
-      "#main div.g": {
+      "div#rso div.g": {
         "t": {
-          "item": "div.yuRUbf > a > h3, div.ct3b9e > a > h3",
+          "item": "div.yuRUbf > a > h3, div.ct3b9e > a > h3, g-section-with-header g-link > a > h3.haz7je",
           "type": "arr",
           "etype": "textContent",
           "keyName": "t"
         },
         "u": {
-          "item": "div.yuRUbf > a, div.ct3b9e > a",
+          "item": "div.yuRUbf > a, div.ct3b9e > a, g-section-with-header g-link > a.a-no-hover-decoration",
           "type": "arr",
           "etype": "href",
-          "keyName": "u"
+          "keyName": "u",
+          "functionsApplied": [
+            [
+              "splitF",
+              "?ref_src=twsrc",
+              0
+            ]
+          ]
         },
         "age": {
           "item": "div > span.MUxGbd > span, div.mSA5Bd > div.P7xzyf > span > span",
@@ -442,6 +449,25 @@
           "keyName": "k"
         }
       },
+      "#cnt div.ifM9O div.V3FYCf div.g a": {
+        "u": {
+          "type": "arr",
+          "etype": "href",
+          "keyName": "u",
+          "functionsApplied": [
+            [
+              "splitF",
+              "#",
+              0
+            ],
+            [
+              "maskU",
+              false,
+              false
+            ]
+          ]
+        }
+      },
       "div.ULSxyf div.AuVD.cUnQKe[data-initq] div.Wt5Tfe div div[jsname] > span": {
         "t": {
           "type": "arr",
@@ -603,7 +629,7 @@
         "t": {
           "item": "h3 [href]",
           "type": "arr",
-          "etype": "text",
+          "etype": "textContent",
           "keyName": "t"
         },
         "u": {
@@ -612,6 +638,11 @@
           "etype": "href",
           "keyName": "u",
           "functionsApplied": [
+            [
+              "splitF",
+              "RK=2/",
+              0
+            ],
             [
               "splitF",
               "RU=",
@@ -735,7 +766,7 @@
         "t": {
           "item": "h2 [href]",
           "type": "arr",
-          "etype": "text",
+          "etype": "textContent",
           "keyName": "t"
         },
         "u": {
@@ -928,13 +959,13 @@
       }
     },
     "1": {
-      "#main div.g": {
+      "div#rso div.g": {
         "type": "query",
         "results": "clustered",
         "action": "query",
         "fields": [
           [
-            "#main div.g",
+            "div#rso div.g",
             "r",
             "join"
           ],
@@ -1249,6 +1280,10 @@
           [
             "#cnt div.ifM9O div[data-attrid=\"wa:/description\"][role=\"heading\"] > span.ILfuVd > span.hgKElc",
             "t"
+          ],
+          [
+            "#cnt div.ifM9O div.V3FYCf div.g a",
+            "u"
           ],
           [
             "#search",

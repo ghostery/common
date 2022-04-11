@@ -127,12 +127,12 @@ export function parseDom(url, window, hw) {
         const flink = eachAd.querySelector(fuRule);
 
         if (clink && flink) {
-          const clickPattern = normalizeAclkUrl(clink.href);
+          const clickPattern = normalizeAclkUrl(clink.getAttribute('href'));
 
           adDetails[clickPattern] = {
             ts: Date.now(),
             query,
-            furl: [flink.getAttribute('data-preconnect-urls'), flink.href] // At times there is a redirect chain, we only want the final domain.
+            furl: [flink.getAttribute('data-preconnect-urls'), flink.getAttribute('href')] // At times there is a redirect chain, we only want the final domain.
           };
 
           noAdsOnThisPage += 1;

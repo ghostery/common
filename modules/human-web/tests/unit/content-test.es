@@ -56,11 +56,13 @@ export default describeModule('human-web/content',
           let parseDom;
           let mockWindow;
 
+          const setupDocument = function (html) {
+            const result = mockDocumentWith[domParserLib](html);
+            mockWindow = result.window;
+          };
+
           beforeEach(function () {
             parseDom = this.module().parseDom;
-
-            const result = mockDocumentWith[domParserLib]('<!DOCTYPE html><p>Test DOM</p>');
-            mockWindow = result.window;
           });
 
           afterEach(function () {
@@ -74,10 +76,7 @@ export default describeModule('human-web/content',
           const checkDetectedAds = function ({ html, expectedAds }) {
             // Given
             const someUrl = 'http://example.com';
-            const document = mockWindow.document;
-            document.open();
-            document.write(html);
-            document.close();
+            setupDocument(html);
 
             const adClickMessages = [];
             const unexpectedMessages = [];
@@ -113,7 +112,7 @@ export default describeModule('human-web/content',
             }
 
             // To get a sane error message, only show a few examples.
-            // Otherwise, it difficult to interpret the error messages.
+            // Otherwise, it is difficult to interpret the error messages.
             const numExamples = 4;
             const unexpectedAds = R.differenceWith(R.equals, foundAds, expectedAds);
             const missingAds = R.differenceWith(R.equals, expectedAds, foundAds);
@@ -125,13 +124,13 @@ export default describeModule('human-web/content',
               if (unexpectedAds.length > 0) {
                 const examples = R.take(numExamples, R.sortWith([R.prop('key'), R.prop('url')], unexpectedAds));
                 examples.forEach((example) => {
-                  errorMsg += `\n- This should not have detected: ${JSON.stringify(example)}`;
+                  errorMsg += `\n- This should not have been detected: ${JSON.stringify(example)}`;
                 });
               }
               if (missingAds.length > 0) {
                 const examples = R.take(numExamples, R.sortWith([R.prop('key'), R.prop('url')], missingAds));
                 examples.forEach((example) => {
-                  errorMsg += `\n- This was overlooked:           ${JSON.stringify(example)}`;
+                  errorMsg += `\n- This was overlooked:                ${JSON.stringify(example)}`;
                 });
               }
               const stats = {

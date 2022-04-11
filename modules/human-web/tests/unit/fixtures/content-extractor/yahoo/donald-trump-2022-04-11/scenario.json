@@ -1,0 +1,35 @@
+{
+  "url": "https://de.search.yahoo.com/search?p=donald+trump&fr=yfp-t&fp=1&toggle=1&cop=mss&ei=UTF-8",
+
+  "mustContain": [{
+    "type": "humanweb",
+    "action": "query",
+    "payload": {
+      "r": {
+        "0": {
+          "t": "de.wikipedia.org › wiki › Donald_TrumpDonald Trump – Wikipedia",
+          "u": "https://de.wikipedia.org/wiki/Donald_Trump/"
+        },
+        "1": {
+          "t": "www.donaldjtrump.comDonald J. Trump - Official Site",
+          "u": "https://www.donaldjtrump.com//"
+        },
+        "2": {
+          "t": "www.handelsblatt.com › themen › donald-trumpDonald Trump-News: Aktuelle deutsche Nachrichten von heute",
+          "u": "https://www.handelsblatt.com/themen/donald-trump/"
+        },
+        "3": {
+          "t": "www.news.de › politik › 856218846Donald Trump: Er wollte Kapitol selbst stürmen! Trennungs-Schock...",
+          "u": "https://www.news.de/politik/856218846/donald-trump-verlassen-nach-app-flop-politik-rueckkehr-ins-weisse-haus-ex-us-praesident-wollte-kapitol-selbst-stuermen-lob-fuer-unterstuetzer/1//"
+        },
+        "4": {
+          "t": "www.express.de › politik-und-wirtschaft › donald-trump-exDonald Trump: Ex-Präsident der USA droht jetzt tägliche Strafe |...",
+          "u": "https://www.express.de/politik-und-wirtschaft/donald-trump-ex-praesident-der-usa-droht-jetzt-taegliche-strafe-93296/"
+        }
+      },
+      "q": "donald trump",
+      "qurl": "https://de.search.yahoo.com/search?p=donald+trump&fr=yfp-t&fp=1&toggle=1&cop=mss&ei=UTF-8",
+      "ctry": "de"
+    }
+  }]
+}

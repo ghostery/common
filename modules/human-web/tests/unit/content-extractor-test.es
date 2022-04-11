@@ -18,9 +18,17 @@ const R = require('ramda');
 const FileHound = require('filehound');
 const stripJsonComments = require('strip-json-comments');
 
-const { mockDocumentWith /* allSupportedParsers */ } = require('./dom-parsers');
+const { mockDocumentWith, allSupportedParsers } = require('./dom-parsers');
 
-const allSupportedParsers = ['jsdom']; // TODO: can we pass the tests with "allSupportedParsers"?
+// Sometimes, it is near impossible to get it working across all implementations.
+// If you are sure that it will not impact production, you can include tests
+// here that are allowed to fail the tests.
+//
+// Entries need to be added with their full relative path, for example:
+// 'go/sq-2022-04-05': ['jsdom'],
+const ACCEPTED_HTML_PARSER_INCONSISTENCIES = {
+  // none
+};
 
 function jsonParse(text) {
   return JSON.parse(stripJsonComments(text));
@@ -275,6 +283,10 @@ export default describeModule('human-web/content-extractor',
 
           findAllFixtures().forEach((fixtureDir) => {
             describe(`in scenario: ${fixtureDir}`, function () {
+              if (ACCEPTED_HTML_PARSER_INCONSISTENCIES[fixtureDir]?.includes(domParserLib)) {
+                return;
+              }
+
               beforeEach(function () {
                 uut.updatePatterns(DEFAULT_PATTERNS.normal, 'normal');
                 uut.updatePatterns(DEFAULT_PATTERNS.strict, 'strict');

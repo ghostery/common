@@ -83,7 +83,6 @@ export default describeModule('human-web-lite/search-extractor',
             const result = mockDocumentWith[domParserLib](html);
             mockWindow = result.window;
             doc = result.document;
-            doc.close();
           };
 
           const initFixture = function (_path) {

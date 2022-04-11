@@ -1,0 +1,47 @@
+{
+  "url": "https://www.bing.com/search?q=donald+trump&qs=n&form=QBLH&sp=-1&pq=donald+trump&sc=0-0&sk=&cvid=264D041856E64CF482FCA2496A83960B",
+
+  "mustContain": [{
+    "type": "humanweb",
+    "action": "query",
+    "payload": {
+      "r": {
+         "0": {
+            "t": "Donald Trump – Wikipedia",
+            "u": "https://de.wikipedia.org/wiki/Donald_Trump"
+          },
+          "1": {
+            "t": "Donald J. Trump - Official Site",
+            "u": "https://www.donaldjtrump.com/"
+          },
+          "2": {
+            "t": "Donald Trump-News: Aktuelle deutsche Nachrichten von heute",
+            "u": "https://www.handelsblatt.com/themen/donald-trump"
+          },
+          "3": {
+            "t": "Who could beat Donald Trump in 2024? | CNN Politics",
+            "u": "https://www.cnn.com/2022/04/13/politics/mulvaney-trump-primary-challengers-2024/index.html"
+          },
+          "4": {
+            "t": "Donald Trump says he is 'perhaps the most honest human' ever",
+            "u": "https://nypost.com/2022/04/12/donald-trump-says-he-is-perhaps-the-most-honest-human-ever/"
+          },
+          "5": {
+            "t": "Donald Trump: Plötzlich ist die Wiederwahl in Gefahr",
+            "u": "https://www.fr.de/politik/donald-trump-kandidatur-gesetz-usa-praesident-kapitol-wahl-2024-91244039.html"
+          },
+          "6": {
+            "t": "Ukraine Krieg – Trump fordert: Biden soll Putin mit ...",
+            "u": "https://www.waz.de/politik/ukraine-krieg-trump-putin-biden-atomwaffen-drohung-id234814267.html"
+          },
+          "7": {
+            "t": "DNA India",
+            "u": "https://www.dnaindia.com/world/report-melania-trump-to-divorce-former-us-president-donald-trump-birthday-photos-2896729"
+          }
+       },
+      "q": "donald trump",
+      "qurl": "https://www.bing.com/search?q=donald+trump&qs=n&form=QBLH&sp=-1&pq=donald+trump&sc=0-0&sk=&cvid=264D041856E64CF482FCA2496A83960B",
+      "ctry": "de"
+    }
+  }]
+}
