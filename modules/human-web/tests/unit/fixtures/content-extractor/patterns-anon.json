@@ -294,6 +294,32 @@
           "functionsApplied": []
         }
       },
+      "#rhs .cu-container .commercial-unit-desktop-rhs div.tN8Uqf": {
+        "u": {
+          "item": "a[id^=vjpm]",
+          "etype": "href",
+          "keyName": "u",
+          "functionsApplied": [
+            [
+              "maskU",
+              false,
+              false
+            ]
+          ]
+        },
+        "t": {
+          "item": "span[title]",
+          "etype": "textContent",
+          "keyName": "t",
+          "functionsApplied": [
+            [
+              "maskU",
+              false,
+              false
+            ]
+          ]
+        }
+      },
       ".pla-unit-title": {
         "u": {
           "item": "a.pla-unit-title-link",
@@ -1110,6 +1136,30 @@
         "fields": [
           [
             "#rso a.WlydOe",
+            "r",
+            "join"
+          ],
+          [
+            "#search",
+            "q"
+          ],
+          [
+            "qurl",
+            "qurl"
+          ],
+          [
+            "ctry",
+            "ctry"
+          ]
+        ]
+      },
+      "#rhs .cu-container .commercial-unit-desktop-rhs div.tN8Uqf": {
+        "type": "query",
+        "results": "clustered",
+        "action": "ads_B",
+        "fields": [
+          [
+            "#rhs .cu-container .commercial-unit-desktop-rhs div.tN8Uqf",
             "r",
             "join"
           ],

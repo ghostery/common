@@ -81,16 +81,18 @@ export function parseDom(url, window, hw) {
         element: '#rso',
         attribute: 'data-async-context'
       },
-      adSections: ['.ads-ad', '.pla-unit-container', '.pla-hovercard-content-ellip', '.cu-container tr'],
+      adSections: ['#tads div[data-text-ad]', '.pla-unit-container', '.pla-hovercard-content-ellip', '.cu-container tr'],
       0: {
-        cu: ".ad_cclk a[id^='s0p'],.ad_cclk a[id^='n1s0p'],.ad_cclk a[id^='s3p']",
-        fu: ".ad_cclk a[id^='vs0p'],.ad_cclk a[id^='vn1s0p'],.ad_cclk a[id^='vs3p']"
+        cu: 'a',
+        cuAttr: 'data-rw',
+        fu: 'a',
       },
       1: {
         cu: "a[id^='plaurlg']",
         fu: "a[id^='vplaurlg']"
       },
       2: {
+        // TODO: most likely dead
         cu: "a[id^='plaurlh']",
         fu: "a[id^='vplaurlh']"
       },
@@ -99,7 +101,6 @@ export function parseDom(url, window, hw) {
         fu: "a[id^='vplaurlt']"
       }
     };
-
 
     // We need to scrape the query too.
     const queryElement = doc.querySelector(detectAdRules.query.element);
@@ -127,12 +128,14 @@ export function parseDom(url, window, hw) {
         const flink = eachAd.querySelector(fuRule);
 
         if (clink && flink) {
-          const clickPattern = normalizeAclkUrl(clink.getAttribute('href'));
+          const cuAttr = detectAdRules[idx].cuAttr || 'href';
+          const clickPattern = normalizeAclkUrl(clink.getAttribute(cuAttr));
 
+          const fuAttr = detectAdRules[idx].fuAttr || 'href';
           adDetails[clickPattern] = {
             ts: Date.now(),
             query,
-            furl: [flink.getAttribute('data-preconnect-urls'), flink.getAttribute('href')] // At times there is a redirect chain, we only want the final domain.
+            furl: [flink.getAttribute('data-preconnect-urls'), flink.getAttribute(fuAttr)] // At times there is a redirect chain, we only want the final domain.
           };
 
           noAdsOnThisPage += 1;

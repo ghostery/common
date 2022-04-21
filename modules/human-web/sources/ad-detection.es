@@ -18,8 +18,10 @@
  * should be mapped to different keys.
  */
 export function normalizeAclkUrl(url) {
-  const parts = url.split('aclk?');
-  if (parts.length !== 2) {
+  // Note: Any base URL could be used here. It is only needed as we want to support
+  // also relative URLs.
+  const parsed = new URL(url, 'https://www.googleadservices.com');
+  if (parsed.pathname !== '/pagead/aclk' && parsed.pathname !== '/aclk') {
     throw new Error(`Expected Google pagead "aclk" URL. Instead got: ${url}`);
   }
 
@@ -27,8 +29,13 @@ export function normalizeAclkUrl(url) {
   //
   // For background information about the "ved" code, see
   // https://deedpolloffice.com/blog/articles/decoding-ved-parameter
-  const noVed = parts[1].replace(/ved=.*&/, '');
+  //
+  // "dct" can also be ignored for the matching.
+  const isRelevant = entry => !['ved', 'dct'].includes(entry[0]);
+  const relevantParams = [...parsed.searchParams].filter(isRelevant);
 
-  // TODO: hack, needs to be replaced by a more robust solution
-  return noVed.replace(/&q=&adurl=$/, '').replace(/&adurl=&q=$/, '');
+  // Combine it into one string. The function itself does not matter as long as it is
+  // injective and is agnoistic of the ordering. Here, we will make it look like a query
+  // ("key1=val1&key2=val2...").
+  return relevantParams.sort().map(x => x.join('=')).join('&');
 }

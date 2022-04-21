@@ -160,27 +160,31 @@ export default describeModule('human-web/content',
 
           // some regression tests
           it('should find all shoe ads on the Google results page of "Schuhe kaufen"', function () {
-            checkDetectedAds(loadFixture('shoe-ads-2019-07-24'));
+            checkDetectedAds(loadFixture('shoe-ads-2022-04-20'));
           });
 
           it('should find all ads on the Google results page of "gardening shoes"', function () {
-            checkDetectedAds(loadFixture('gardening-shoes-2019-07-24'));
+            checkDetectedAds(loadFixture('gardening-shoes-2022-04-20'));
+          });
+
+          it('should find all ads on the Google results page of "sunnybag leaf pro"', function () {
+            checkDetectedAds(loadFixture('sunnybag-leaf-pro-2022-04-20'));
+          });
+
+          it('should find all ads on the Google results page of "alibaba"', function () {
+            checkDetectedAds(loadFixture('top-ads-2022-04-20'));
           });
 
           it('should find all potato ads on the Google results page of "Kartoffeln kaufen"', function () {
-            checkDetectedAds(loadFixture('potato-ads-2019-07-24'));
+            checkDetectedAds(loadFixture('potato-ads-2022-04-21'));
           });
 
           it('should find all coffee ads on the Google results page of "Der beste Kaffee der Welt"', function () {
-            checkDetectedAds(loadFixture('coffee-ads-2019-07-24'));
+            checkDetectedAds(loadFixture('coffee-ads-2022-04-20'));
           });
 
           it('should find nothing on a Google results page without ads', function () {
             checkDetectedAds(loadFixture('page-with-no-ads-2019-07-24'));
-          });
-
-          it('should find all flight ads on the Google results page of "flight paris to london"', function () {
-            checkDetectedAds(loadFixture('flight-page-2019-07-24'));
           });
 
           it('Android user agent: page without ads', function () {
