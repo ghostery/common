@@ -6,12 +6,15 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+/* eslint-disable no-continue */
+
 import parseHtml from './html-parser';
 import logger from './logger';
 import { truncatedHash } from '../core/helpers/md5';
 import random from '../core/crypto/random';
 import { anonymousHttpGet } from './http';
 import { getTimeAsYYYYMMDD } from '../hpn-lite/timestamps';
+import { lookupBuiltinTransform } from './patterns';
 
 function doublefetchQueryHash(query, type) {
   // defines a cooldown to avoid performing unnecessary
@@ -43,8 +46,57 @@ function chooseExpiration() {
   return Math.max(tillCooldown, tillNextUtcDay) + randomNoise;
 }
 
+function runSelector(item, selector, attr) {
+  const elem = selector ? item.querySelector(selector) : item;
+  if (elem) {
+    if (attr === 'textContent') {
+      return elem.textContent;
+    }
+    if (attr === 'href') {
+      return elem.href;
+    }
+    if (elem.hasAttribute(attr)) {
+      return elem.getAttribute(attr);
+    }
+  }
+  return null;
+}
+
+function runTransforms(value, transformSteps = []) {
+  if (!Array.isArray(transformSteps)) {
+    throw new Error('Transform definitions must be array.');
+  }
+  if (value === undefined || value === null) {
+    return null;
+  }
+  let tmpValue = value;
+  for (const step of transformSteps) {
+    const [name, ...args] = step;
+    const transform = lookupBuiltinTransform(name);
+    tmpValue = transform(tmpValue, ...args);
+  }
+  return tmpValue ?? null;
+}
+
+function findFirstMatch(rootItem, selectorDef) {
+  // special case: allows to define multiple rules (first matching rule wins)
+  if (selectorDef.firstMatch) {
+    for (const { select, attr, transform = [] } of selectorDef.firstMatch) {
+      const match = runSelector(rootItem, select, attr) ?? null;
+      if (match !== null) {
+        return runTransforms(match, transform);
+      }
+    }
+    return null;
+  }
+
+  // default case: only one rule
+  return runSelector(rootItem, selectorDef.select, selectorDef.attr) ?? null;
+}
+
 export default class SearchExtractor {
-  constructor({ config, sanitizer, persistedHashes }) {
+  constructor({ config, patterns, sanitizer, persistedHashes }) {
+    this.patterns = patterns;
     this.sanitizer = sanitizer;
     this.persistedHashes = persistedHashes;
     this.channel = config.HW_CHANNEL;
@@ -53,7 +105,7 @@ export default class SearchExtractor {
     }
   }
 
-  async runJob({ type, query, doublefetchUrl }) {
+  async runJob({ type, query, doublefetchRequest }) {
     function discard(reason = '') {
       logger.debug('No messages found for query:', query, 'Reason:', reason);
       return {
@@ -76,17 +128,20 @@ export default class SearchExtractor {
 
     let doc;
     try {
-      const html = await anonymousHttpGet(doublefetchUrl);
+      const html = await anonymousHttpGet(doublefetchRequest.url, {
+        headers: doublefetchRequest.headers,
+        redirect: doublefetchRequest.redirect,
+      });
       doc = await parseHtml(html);
     } catch (e) {
       // unblock the hash to allow retries later
       // (at this point, the error could be caused by a network error,
       // so it is still possible that a retry later could work.)
-      logger.info('Failed to fetch query:', doublefetchUrl, e);
+      logger.info('Failed to fetch query:', doublefetchRequest.url, e);
       await this.persistedHashes.delete(queryHash).catch(() => {});
       throw e;
     }
-    const messages = this.extractMessages({ doc, type, query, doublefetchUrl });
+    const messages = this.extractMessages({ doc, type, query, doublefetchRequest });
     if (messages.length === 0) {
       return discard('No content found.');
     }
@@ -95,49 +150,126 @@ export default class SearchExtractor {
     return { messages };
   }
 
-  extractMessages({ doc, type, query, doublefetchUrl }) {
-    // TODO: it should be possible to update patterns without new releases
-    // (e.g., by porting content-extractor functionality is not option)
-
-    // STUB: hard-coded rules for queries to have something to test with.
-    if (type !== 'search-go') {
-      return [];
-    }
-    const rso = doc.getElementById('rso');
-    if (!rso) {
+  extractMessages({ doc, type, query, doublefetchRequest }) {
+    const rules = this.patterns.getRulesSnapshot();
+    if (!rules[type]) {
       return [];
     }
 
-    const results = [];
-    [].forEach.call(rso.querySelectorAll('div.mnr-c.xpd.O9g5cc.uUPGi'), (x) => {
-      const url = (x.querySelector('a') || {}).href;
-      const title = (x.querySelector('a > div > div') || { textContent: '' }).textContent;
-      const age = (x.querySelector('.BmP5tf .wuQ4Ob') || { textContent: '' }).textContent.split('·')[0];
-      const missingKeyword = (x.querySelector('.TXwUJf a.fl') || { textContent: '' }).textContent;
-      if (url && title) {
-        results.push({ t: title, u: url, age: age || null, m: missingKeyword || null });
+    const found = {};
+
+    const { input = {}, output = {} } = rules[type];
+    for (const [selector, selectorDef] of Object.entries(input)) {
+      found[selector] = found[selector] || {};
+      if (selectorDef.first) {
+        const item = doc.querySelector(selector);
+        if (item) {
+          for (const [key, def] of Object.entries(selectorDef.first)) {
+            const value = findFirstMatch(item, def);
+            found[selector][key] = runTransforms(value, def.transform);
+          }
+        }
+      } else if (selectorDef.all) {
+        const rootItems = doc.querySelectorAll(selector);
+        if (rootItems) {
+          found[selector] = found[selector] || {};
+          for (const [key, def] of Object.entries(selectorDef.all)) {
+            found[selector][key] = [];
+            for (const rootItem of rootItems) {
+              const item = findFirstMatch(rootItem, def);
+              found[selector][key].push(runTransforms(item, def.transform));
+            }
+          }
+        }
+      } else {
+        throw new Error('Internal error: bad selector (expected "first" or "all")');
       }
-    });
-    if (results.length === 0) {
-      return [];
     }
 
-    // TODO: to simplify delayed sending (and resending after errors),
-    // we should not immediately fill in the ts, but only before sending
-    const msg = {
-      type: 'humanweb',
-      action: 'hwlite.query',
-      payload: {
-        r: { ...results },
-        q: query,
-        qurl: doublefetchUrl,
-        ctry: this.sanitizer.getSafeCountryCode(),
-      },
-      ver: '2.8',
-      channel: this.channel,
-      ts: getTimeAsYYYYMMDD(),
-      'anti-duplicates': Math.floor(random() * 10000000),
+    // meta fields, which are provided instead of being extracted
+    const context = {
+      q: query ?? null,
+      qurl: doublefetchRequest.url ?? null,
+      ctry: this.sanitizer.getSafeCountryCode(),
     };
-    return [msg];
+    const isPresent = x => x !== null && x !== undefined && x !== '';
+
+    // Now combine the results to build the messages as specified
+    // in the "output" section of the patterns.
+    //
+    // Message payload
+    // ---------------
+    // There are three origins of the data:
+    // 1) a single keys
+    //    (extracted from an input with a "first" section)
+    // 2) array entries that need to be merged
+    //    (extracted from an input with an "all" section)
+    // 3) special entries provided in the context
+    //
+    // Filtering:
+    // ----------
+    // By default, all keys of a message have to be present (where empty arrays
+    // and empty strings are considered to absent). The default behaviour can be
+    // overwritten by setting the "optional" property of a field. Also, the merging
+    // of arrays can allow entries with missing values by overwriting the
+    // "requiredKeys" property. If not specified, all keys of the array entry need
+    // to be present; otherwise, the entry will be skipped.
+    const messages = [];
+    nextaction: // eslint-disable-line no-labels, no-restricted-syntax
+    for (const [action, schema] of Object.entries(output)) {
+      const payload = {};
+      for (const { key, source, requiredKeys, optional = false } of schema.fields) {
+        if (source) {
+          if (!input[source]) {
+            throw new Error(`Output rule for action=${action} references invalid input source=${source}`);
+          }
+          if (input[source].first) {
+            // case 1: single extracted value
+            if (!optional && !isPresent(found[source][key])) {
+              continue nextaction; // eslint-disable-line no-labels
+            }
+            payload[key] = found[source][key] ?? null;
+          } else if (input[source].all) {
+            // case 2: merge the fields from an array of previously extracted values
+            const results = [];
+            const innerKeys = Object.keys(input[source].all);
+            for (const innerKey of innerKeys) {
+              found[source][innerKey].forEach((value, idx) => {
+                results[idx] = results[idx] || {};
+                results[idx][innerKey] = value ?? null;
+              });
+            }
+
+            // check if all required data was found
+            // (by default, all keys in the fields need to be present)
+            const required = requiredKeys || innerKeys;
+            const allFieldsPresent = entry => required.every(x => isPresent(entry[x]));
+            const cleanedResults = results.filter(allFieldsPresent);
+            if (cleanedResults.length === 0 && !optional) {
+              continue nextaction; // eslint-disable-line no-labels
+            }
+            payload[key] = { ...cleanedResults };
+          } else {
+            throw new Error(`Output rule for action=${action} does not match input key=${key}`);
+          }
+        } else {
+          // case 3: access special keys from the context
+          if (!optional && !isPresent(context[key])) {
+            continue;
+          }
+          payload[key] = context[key] ?? null;
+        }
+      }
+      messages.push({
+        type: 'humanweb',
+        action,
+        payload,
+        ver: '2.9',
+        channel: this.channel,
+        ts: getTimeAsYYYYMMDD(),
+        'anti-duplicates': Math.floor(random() * 10000000),
+      });
+    }
+    return messages;
   }
 }

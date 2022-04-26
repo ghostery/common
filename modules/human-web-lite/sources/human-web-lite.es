@@ -6,6 +6,8 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+import Patterns from './patterns';
+import PatternsUpdater from './patterns-updater';
 import Sanitizer from './sanitizer';
 import UrlAnalyzer from './url-analyzer';
 import MessageSender from './message-sender';
@@ -21,8 +23,16 @@ export default class HumanWebLite {
     // to collect data.
     this.isActive = false;
 
+    this.patterns = new Patterns();
+    this.patternsUpdater = new PatternsUpdater({
+      config,
+      patterns: this.patterns,
+      storage,
+      storageKey: 'patterns',
+    });
+
     this.sanitizer = new Sanitizer(config);
-    this.urlAnalyzer = new UrlAnalyzer();
+    this.urlAnalyzer = new UrlAnalyzer(this.patterns);
     this.persistedHashes = new PersistedHashes({
       storage,
       storageKey: 'deduplication_hashes',
@@ -32,6 +42,7 @@ export default class HumanWebLite {
     this.messageSender = new MessageSender(this.duplicateDetector, hpn);
     this.searchExtractor = new SearchExtractor({
       config,
+      patterns: this.patterns,
       sanitizer: this.sanitizer,
       persistedHashes: this.persistedHashes,
     });
@@ -39,9 +50,7 @@ export default class HumanWebLite {
   }
 
   async init() {
-    // TODO: In a feature-complete implementation, you would need
-    // to have a mechanism to keep the extraction patterns up-to-date.
-    // As we have hard-coded patterns, there is nothing to do here.
+    await this.patternsUpdater.init();
     this.isActive = true;
   }
 
@@ -78,7 +87,19 @@ export default class HumanWebLite {
     return true;
   }
 
-  processPendingJobs() {
+  async processPendingJobs() {
+    await this._ensurePatternsAreUpToDate();
     return this.jobScheduler.processPendingJobs();
+  }
+
+  async _ensurePatternsAreUpToDate() {
+    // Currently, the PatternsUpdater needs to be externally triggered.
+    // This implementation detail could be avoided, if the PatternsUpdater
+    // could use a browser API like timers in persistent background pages
+    // or the Alert API (Manifest V3).
+    // The "update" function is a quick operation unless for the rare
+    // situation that the patterns are outdated and need to be fetched.
+    // Thus, there should be no harm in calling it here.
+    await this.patternsUpdater.update();
   }
 }
