@@ -1,3 +1,23 @@
+# v1.2.23 (Fri May 06 2022)
+
+#### 🐛 Bug Fix
+
+- Updated patterns and improved the URL normalization (ad-ctr) [#46](https://github.com/ghostery/common/pull/46) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### 🧪 Tests
+
+- Add support for different DOM Parsers in the tests (jsdom, linkedom) [#45](https://github.com/ghostery/common/pull/45) ([@philipp-classen](https://github.com/philipp-classen))
+- Upgrade typescript-eslint packages to fix errors on the CI [#44](https://github.com/ghostery/common/pull/44) ([@philipp-classen](https://github.com/philipp-classen))
+- Drop support for Node 12, but add support for Node 16 [#44](https://github.com/ghostery/common/pull/44) ([@philipp-classen](https://github.com/philipp-classen))
+- Fixes for the tests: [#44](https://github.com/ghostery/common/pull/44) ([@philipp-classen](https://github.com/philipp-classen))
+- Update tests [#43](https://github.com/ghostery/common/pull/43) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.22 (Fri Mar 18 2022)
 
 #### 🐛 Bug Fix
