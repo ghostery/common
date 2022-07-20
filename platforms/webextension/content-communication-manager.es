@@ -36,7 +36,9 @@ function handleRequest(message, sender) {
     return undefined;
   }
 
-  return inject.module(module).action(action, ...args, sender);
+  inject.module(module).action(action, ...args, sender);
+
+  return false;
 }
 
 export default class ContentCommunicationManager {
