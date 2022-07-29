@@ -55,6 +55,7 @@ const babelOptions = {
   filterExtensions: ['es', 'jsx', 'ts', 'tsx'],
   plugins: [
     '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-proposal-nullish-coalescing-operator',
     ...(cliqzConfig.babelPlugins || []),
     ...(cliqzConfig.format === 'common'
       ? ['@babel/plugin-transform-modules-commonjs']
