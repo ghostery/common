@@ -155,13 +155,18 @@ export class Resource {
     }
   }
 
-  persist(data) {
-    return this.parseData(data).then((parsed) => {
-      const saveData = this.compressData(data);
-      return this.storage.save(saveData)
-        .catch(e => logger.error('Failed to persist:', e))
-        .then(() => parsed);
-    });
+  async persist(data) {
+    const parsed = await this.parseData(data);
+    if (!parsed) {
+      throw new Error('Failed to parse data');
+    }
+    const saveData = this.compressData(data);
+    try {
+      await this.storage.save(saveData);
+    } catch (e) {
+      logger.error('Failed to persist:', e);
+    }
+    return parsed;
   }
 
   parseData(data) {

@@ -56,6 +56,7 @@ require('../../../anolysis/unit/telemetry-schemas-test-helpers')({
 
     it('adblocker not reachable', () => {
       adblockerActionResult = Promise.reject();
+      adblockerActionResult.catch(() => {}); // avoid unhandled rejections (NodeJs >=16)
       return test(signal => chai.expect(signal).to.be.eql({ enabled: false }));
     });
   },
