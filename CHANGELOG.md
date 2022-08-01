@@ -1,3 +1,15 @@
+# v1.2.24 (Mon Aug 01 2022)
+
+#### 🐛 Bug Fix
+
+- workaround for "ghostery-extension": "common" currently must not contain [#48](https://github.com/ghostery/common/pull/48) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.23 (Fri May 06 2022)
 
 #### 🐛 Bug Fix
