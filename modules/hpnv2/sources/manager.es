@@ -92,6 +92,10 @@ export class InitState {
       this._onReady = resolve;
       this._onDestroy = reject;
     });
+
+    this._pendingInit.catch((e) => {
+      logger.warn('Error during initialization:', e);
+    });
   }
 
   isReady() {

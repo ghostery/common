@@ -10,6 +10,7 @@ import { Subject, interval, timer, of, merge } from 'rxjs';
 import { groupBy, flatMap, filter, map, delay, distinct, buffer, auditTime } from 'rxjs/operators';
 import md5, { truncatedHash } from '../../core/helpers/md5';
 import DefaultMap from '../../core/helpers/default-map';
+import logger_ from '../logger';
 import { TELEMETRY } from '../config';
 import { getConfigTs } from '../time';
 import inject from '../../core/kord/inject';
@@ -99,45 +100,49 @@ class CachedEntryPipeline {
       buffer(bufferInterval()),
       filter(batch => batch.length > 0)
     ).subscribe(async (batch) => {
-      // merge existing entries from DB
-      await this.loadBatchIntoCache(batch);
-      // extract message and clear
-      const toBeSent = batch
-        .map(token => [token, this.cache.get(token)])
-        .filter(([, { lastSent }]) => lastSent !== currentDay());
+      try {
+        // merge existing entries from DB
+        await this.loadBatchIntoCache(batch);
+        // extract message and clear
+        const toBeSent = batch
+          .map(token => [token, this.cache.get(token)])
+          .filter(([, { lastSent }]) => lastSent !== currentDay());
 
-      // generate the set of messages to be sent from the candiate list
-      const { messages, overflow } = this.createMessagePayloads(toBeSent, batchLimit);
-      // get the keys of the entries not being sent this time
-      const overflowKeys = new Set(overflow.map(tup => tup[0]));
+        // generate the set of messages to be sent from the candiate list
+        const { messages, overflow } = this.createMessagePayloads(toBeSent, batchLimit);
+        // get the keys of the entries not being sent this time
+        const overflowKeys = new Set(overflow.map(tup => tup[0]));
 
-      // update lastSent for sent messages
-      toBeSent.filter(tup => !overflowKeys.has(tup[0]))
-        .forEach(([, _entry]) => {
-          const entry = _entry;
-          entry.lastSent = currentDay();
+        // update lastSent for sent messages
+        toBeSent.filter(tup => !overflowKeys.has(tup[0]))
+          .forEach(([, _entry]) => {
+            const entry = _entry;
+            entry.lastSent = currentDay();
+          });
+
+        await this.saveBatchToDb(batch);
+        // clear the distinct map
+        clearDistinct.next(true);
+        messages.forEach((msg) => {
+          outputSubject.next(msg);
         });
+        // push overflowed entries back into the queue
+        overflowKeys.forEach(k => retryQueue.next(k));
 
-      await this.saveBatchToDb(batch);
-      // clear the distinct map
-      clearDistinct.next(true);
-      messages.forEach((msg) => {
-        outputSubject.next(msg);
-      });
-      // push overflowed entries back into the queue
-      overflowKeys.forEach(k => retryQueue.next(k));
-
-      // send telemetry about batch process
-      this.logger.next({
-        type: 'tokens.batch',
-        signal: {
-          source: this.name,
-          size: batch.length,
-          toBeSentSize: toBeSent.length,
-          overflow: overflow.length,
-          messages: messages.length,
-        },
-      });
+        // send telemetry about batch process
+        this.logger.next({
+          type: 'tokens.batch',
+          signal: {
+            source: this.name,
+            size: batch.length,
+            toBeSentSize: toBeSent.length,
+            overflow: overflow.length,
+            messages: messages.length,
+          },
+        });
+      } catch (e) {
+        logger_.error('Failed to initialize stream', e);
+      }
     });
   }
 
