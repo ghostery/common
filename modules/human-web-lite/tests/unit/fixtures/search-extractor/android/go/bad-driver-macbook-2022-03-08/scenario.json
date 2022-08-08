@@ -1,0 +1,74 @@
+{
+  "url": "https://www.google.com/search?hl=en&q=how%20to%20delete%20a%20bad%20driver%20macbook",
+  "type": "search-go",
+  "query": "how to delete a bad driver macbook",
+  "ctry": "de",
+
+  "mustContain": [
+    {
+      "type": "humanweb",
+      "action": "hwlite.query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "Here's how to uninstall drivers on your Mac - MacPaw",
+            "u": "https://macpaw.com/how-to/uninstall-drivers-mac",
+            "age": "16.04.2021",
+            "m": null
+          },
+          "1": {
+            "t": "How to find and uninstall drivers. - Apple Support Communities",
+            "u": "https://discussions.apple.com/thread/3562907",
+            "age": null,
+            "m": "bad"
+          },
+          "2": {
+            "t": "How do I uninstall different Mac OS drivers that I don't need? - Quora",
+            "u": "https://www.quora.com/How-do-I-uninstall-different-Mac-OS-drivers-that-I-dont-need",
+            "age": null,
+            "m": null
+          },
+          "3": {
+            "t": "How to remove a driver on Mac : r/MacOS - Reddit",
+            "u": "https://www.reddit.com/r/MacOS/comments/52x7jq/how_to_remove_a_driver_on_mac/",
+            "age": null,
+            "m": "bad"
+          },
+          "4": {
+            "t": "How to uninstall drivers on Mac in just a few clicks - YouTube",
+            "u": "https://m.youtube.com/watch?v=voC1lH_ux2g",
+            "age": null,
+            "m": "bad"
+          },
+          "5": {
+            "t": "How to Find and Remove Potential Driver Conflicts in macOS",
+            "u": "https://www.makeuseof.com/how-to-fix-driver-conflicts-macos/",
+            "age": "20.01.2022",
+            "m": null
+          },
+          "6": {
+            "t": "Remove Reckless Driving Completely under Mac OS X",
+            "u": "https://cleanmacapp.com/remove-reckless-driving-for-mac.html",
+            "age": null,
+            "m": null
+          },
+          "7": {
+            "t": "How to Uninstall Drivers on Mac - Cyclonis",
+            "u": "https://www.cyclonis.com/how-to-uninstall-drivers-on-mac/",
+            "age": null,
+            "m": "bad"
+          },
+          "8": {
+            "t": "Quick Guide to Completely Uninstall Programs on Mac - Techsviewer",
+            "u": "https://techsviewer.com/uninstall-programs-on-mac/",
+            "age": null,
+            "m": null
+          }
+        },
+        "q": "how to delete a bad driver macbook",
+        "qurl": "https://www.google.com/search?hl=en&q=how%20to%20delete%20a%20bad%20driver%20macbook",
+        "ctry": "de"
+      }
+    }
+  ]
+}

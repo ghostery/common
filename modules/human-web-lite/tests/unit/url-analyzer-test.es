@@ -11,6 +11,27 @@
 const expect = chai.expect;
 const fc = require('fast-check');
 
+function searchGoDoublefetch(url) {
+  return {
+    url,
+    redirect: 'follow',
+    headers: {
+      Cookie: 'SOME_DUMMY_VALUE',
+    },
+  };
+}
+
+function fakePatterns() {
+  return {
+    createDoublefetchRequest(msgType, url) {
+      if (msgType === 'search-go') {
+        return searchGoDoublefetch(url);
+      }
+      throw new Error(`Unexpected msgType: ${msgType}`);
+    }
+  };
+}
+
 export default describeModule('human-web-lite/url-analyzer',
   () => ({
     'platform/globals': {
@@ -24,7 +45,8 @@ export default describeModule('human-web-lite/url-analyzer',
 
       beforeEach(function () {
         UrlAnalyzer = this.module().default;
-        uut = new UrlAnalyzer();
+        const patterns = fakePatterns();
+        uut = new UrlAnalyzer(patterns);
       });
 
       it('should detect the query "trump alaska"', function () {
@@ -33,7 +55,7 @@ export default describeModule('human-web-lite/url-analyzer',
           found: true,
           type: 'search-go',
           query: 'trump alaska',
-          doublefetchUrl: 'https://www.google.de/search?q=trump+alaska',
+          doublefetchRequest: searchGoDoublefetch('https://www.google.de/search?q=trump+alaska'),
         });
       });
 
@@ -43,7 +65,7 @@ export default describeModule('human-web-lite/url-analyzer',
           found: true,
           type: 'search-go',
           query: 'a+b',
-          doublefetchUrl: 'https://www.google.com/search?q=a%2Bb',
+          doublefetchRequest: searchGoDoublefetch('https://www.google.com/search?q=a%2Bb'),
         });
       });
 
@@ -53,7 +75,7 @@ export default describeModule('human-web-lite/url-analyzer',
           found: true,
           type: 'search-go',
           query: 'c# how to read a file',
-          doublefetchUrl: 'https://www.google.com/search?q=c%23+how+to+read+a+file',
+          doublefetchRequest: searchGoDoublefetch('https://www.google.com/search?q=c%23+how+to+read+a+file'),
         });
       });
 
@@ -63,7 +85,7 @@ export default describeModule('human-web-lite/url-analyzer',
           found: true,
           type: 'search-go',
           query: 'a+b',
-          doublefetchUrl: 'https://www.google.com/search?q=a%2Bb',
+          doublefetchRequest: searchGoDoublefetch('https://www.google.com/search?q=a%2Bb'),
         });
       });
 

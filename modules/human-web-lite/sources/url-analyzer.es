@@ -7,10 +7,11 @@
  */
 
 import { parse } from '../core/url';
+import logger from './logger';
 
 export default class UrlAnalyzer {
-  updatePatterns() {
-    // TODO: STUB (get patterns from server)
+  constructor(patterns) {
+    this.patterns = patterns;
   }
 
   parseSearchLinks(url) {
@@ -28,7 +29,13 @@ export default class UrlAnalyzer {
       if (query) {
         const query_ = encodeURIComponent(query).replace(/%20/g, '+');
         const doublefetchUrl = `https://${parsedUrl.host}/search?q=${query_}`;
-        return { found: true, type: 'search-go', query, doublefetchUrl };
+        const type = 'search-go';
+        const doublefetchRequest = this.patterns.createDoublefetchRequest(type, doublefetchUrl);
+        if (!doublefetchRequest) {
+          logger.info('Matching rule for', url, 'skipped (no matching server side rules exist)');
+          return { found: false };
+        }
+        return { found: true, type, query, doublefetchRequest };
       }
     }
 

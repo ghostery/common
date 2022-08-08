@@ -1,0 +1,80 @@
+{
+  "url": "https://www.google.com/search?q=b%C3%A4rentatze",
+  "type": "search-go",
+  "query": "bärentatze",
+  "ctry": "de",
+
+  "mustContain": [
+    {
+      "type": "humanweb",
+      "action": "hwlite.query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "Bärentatzen von Henrietta | Chefkoch",
+            "u": "https://www.chefkoch.de/rezepte/185611079707271/Baerentatzen.html",
+            "age": null,
+            "m": null
+          },
+          "1": {
+            "t": "Herrlich mürbe Bärentatzen mit Schokolade - Backen macht glücklich",
+            "u": "https://www.backenmachtgluecklich.de/rezepte/baerentatzen.html",
+            "age": "08.11.2021",
+            "m": null
+          },
+          "2": {
+            "t": "Bärentatze (Gebäck) - Wikipedia",
+            "u": "https://de.m.wikipedia.org/wiki/B%C3%A4rentatze_(Geb%C3%A4ck)",
+            "age": null,
+            "m": null
+          },
+          "3": {
+            "t": "Bärentatze - Wikipedia",
+            "u": "https://de.m.wikipedia.org/wiki/B%C3%A4rentatze",
+            "age": null,
+            "m": null
+          },
+          "4": {
+            "t": "Bärentatzen ( Originalrezept ) - Rezept - kochbar.de",
+            "u": "https://www.kochbar.de/rezept/261825/Baerentatzen-Originalrezept.html",
+            "age": null,
+            "m": null
+          },
+          "5": {
+            "t": "Weiche Bärentatze (Acanthus mollis) - perfekte Stauden & Ratgeber",
+            "u": "https://www.baumschule-horstmann.de/weiche-baerentatze-698_61561.html",
+            "age": null,
+            "m": null
+          },
+          "6": {
+            "t": "33 Bärentatze-Ideen | tatze, bär, indianische tattoos - Pinterest",
+            "u": "https://www.pinterest.de/gerd5983/b%C3%A4rentatze/",
+            "age": null,
+            "m": null
+          },
+          "7": {
+            "t": "Rezept Bärentatzen Weihnachtsplätzchen - Küchengötter",
+            "u": "https://www.kuechengoetter.de/rezepte/baerentatzen-weihnachtsplaetzchen-37399",
+            "age": null,
+            "m": null
+          },
+          "8": {
+            "t": "Bärentatze-Pedale Preisvergleich | Günstig bei idealo kaufen",
+            "u": "https://www.idealo.de/preisvergleich/ProductCategory/13092F1946874.html",
+            "age": null,
+            "m": null
+          },
+          "9": {
+            "t": "Acanthus mollis, Weiche Bärentatze - Stanze Gartencenter in Hannover ...",
+            "u": "https://www.stanze-gartencenter.de/artikel/568/acanthus-mollis",
+            "age": null,
+            "m": null
+          }
+        },
+        "q": "bärentatze",
+        "qurl": "https://www.google.com/search?q=b%C3%A4rentatze",
+        "ctry": "de"
+      }
+    }
+  ]
+}

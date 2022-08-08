@@ -1,0 +1,68 @@
+{
+  "url": "https://www.google.com/search?q=ukraine",
+  "type": "search-go",
+  "query": "ukraine",
+  "ctry": "de",
+
+  "mustContain": [
+    {
+      "type": "humanweb",
+      "action": "hwlite.query",
+      "payload": {
+        "r": {
+          "0": {
+            "t": "Liveblog zum Ukraine-Krieg: ++ Mehr als zwei Millionen ...",
+            "u": "https://www.tagesschau.de/newsticker/liveblog-ukraine-dienstag-101.html",
+            "age": "vor 1 Stunde",
+            "m": null
+          },
+          "1": {
+            "t": "Ukraine bestätigt geöffnete Fluchtkorridore | tagesschau.de",
+            "u": "https://www.tagesschau.de/ausland/europa/russland-ukraine-krieg-verhandlungen-107.html",
+            "age": "vor 1 Stunde",
+            "m": null
+          },
+          "2": {
+            "t": "Ukraine - Wikipedia",
+            "u": "https://de.m.wikipedia.org/wiki/Ukraine",
+            "age": "vor 4 Stunden",
+            "m": null
+          },
+          "3": {
+            "t": "++ Ukraine-Krieg: Russlands Invasion erreicht nächste ...",
+            "u": "https://www.fr.de/politik/ukraine-krieg-konflikt-russland-kiew-putin-selenskyj-drohung-mariupol-news-ticker-zr-91391160.html",
+            "age": "vor 4 Stunden",
+            "m": null
+          },
+          "4": {
+            "t": "Ukraine - DER SPIEGEL",
+            "u": "https://www.spiegel.de/thema/ukraine/",
+            "age": "vor 8 Stunden",
+            "m": null
+          },
+          "5": {
+            "t": "Krieg in der Ukraine: News zum Thema | ZEIT ONLINE",
+            "u": "https://www.zeit.de/thema/krieg-in-ukraine",
+            "age": "vor 4 Stunden",
+            "m": null
+          },
+          "6": {
+            "t": "Russland greift Ukraine an - Aktuelle News im Liveblog - ZDF",
+            "u": "https://www.zdf.de/nachrichten/politik/ukraine-russland-konflikt-blog-100.html",
+            "age": "vor 3 Stunden",
+            "m": null
+          },
+          "7": {
+            "t": "Ukraine: Reisewarnung/Ausreiseaufforderung",
+            "u": "https://www.auswaertiges-amt.de/de/aussenpolitik/laender/ukraine-node/ukrainesicherheit/201946",
+            "age": "vor 4 Tagen",
+            "m": null
+          }
+        },
+        "q": "ukraine",
+        "qurl": "https://www.google.com/search?q=ukraine",
+        "ctry": "de"
+      }
+    }
+  ]
+}
