@@ -1,3 +1,15 @@
+# v1.2.26 (Mon Aug 08 2022)
+
+#### 🐛 Bug Fix
+
+- Replaced hard-coded rules by a DSL [#49](https://github.com/ghostery/common/pull/49) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.25 (Mon Aug 08 2022)
 
 #### 🐛 Bug Fix
