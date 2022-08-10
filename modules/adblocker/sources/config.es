@@ -9,7 +9,22 @@
 import console from '../core/console';
 import prefs from '../core/prefs';
 import cliqzConfig from '../core/config';
-import { isMobile } from '../core/platform';
+import { isMobile, isFirefox } from '../core/platform';
+
+// This flag controls how scriptlets should be injected. It has
+// to match the defaults in the adblocker libary.
+//
+// Note that the adblocker libray will automatically decide how to
+// inject scriptlets. If possible, this should stay an implementation
+// detail; but since we are wrapping the adblocker library, this
+// abstraction unfortunately leaks, for these reasons:
+// * The wrapper is responsible for triggering the onCommitted events
+// * The wrapper has to prevent injecting scriptlets twice
+//
+// The source of truth is how the adblocker library handles it
+// (search for "enablePushInjectionsOnNavigationEvents" in
+// https://github.com/ghostery/adblocker).
+export const USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS = !isFirefox;
 
 // Preferences
 export const ADB_PREF = 'cliqz-adb';

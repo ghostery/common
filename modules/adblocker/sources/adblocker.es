@@ -8,6 +8,7 @@
 
 import AdblockerLib from '../platform/lib/adblocker';
 import { browser } from '../platform/globals';
+import { USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS } from './config';
 
 import { ifModuleEnabled } from '../core/kord/inject';
 import UrlWhitelist from '../core/url-whitelist';
@@ -15,7 +16,6 @@ import UrlWhitelist from '../core/url-whitelist';
 import AdbStats from './statistics';
 import EngineManager from './manager';
 import logger from './logger';
-
 
 /**
  * Given a webrequest context from webrequest pipeline, create a `Request`
@@ -70,6 +70,8 @@ export default class Adblocker {
   async init() {
     // Make sure the engine is always initialized before we start listening for requests.
     await this.manager.init();
+    this.installHandlers();
+
     await Promise.all([
       this.stats.init(),
       this.whitelist.init(),
@@ -88,6 +90,7 @@ export default class Adblocker {
   }
 
   unload() {
+    this.removeHandlers();
     this.stats.unload();
     this.manager.unload();
 
@@ -97,6 +100,27 @@ export default class Adblocker {
     ifModuleEnabled(
       this.webRequestPipeline.action('removePipelineStep', 'onHeadersReceived', 'adblocker'),
     );
+  }
+
+  installHandlers() {
+    this.removeHandlers();
+
+    if (USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS) {
+      this._onCommittedHandler = (details) => {
+        if (this.manager.isEngineReady()) {
+          // TODO: skip if the site is marked as "trusted"
+          this.manager.engine.onCommittedHandler(browser, details);
+        }
+      };
+      browser.webNavigation.onCommitted.addListener(this._onCommittedHandler);
+    }
+  }
+
+  removeHandlers() {
+    if (this._onCommittedHandler) {
+      browser.webNavigation.onCommitted.removeListener(this._onCommittedHandler);
+    }
+    this._onCommittedHandler = null;
   }
 
   async reset() {

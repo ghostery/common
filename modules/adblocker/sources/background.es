@@ -243,14 +243,11 @@ export default background({
         return { active: false };
       }
 
-      return new Promise((resolve) => {
-        this.adblocker.manager.engine.handleRuntimeMessage(
-          browser,
-          { action: 'getCosmeticsFilters', ...payload },
-          sender,
-          resolve,
-        ).catch(() => { /* it's ok if this fails */ });
-      });
+      return this.adblocker.manager.engine.onRuntimeMessage(
+        browser,
+        { action: 'getCosmeticsFilters', ...payload },
+        sender
+      );
     },
 
     /**
