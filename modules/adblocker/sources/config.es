@@ -32,6 +32,7 @@ export const ADB_PREF_STRICT = 'cliqz-adb-strict';
 export const ADB_USER_LANG = 'cliqz-adb-lang';
 export const ADB_MODE = 'cliqz_adb_mode';
 export const ADB_FETCH = 'cliqz-adb-fetch-enabled';
+export const ADB_TRUSTED_SITES = 'adb-trusted-sites';
 
 const ADS_ONLY = 'ads';
 const ADS_AND_TRACKERS = 'ads-trackers';
@@ -134,6 +135,13 @@ class Config {
 
   set networkFetchEnabled(value) {
     prefs.set(ADB_FETCH, value);
+  }
+
+  /**
+   * Readonly value.
+   */
+  get trustedSitesSnapshot() {
+    return prefs.get(ADB_TRUSTED_SITES, []);
   }
 }
 

@@ -8,10 +8,11 @@
 
 import AdblockerLib from '../platform/lib/adblocker';
 import { browser } from '../platform/globals';
-import { USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS } from './config';
+import config, { USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS } from './config';
 
 import { ifModuleEnabled } from '../core/kord/inject';
 import UrlWhitelist from '../core/url-whitelist';
+import { parse } from '../core/url';
 
 import AdbStats from './statistics';
 import EngineManager from './manager';
@@ -52,7 +53,6 @@ function makeRequestFromContext(url, urlParts, {
   });
 }
 
-
 /**
  * Wrap @cliqz/adblocker's FilterEngine as well as additions needed for
  * Cliqz/Ghostery products.
@@ -65,6 +65,20 @@ export default class Adblocker {
     this.whitelist = new UrlWhitelist('adb-blacklist');
     this.stats = new AdbStats();
     this.manager = new EngineManager();
+    this.syncTrustedSites();
+  }
+
+  syncTrustedSites() {
+    this.trustedSites = new Set();
+    for (const site of config.trustedSitesSnapshot) {
+      this.trustedSites.add(site);
+
+      // Drop the leading "www." to be closer to the code in the extension here:
+      // https://github.com/ghostery/ghostery-extension/blob/5aea0820fc4f590b21d04611ec71a6b7bcf85202/extension-manifest-v2/src/classes/Policy.js#L62
+      if (!site.startsWith('www.')) {
+        this.trustedSites.add(`www.${site}`);
+      }
+    }
   }
 
   async init() {
@@ -107,8 +121,7 @@ export default class Adblocker {
 
     if (USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS) {
       this._onCommittedHandler = (details) => {
-        if (this.manager.isEngineReady()) {
-          // TODO: skip if the site is marked as "trusted"
+        if (this.shouldProcessOnCommittedEvent(details)) {
           this.manager.engine.onCommittedHandler(browser, details);
         }
       };
@@ -138,6 +151,53 @@ export default class Adblocker {
 
   addWhiteListCheck(fn) {
     this.whitelistChecks.push(fn);
+  }
+
+  /**
+   * Given a webNavigation.onCommitted event, decide whether the event should
+   * be handled. As a rule of thumb, all events should be forwarded to the
+   * adblocker engine unless there an exception has been configured in Ghostery.
+   *
+   * For instance, if the site has is been visited has been trusted by the user,
+   * the event must not be forwarded.
+   *
+   * Input: "details" has the same structure as an event
+   * from "webNavigation.onCommitted".
+   */
+  shouldProcessOnCommittedEvent(details) {
+    const skip = (reason) => {
+      logger.log('Ignore visit to', details.url, ':', reason);
+      return false;
+    };
+
+    if (this.isReady() === false) {
+      return skip('adblocker engine is not ready');
+    }
+    if (details.url === 'about:blank') {
+      // TODO: Should we skip it?
+      return true;
+    }
+
+    // First, check the internal whitelists. Note that this is not
+    // the same as the "trusted" page mechanism (when a user in
+    // Ghostery marks a site as trusted).
+    const urlParts = parse(details.url);
+    if (
+      this.whitelist.isWhitelisted(
+        details.url,
+        urlParts.hostname,
+        urlParts.generalDomain,
+      )
+    ) {
+      return skip('locally whitelisted');
+    }
+
+    // Skip sites that the user marked as "trusted".
+    if (this.trustedSites.has(urlParts.hostname)) {
+      return skip('trusted page');
+    }
+
+    return true;
   }
 
   /**

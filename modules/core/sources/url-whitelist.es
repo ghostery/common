@@ -144,7 +144,7 @@ export default class UrlWhitelist {
         }
         break;
       default:
-        this.logger.error('Supprted actions: add, remove, toggle', action);
+        this.logger.error('Supported actions: add, remove, toggle', action);
         return;
     }
     if (!deferPersist) {

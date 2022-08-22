@@ -19,6 +19,7 @@ import config, {
   ADB_PREF_STRICT,
   ADB_USER_LANG,
   ADB_MODE,
+  ADB_TRUSTED_SITES,
 } from './config';
 import { isUrl, parse } from '../core/url';
 import telemetry from '../core/services/telemetry';
@@ -213,6 +214,10 @@ export default background({
         } else if (this.adblocker !== null && config.enabled === false) {
           logger.log('Adblocker pref switched: unload');
           this.shallowUnload();
+        }
+      } else if (pref === ADB_TRUSTED_SITES) {
+        if (this.adblocker) {
+          this.adblocker.syncTrustedSites();
         }
       }
     },
