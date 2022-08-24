@@ -73,8 +73,12 @@ export default class Adblocker {
     for (const site of config.trustedSitesSnapshot) {
       this.trustedSites.add(site);
 
-      // Drop the leading "www." to be closer to the code in the extension here:
+      // The source of truth for the "trusted site" logic is here:
       // https://github.com/ghostery/ghostery-extension/blob/5aea0820fc4f590b21d04611ec71a6b7bcf85202/extension-manifest-v2/src/classes/Policy.js#L62
+      //
+      // It includes a normalization step that ignores leading "www."
+      // in the hostname. To keep it a simple lookup, we can duplicate
+      // the entries (once with and once without the leading "www.").
       if (!site.startsWith('www.')) {
         this.trustedSites.add(`www.${site}`);
       }
