@@ -178,7 +178,13 @@ export default class Adblocker {
       return skip('adblocker engine is not ready');
     }
     if (details.url === 'about:blank') {
-      // TODO: Should we skip it?
+      // Unless there is evidence that we have to drop it, it is best to
+      // rely on the adblocker engine how to deal with it. Dropping the
+      // event only for optimization purposes is not necessary, since
+      // the adblocker engine will not spend much time processing it.
+      //
+      // Note that continuing with the other checks does not make sense,
+      // since they all assume it is a normal URL.
       return true;
     }
 
