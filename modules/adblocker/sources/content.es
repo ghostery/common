@@ -8,7 +8,6 @@
 
 import injectCosmetics from '../platform/lib/adblocker-cosmetics';
 import { registerContentScript } from '../core/content/register';
-import { USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS } from './config';
 
 registerContentScript({
   module: 'adblocker',
@@ -30,11 +29,6 @@ registerContentScript({
       true, /* enable mutation observer */
       async (payload) => {
         const result = await CLIQZ.app.modules.adblocker.action('getCosmeticsFilters', payload);
-        if (USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS && result) {
-          // prevent double-injection of scripts (the adblocker is
-          // configured to inject them via tabs.executeScript)
-          result.scripts = [];
-        }
         return result || {};
       },
     );

@@ -20,6 +20,7 @@ import config, {
   ADB_USER_LANG,
   ADB_MODE,
   ADB_TRUSTED_SITES,
+  USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS,
 } from './config';
 import { isUrl, parse } from '../core/url';
 import telemetry from '../core/services/telemetry';
@@ -224,7 +225,7 @@ export default background({
   },
 
   actions: {
-    getCosmeticsFilters(payload, sender) {
+    async getCosmeticsFilters(payload, sender) {
       if (this.isAdblockerReady() === false) {
         return { active: false };
       }
@@ -248,11 +249,17 @@ export default background({
         return { active: false };
       }
 
-      return this.adblocker.manager.engine.onRuntimeMessage(
+      const result = await this.adblocker.manager.engine.onRuntimeMessage(
         browser,
         { action: 'getCosmeticsFilters', ...payload },
         sender
       );
+      if (USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS && result) {
+        // prevent double-injection of scripts (the adblocker is
+        // configured to inject them directly via tabs.executeScript)
+        result.scripts = [];
+      }
+      return result;
     },
 
     /**
