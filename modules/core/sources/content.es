@@ -171,7 +171,7 @@ registerContentScript({
       window.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 
       // Stop listening
-      window.addEventListener('unload', () => {
+      window.addEventListener('pagehide', () => {
         window.removeEventListener('mousedown', onMouseDown);
         window.removeEventListener('DOMContentLoaded', onDOMContentLoaded);
       }, { once: true });

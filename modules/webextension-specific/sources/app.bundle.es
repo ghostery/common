@@ -58,7 +58,7 @@ CLIQZ.app
     triggerOnboardingOffers(false);
   });
 
-window.addEventListener('unload', () => {
+window.addEventListener('pagehide', () => {
   CLIQZ.app.stop();
   chrome.runtime.onInstalled.removeListener(onboarding);
 });
