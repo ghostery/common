@@ -100,7 +100,7 @@ export default function () {
     contentScriptActions.setActionCallbacks(runContentScripts(window, chrome, CLIQZ));
 
     // Stop listening for messages on window unload
-    window.addEventListener('unload', () => {
+    window.addEventListener('pagehide', () => {
       contentScriptActions.unload();
     }, { once: true });
   });

@@ -203,7 +203,7 @@ function contentScript(window, chrome, CLIQZ) {
     window.removeEventListener('copy', onCopy);
   }
 
-  window.addEventListener('unload', stop);
+  window.addEventListener('pagehide', stop);
 }
 
 registerContentScript({
