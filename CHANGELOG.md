@@ -1,3 +1,15 @@
+# v1.2.28 (Fri Aug 26 2022)
+
+#### 🐛 Bug Fix
+
+- Reverting: it is in the context of the background page, while [#54](https://github.com/ghostery/common/pull/54) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.27 (Fri Aug 26 2022)
 
 #### 🐛 Bug Fix
