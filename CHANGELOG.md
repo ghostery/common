@@ -1,3 +1,15 @@
+# v1.2.27 (Fri Aug 26 2022)
+
+#### 🐛 Bug Fix
+
+- Follows the recommendation to use "pagehide" instead of "unload": [#53](https://github.com/ghostery/common/pull/53) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.26 (Mon Aug 08 2022)
 
 #### 🐛 Bug Fix
