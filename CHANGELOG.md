@@ -1,3 +1,15 @@
+# v1.2.29 (Fri Aug 26 2022)
+
+#### 🐛 Bug Fix
+
+- Update libraries (upgrade adblocker & fix "npm audit --production" warnings) [#55](https://github.com/ghostery/common/pull/55) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.28 (Fri Aug 26 2022)
 
 #### 🐛 Bug Fix
