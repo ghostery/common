@@ -1,3 +1,15 @@
+# v1.2.31 (Tue Aug 30 2022)
+
+#### 🐛 Bug Fix
+
+- Add support for the new "push injections" in the adblocker library [#52](https://github.com/ghostery/common/pull/52) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.30 (Tue Aug 30 2022)
 
 #### 🐛 Bug Fix
