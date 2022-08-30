@@ -10,7 +10,6 @@ const Plugin = require('broccoli-plugin');
 const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const cliqzEnv = require('../cliqz-env');
@@ -71,29 +70,11 @@ module.exports = class BroccoliWebpack extends Plugin {
             pako: 'pako/dist/pako.js',
             'plugin-json': 'systemjs-plugin-json/json.js',
             'rxjs/operators': 'rxjs/operators/index',
-          }
+          },
+          fallback: {
+            fs: 'empty',
+          },
         },
-        node: {
-          fs: 'empty',
-        },
-        // In development mode we would like to speed up any subsequential build process.
-        // Thus using this HardSourceWebpackPlugin might be useful.
-        // Since it gets cached previous build results.
-        // Unlike a production build where it gets compiled only once and we do need to cache it.
-        plugins: cliqzEnv.DEVELOPMENT ? [
-          new HardSourceWebpackPlugin({
-            // Clean up large, old caches automatically.
-            cachePrune: {
-              // Caches younger than `maxAge` are not considered for deletion. They must
-              // be at least this (default: 2 hours) old in milliseconds.
-              maxAge: 2 * 60 * 60 * 1000,
-              // All caches together must be larger than `sizeThreshold` before any
-              // caches will be deleted. Together they must be at least this
-              // (default: 500 MB) big in bytes.
-              sizeThreshold: 500 * 1024 * 1024
-            },
-          }),
-        ] : [],
         externals: this.builderConfig.globalDeps,
         optimization: {
           minimizer: [
@@ -115,10 +96,10 @@ module.exports = class BroccoliWebpack extends Plugin {
           // could happen so that webpack could avoid including that module in its' bundle.
           sideEffects: false,
         }
-      }, (error, stats) => {
-        if (error || stats.hasErrors()) {
-          console.log(stats.toString({ colors: true }));
-          return reject();
+      }, (error) => {
+        if (error) {
+          console.log(error);
+          return reject(error);
         }
 
         const t2 = new Date().getTime();
