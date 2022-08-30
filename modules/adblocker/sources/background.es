@@ -19,6 +19,8 @@ import config, {
   ADB_PREF_STRICT,
   ADB_USER_LANG,
   ADB_MODE,
+  ADB_TRUSTED_SITES,
+  USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS,
 } from './config';
 import { isUrl, parse } from '../core/url';
 import telemetry from '../core/services/telemetry';
@@ -214,12 +216,16 @@ export default background({
           logger.log('Adblocker pref switched: unload');
           this.shallowUnload();
         }
+      } else if (pref === ADB_TRUSTED_SITES) {
+        if (this.adblocker) {
+          this.adblocker.syncTrustedSites();
+        }
       }
     },
   },
 
   actions: {
-    getCosmeticsFilters(payload, sender) {
+    async getCosmeticsFilters(payload, sender) {
       if (this.isAdblockerReady() === false) {
         return { active: false };
       }
@@ -243,14 +249,17 @@ export default background({
         return { active: false };
       }
 
-      return new Promise((resolve) => {
-        this.adblocker.manager.engine.handleRuntimeMessage(
-          browser,
-          { action: 'getCosmeticsFilters', ...payload },
-          sender,
-          resolve,
-        ).catch(() => { /* it's ok if this fails */ });
-      });
+      const result = await this.adblocker.manager.engine.onRuntimeMessage(
+        browser,
+        { action: 'getCosmeticsFilters', ...payload },
+        sender
+      );
+      if (USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS && result) {
+        // prevent double-injection of scripts (the adblocker is
+        // configured to inject them directly via tabs.executeScript)
+        result.scripts = [];
+      }
+      return result;
     },
 
     /**
