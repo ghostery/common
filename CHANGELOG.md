@@ -1,3 +1,17 @@
+# v1.2.30 (Tue Aug 30 2022)
+
+#### 🐛 Bug Fix
+
+- Upgrade .eslintrc (after moving from "babel-eslint" to "@babel/eslint-parser") [#56](https://github.com/ghostery/common/pull/56) ([@philipp-classen](https://github.com/philipp-classen))
+- Upgrade to webpack 5 to avoid "NODE_OPTIONS=--openssl-legacy-provider". [#56](https://github.com/ghostery/common/pull/56) ([@philipp-classen](https://github.com/philipp-classen))
+- Include Node 18 in CI [#56](https://github.com/ghostery/common/pull/56) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.29 (Fri Aug 26 2022)
 
 #### 🐛 Bug Fix
