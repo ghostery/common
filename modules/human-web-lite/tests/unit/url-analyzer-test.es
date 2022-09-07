@@ -89,6 +89,16 @@ export default describeModule('human-web-lite/url-analyzer',
         });
       });
 
+      it('should support queries from auto-completion ("magnus ca" -> "magnus carlsen")', function () {
+        const url = 'https://www.google.com/search?q=magnus+carlsen&source=hp&oq=magnus+ca&gs_l=mobile-heirloom-hp.1.1.41j0i512i433i131l2j0i3l2.3398.7907.0.12670.10.8.0.2.2.0.250.1118.1j6j1.8.0....0...1c.1.34.mobile-heirloom-hp..0.10.1209.82wOg7b9tFw';
+        expect(uut.parseSearchLinks(url)).to.eql({
+          found: true,
+          type: 'search-go',
+          query: 'magnus carlsen',
+          doublefetchRequest: searchGoDoublefetch('https://www.google.com/search?q=magnus+carlsen'),
+        });
+      });
+
       it('should not find term queries on non-search pages (no false-positives)', function () {
         const urls = [
           'https://cliqz.com/',

@@ -24,8 +24,7 @@ export default class UrlAnalyzer {
       const url_ = url.replace(/\+/g, '%20');
       const parsedUrl = parse(url_);
 
-      // prefer the original query before spell correction
-      const query = parsedUrl.searchParams.get('oq') || parsedUrl.searchParams.get('q');
+      const query = parsedUrl.searchParams.get('q');
       if (query) {
         const query_ = encodeURIComponent(query).replace(/%20/g, '+');
         const doublefetchUrl = `https://${parsedUrl.host}/search?q=${query_}`;
