@@ -34,8 +34,8 @@ const HOUR = 60 * 60 * 1000;
  * living in timezones like US west coast where UTC midnight
  * happens during the day. Without a minimum cooldown, there is
  * the risk of introducing bias in the collected data, as we
- * would include researches with higher likelihood than in
- * other parts of the world (e.g. Europe).
+ * would include repeated searches with higher likelihood than
+ * in other parts of the world (e.g. Europe).
  */
 function chooseExpiration() {
   const minCooldown = 8 * HOUR;
@@ -260,7 +260,9 @@ export default class SearchExtractor {
           payload[key] = context[key] ?? null;
         }
       }
-      messages.push({
+
+      const { deduplicateBy } = schema;
+      const body = {
         type: 'humanweb',
         action,
         payload,
@@ -268,7 +270,8 @@ export default class SearchExtractor {
         channel: this.channel,
         ts: getTimeAsYYYYMMDD(),
         'anti-duplicates': Math.floor(random() * 10000000),
-      });
+      };
+      messages.push({ body, deduplicateBy });
     }
     return messages;
   }
