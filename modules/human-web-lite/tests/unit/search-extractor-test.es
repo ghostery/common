@@ -103,6 +103,7 @@ const ANDROID_PATTERNS = {
           { key: 'qurl' },
           { key: 'ctry' },
         ],
+        deduplicateBy: 'q',
       },
     },
   },
@@ -145,6 +146,7 @@ const IOS_PATTERNS = {
           { key: 'qurl' },
           { key: 'ctry' },
         ],
+        deduplicateBy: 'q',
       },
     },
   },
@@ -205,8 +207,8 @@ export default describeModule('human-web-lite/search-extractor',
           const verifyFixtureExpectations = function (results) {
             // group messages by action
             const messages = {};
-            results.forEach((msg) => { messages[msg.action] = []; });
-            results.forEach((msg) => { messages[msg.action].push(msg); });
+            results.forEach((msg) => { messages[msg.body.action] = []; });
+            results.forEach((msg) => { messages[msg.body.action].push(msg.body); });
 
             // uncomment to export expectations:
             /* eslint-disable-next-line max-len */
