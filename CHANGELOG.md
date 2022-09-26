@@ -1,3 +1,15 @@
+# v1.2.33 (Mon Sep 26 2022)
+
+#### 🐛 Bug Fix
+
+- Configure the fields for client-side message deduplication in the patterns [#59](https://github.com/ghostery/common/pull/59) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.32 (Mon Sep 26 2022)
 
 #### 🐛 Bug Fix
