@@ -1,3 +1,15 @@
+# v1.2.32 (Mon Sep 26 2022)
+
+#### 🐛 Bug Fix
+
+- hwlite: always use the "q" parameter for doublefetch [#57](https://github.com/ghostery/common/pull/57) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.31 (Tue Aug 30 2022)
 
 #### 🐛 Bug Fix
