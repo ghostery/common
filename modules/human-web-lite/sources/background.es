@@ -79,8 +79,10 @@ export default background({
         logger.debug('Auto-triggering scheduled jobs...');
         try {
           await this.humanWebLite.processPendingJobs();
-          logger.debug('Auto-triggering scheduled jobs...done');
+          logger.debug('Auto-triggering scheduled jobs...done (success)');
         } catch (e) {
+          logger.warn('Auto-triggering scheduled jobs...done (finished with errors)');
+          logger.info('Error while processing jobs:', e);
           this._scheduleAutoTrigger();
         }
       }

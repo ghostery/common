@@ -273,6 +273,7 @@ export default class SearchExtractor {
       };
       messages.push({ body, deduplicateBy });
     }
+    logger.debug('Found the following messages:', messages);
     return messages;
   }
 }

@@ -23,6 +23,7 @@ export default class MessageSender {
   }
 
   async send(message) {
+    logger.debug('Preparing to send message:', message);
     const { ok, rollback, rejectReason } = await this.duplicateDetector.trySend(message);
     if (!ok) {
       logger.info('Rejected by duplicate detector:', rejectReason, message);
@@ -30,10 +31,11 @@ export default class MessageSender {
     }
     try {
       // Note: assume fire-and-forget message here
-      await this.hpn.action('send', message);
-      logger.info('Successfully sent message:', message);
+      await this.hpn.action('send', message.body);
+      logger.info('Successfully sent message:', message.body);
     } catch (e) {
       // rollback to allow future resending attempts
+      logger.info('Failed to send message. Rolling back to enable a retry attempt:', message.body);
       await rollback();
       throw e;
     }
