@@ -1,3 +1,15 @@
+# v1.2.34 (Wed Sep 28 2022)
+
+#### 🐛 Bug Fix
+
+- Fixed message sending in hwlite [#60](https://github.com/ghostery/common/pull/60) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.33 (Mon Sep 26 2022)
 
 #### 🐛 Bug Fix
