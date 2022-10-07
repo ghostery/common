@@ -1,3 +1,15 @@
+# v1.2.36 (Fri Oct 07 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Revert "Upgrade webextension-polyfill (#62)" ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.35 (Fri Oct 07 2022)
 
 #### 🐛 Bug Fix
