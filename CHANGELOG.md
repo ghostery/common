@@ -1,3 +1,15 @@
+# v1.2.35 (Fri Oct 07 2022)
+
+#### 🐛 Bug Fix
+
+- Upgrade webextension-polyfill [#62](https://github.com/ghostery/common/pull/62) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.34 (Wed Sep 28 2022)
 
 #### 🐛 Bug Fix
