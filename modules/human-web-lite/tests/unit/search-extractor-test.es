@@ -61,102 +61,6 @@ function findAllFixtures() {
 }
 
 
-const ANDROID_PATTERNS = {
-  'search-go': {
-    input: {
-      '#main div div[data-hveid] div.ZINbbc.xpd.O9g5cc.uUPGi': {
-        all: {
-          u: {
-            select: 'a',
-            attr: 'href',
-            transform: [['queryParam', 'q']],
-          },
-          t: {
-            select: 'a > h3 > div',
-            attr: 'textContent',
-          },
-          age: {
-            firstMatch: [{
-              select: 'div.kCrYT > div > div.BNeawe.s3v9rd.AP7Wnd > div > div:not(.MSiauf) > div > span.xUrNXd.xUrNXd.UMOHqf + br + span.xUrNXd.UMOHqf',
-              attr: 'textContent',
-            }, {
-              select: 'div.kCrYT > div > div.BNeawe.s3v9rd.AP7Wnd > div > div:not(.MSiauf) > div > span.xUrNXd.xUrNXd.UMOHqf',
-              attr: 'textContent',
-            }],
-          },
-          m: {
-            select: 'span.Tmh7uc.UMOHqf',
-            attr: 'textContent',
-          },
-        }
-      },
-    },
-    output: {
-      'hwlite.query': {
-        fields: [
-          {
-            key: 'r',
-            source: '#main div div[data-hveid] div.ZINbbc.xpd.O9g5cc.uUPGi',
-            requiredKeys: ['t', 'u'],
-          },
-          { key: 'q' },
-          { key: 'qurl' },
-          { key: 'ctry' },
-        ],
-        deduplicateBy: 'q',
-      },
-    },
-  },
-};
-
-const IOS_PATTERNS = {
-  'search-go': {
-    input: {
-      '#rso div.mnr-c.xpd.O9g5cc.uUPGi': {
-        all: {
-          u: {
-            select: 'a',
-            attr: 'href',
-          },
-          t: {
-            select: 'a > div > div',
-            attr: 'textContent',
-          },
-          age: {
-            select: '.BmP5tf .wuQ4Ob',
-            attr: 'textContent',
-            transform: [['trySplit', '·', 0]],
-          },
-          m: {
-            select: '.TXwUJf a.fl',
-            attr: 'textContent',
-          },
-        }
-      },
-    },
-    output: {
-      'hwlite.query': {
-        fields: [
-          {
-            key: 'r',
-            source: '#rso div.mnr-c.xpd.O9g5cc.uUPGi',
-            requiredKeys: ['t', 'u'],
-          },
-          { key: 'q' },
-          { key: 'qurl' },
-          { key: 'ctry' },
-        ],
-        deduplicateBy: 'q',
-      },
-    },
-  },
-};
-
-const PATTERN_FIXTURES = {
-  android: ANDROID_PATTERNS,
-  ios: IOS_PATTERNS,
-};
-
 export default describeModule('human-web-lite/search-extractor',
   () => ({
     'platform/globals': {
@@ -196,9 +100,8 @@ export default describeModule('human-web-lite/search-extractor',
               setupDocument(fixture.html);
 
               const target = _path.split('/')[0];
-              if (PATTERN_FIXTURES[target]) {
-                patterns.updatePatterns(PATTERN_FIXTURES[target]);
-              }
+              const targetPatterns = fs.readFileSync(`${FIXTURES_BASE_PATH}/${target}/patterns.json`).toString();
+              patterns.updatePatterns(JSON.parse(targetPatterns));
             } catch (e) {
               throw new Error(`Failed to load test fixture "${_path}": ${e}`, e);
             }
