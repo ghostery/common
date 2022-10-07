@@ -39,12 +39,14 @@ export default class AliveMessageGenerator {
     if (isNaN(version)) {
       version = '';
     }
+    const language = navigator.language || '';
 
     const config = {
       browser,
       version, // major version
       os,
-      ctry: countryCode, // sanitized country ('--' for countries with a small population)
+      language, // e.g. 'en-US'
+      ctry: countryCode, // sanitized country ('--' if the estimated user base is small)
     };
     try {
       const reachedQuorum = await this._reachedQuorum(config);
@@ -62,6 +64,7 @@ export default class AliveMessageGenerator {
       browser: '',
       version: '',
       os: '',
+      language: '',
       ctry: '--',
       t: hour,
     };
