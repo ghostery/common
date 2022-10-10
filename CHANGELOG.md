@@ -1,3 +1,15 @@
+# v1.2.38 (Mon Oct 10 2022)
+
+#### 🐛 Bug Fix
+
+- Include the language in the alive message [#63](https://github.com/ghostery/common/pull/63) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.37 (Mon Oct 10 2022)
 
 #### 🐛 Bug Fix
