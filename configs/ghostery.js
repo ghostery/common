@@ -24,7 +24,7 @@ module.exports = {
     URL_CHANGED_EVENT_DEBOUNCE: 500,
     ATTRACK_TELEMETRY_PROVIDER: 'hpnv2',
     HW_CHANNEL: 'ghostery',
-    ALLOWED_COUNTRY_CODES: ['de', 'at', 'ch', 'es', 'us', 'fr', 'nl', 'gb', 'it', 'be', 'se', 'dk', 'fi', 'cz', 'gr', 'hu', 'ro', 'no', 'ca', 'au', 'ru', 'ua', 'in', 'pl', 'jp', 'br', 'mx', 'cn', 'ar'],
+    ALLOWED_COUNTRY_CODES: ['ar', 'at', 'au', 'be', 'br', 'ca', 'ch', 'cn', 'cz', 'de', 'dk', 'es', 'fi', 'fr', 'gb', 'gr', 'hu', 'id', 'in', 'it', 'jp', 'kr', 'mx', 'nl', 'no', 'nz', 'ph', 'pl', 'pt', 'ro', 'ru', 'se', 'sg', 'tr', 'tw', 'ua', 'us'],
     antitrackingPlaceholder: 'ghostery',
     antitrackingHeader: 'Ghostery-AntiTracking',
     telemetry: {
