@@ -37,6 +37,8 @@ export default background({
   nextAutoTrigger: null,
 
   requiresServices: [
+    // TODO: consider managing "config_location" from within this module (not the service)
+    'cliqz-config',
     'storage',
   ],
   hpnLite: inject.module('hpn-lite'),
