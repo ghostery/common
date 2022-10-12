@@ -1,0 +1,64 @@
+{
+  "search-go": {
+    "input": {
+      "#main div div[data-hveid] div.ZINbbc.xpd.O9g5cc.uUPGi": {
+        "all": {
+          "u": {
+            "select": "a",
+            "attr": "href",
+            "transform": [
+              [
+                "queryParam",
+                "q"
+              ]
+            ]
+          },
+          "t": {
+            "select": "a > h3 > div",
+            "attr": "textContent"
+          },
+          "age": {
+            "firstMatch": [
+              {
+                "select": "div.kCrYT > div > div.BNeawe.s3v9rd.AP7Wnd > div > div:not(.MSiauf) > div > span.xUrNXd.xUrNXd.UMOHqf + br + span.xUrNXd.UMOHqf",
+                "attr": "textContent"
+              },
+              {
+                "select": "div.kCrYT > div > div.BNeawe.s3v9rd.AP7Wnd > div > div:not(.MSiauf) > div > span.xUrNXd.xUrNXd.UMOHqf",
+                "attr": "textContent"
+              }
+            ]
+          },
+          "m": {
+            "select": "span.Tmh7uc.UMOHqf",
+            "attr": "textContent"
+          }
+        }
+      }
+    },
+    "output": {
+      "hwlite.query": {
+        "fields": [
+          {
+            "key": "r",
+            "source": "#main div div[data-hveid] div.ZINbbc.xpd.O9g5cc.uUPGi",
+            "requiredKeys": [
+              "t",
+              "u"
+            ]
+          },
+          {
+            "key": "q"
+          },
+          {
+            "key": "qurl"
+          },
+          {
+            "key": "ctry"
+          }
+        ],
+        "deduplicateBy": "q"
+      }
+    }
+  }
+}

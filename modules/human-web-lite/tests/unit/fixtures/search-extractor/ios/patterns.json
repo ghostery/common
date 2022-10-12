@@ -1,0 +1,57 @@
+{
+  "search-go": {
+    "input": {
+      "#rso div.mnr-c.xpd.O9g5cc.uUPGi": {
+        "all": {
+          "u": {
+            "select": "a",
+            "attr": "href"
+          },
+          "t": {
+            "select": "a > div > div",
+            "attr": "textContent"
+          },
+          "age": {
+            "select": ".BmP5tf .wuQ4Ob",
+            "attr": "textContent",
+            "transform": [
+              [
+                "trySplit",
+                "·",
+                0
+              ]
+            ]
+          },
+          "m": {
+            "select": ".TXwUJf a.fl",
+            "attr": "textContent"
+          }
+        }
+      }
+    },
+    "output": {
+      "hwlite.query": {
+        "fields": [
+          {
+            "key": "r",
+            "source": "#rso div.mnr-c.xpd.O9g5cc.uUPGi",
+            "requiredKeys": [
+              "t",
+              "u"
+            ]
+          },
+          {
+            "key": "q"
+          },
+          {
+            "key": "qurl"
+          },
+          {
+            "key": "ctry"
+          }
+        ],
+        "deduplicateBy": "q"
+      }
+    }
+  }
+}
