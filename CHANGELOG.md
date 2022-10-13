@@ -1,3 +1,19 @@
+# v1.2.39 (Thu Oct 13 2022)
+
+#### 🐛 Bug Fix
+
+- Make sure "config_location" gets initialized on Android [#65](https://github.com/ghostery/common/pull/65) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### 🧪 Tests
+
+- cleanup tests: move patterns in the fixture folder [#61](https://github.com/ghostery/common/pull/61) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.38 (Mon Oct 10 2022)
 
 #### 🐛 Bug Fix
