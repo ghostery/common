@@ -42,7 +42,7 @@ function makeRequestFromContext(url, urlParts, {
 
     domain: urlParts.generalDomain || '',
     hostname: urlParts.hostname || '',
-    url,
+    url: url.toLowerCase(),
 
     // In case of a 'sub_frame' request, the partiness for the adblocker needs to
     // be slightly different. Since it's possible that `url` and `frameUrl` are
