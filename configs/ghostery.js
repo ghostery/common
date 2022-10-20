@@ -44,7 +44,7 @@ module.exports = {
     'modules.anti-phishing.enabled': false,
     'modules.adblocker.enabled': true,
     'modules.insights.enabled': false,
-    'cliqz-adb': 2,
+    'cliqz-adb': 1,
     attrackBloomFilter: true,
     humanWeb: true,
     'cliqz-anti-phishing': true,
