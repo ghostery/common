@@ -55,7 +55,7 @@ module.exports = class BroccoliWebpack extends Plugin {
           filename: '[name]',
           path: outputPath
         },
-        ...(cliqzEnv.SOURCE_MAPS ? { devtool: 'source-map' } : ({})),
+        devtool: cliqzEnv.SOURCE_MAPS ? 'source-map' : '',
         resolve: {
           symlinks: false,
           modules: [
