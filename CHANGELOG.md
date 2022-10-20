@@ -1,3 +1,16 @@
+# v1.2.41 (Thu Oct 20 2022)
+
+#### 🐛 Bug Fix
+
+- Fix webpack config [#68](https://github.com/ghostery/common/pull/68) ([@chrmod](https://github.com/chrmod))
+- Ensure production setup for ghostery-extension MV2 [#67](https://github.com/ghostery/common/pull/67) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.40 (Thu Oct 20 2022)
 
 #### 🐛 Bug Fix
