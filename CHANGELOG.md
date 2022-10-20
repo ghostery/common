@@ -1,3 +1,15 @@
+# v1.2.40 (Thu Oct 20 2022)
+
+#### 🐛 Bug Fix
+
+- Adblocker: url matched against engine should be lower cased [#66](https://github.com/ghostery/common/pull/66) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.39 (Thu Oct 13 2022)
 
 #### 🐛 Bug Fix
