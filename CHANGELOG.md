@@ -1,3 +1,15 @@
+# v1.2.44 (Thu Oct 20 2022)
+
+#### 🐛 Bug Fix
+
+- Fixed regression: adblocker was no longer getting fully loaded [#69](https://github.com/ghostery/common/pull/69) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.43 (Thu Oct 20 2022)
 
 #### ⚠️ Pushed to `main`
