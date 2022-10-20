@@ -1,3 +1,15 @@
+# v1.2.43 (Thu Oct 20 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Revert webpack setup ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.42 (Thu Oct 20 2022)
 
 #### ⚠️ Pushed to `main`
