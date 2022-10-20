@@ -172,7 +172,7 @@ export default class App {
 
     await initPrefs();
 
-    if (this.config.environment === 'development' || this.debug) {
+    if (this.debug) {
       prefs.set('developer', true);
     }
 

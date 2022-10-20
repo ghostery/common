@@ -6,8 +6,8 @@
     "test": "npm run unit-tests",
     "lint": "./fern.js lint",
     "unit-tests": "./fern.js test configs/ci/unit-tests.js -l unit-node",
-    "build-gbe": "CLIQZ_OUTPUT_PATH=./build/gbe ./fern.js build configs/ghostery.js --environment production --no-debug",
-    "build-ios": "CLIQZ_OUTPUT_PATH=./build/ios ./fern.js build configs/user-agent-ios.js --environment production --no-debug",
+    "build-gbe": "CLIQZ_OUTPUT_PATH=./build/gbe ./fern.js build configs/ghostery.js",
+    "build-ios": "CLIQZ_OUTPUT_PATH=./build/ios ./fern.js build configs/user-agent-ios.js",
     "fetch-resources": "node modules/antitracking/fetch-resources.js",
     "prerelease": "npm run build-gbe && npm run build-ios",
     "release": "auto shipit"
@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/ghostery/common.git"
   },
-  "author": "Ghostery Inc.",
+  "author": "Ghostery GmbH.",
   "license": "MPL-2.0",
   "bugs": {
     "url": "https://github.com/ghostery/common/issues"
