@@ -1,3 +1,15 @@
+# v1.2.42 (Thu Oct 20 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Fix build ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.41 (Thu Oct 20 2022)
 
 #### 🐛 Bug Fix
