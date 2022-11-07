@@ -113,7 +113,7 @@ export default class PatternsUpdater {
     let force = false;
     try {
       let persistedState = await this.storage.get(this.storageKey);
-      if (persistedState && persistedState.version !== DB_VERSION) {
+      if (persistedState && persistedState.dbVersion !== DB_VERSION) {
         logger.info('DB_VERSION changed. Discarding the cache...');
         persistedState = null;
       }
