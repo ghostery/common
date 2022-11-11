@@ -196,6 +196,7 @@ export default class PatternsUpdater {
       const url = this.patternUpdateUrl;
       const response = await this._fetch(url, {
         method: 'GET',
+        cache: 'no-cache',
         credentials: 'omit',
       });
       if (!response.ok) {

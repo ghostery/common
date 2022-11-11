@@ -62,6 +62,7 @@ function mockFetch(patternsUrl, serverPatterns) {
     url: patternsUrl,
     options: {
       method: 'GET',
+      cache: 'no-cache',
       credentials: 'omit',
     },
   };
