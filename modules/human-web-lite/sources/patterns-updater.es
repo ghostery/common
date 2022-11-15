@@ -113,7 +113,7 @@ export default class PatternsUpdater {
     let force = false;
     try {
       let persistedState = await this.storage.get(this.storageKey);
-      if (persistedState && persistedState.version !== DB_VERSION) {
+      if (persistedState && persistedState.dbVersion !== DB_VERSION) {
         logger.info('DB_VERSION changed. Discarding the cache...');
         persistedState = null;
       }
@@ -196,6 +196,7 @@ export default class PatternsUpdater {
       const url = this.patternUpdateUrl;
       const response = await this._fetch(url, {
         method: 'GET',
+        cache: 'no-cache',
         credentials: 'omit',
       });
       if (!response.ok) {
