@@ -1,3 +1,15 @@
+# v1.2.45 (Tue Nov 15 2022)
+
+#### 🐛 Bug Fix
+
+- Fix patterns updater on Android [#70](https://github.com/ghostery/common/pull/70) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.44 (Thu Oct 20 2022)
 
 #### 🐛 Bug Fix
