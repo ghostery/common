@@ -1,3 +1,15 @@
+# v1.2.46 (Fri Nov 18 2022)
+
+#### 🐛 Bug Fix
+
+- Fixed exception in quorum check [#71](https://github.com/ghostery/common/pull/71) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.45 (Tue Nov 15 2022)
 
 #### 🐛 Bug Fix
