@@ -3244,7 +3244,7 @@ const CliqzHumanWeb = {
       }
 
       _log("Perform QC: quorum confirmation required");
-      return CliqzHumanWeb._quorumCheckAnyString(msg.payload);
+      return CliqzHumanWeb._quorumCheckAnyString(msg.payload.url);
     },
 
     async _quorumCheckAnyString(str) {
