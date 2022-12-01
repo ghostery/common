@@ -1,3 +1,15 @@
+# v1.2.47 (Thu Dec 01 2022)
+
+#### 🐛 Bug Fix
+
+- Fixed: URL#protocol ends with trailing colon [#72](https://github.com/ghostery/common/pull/72) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.46 (Fri Nov 18 2022)
 
 #### 🐛 Bug Fix
