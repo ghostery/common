@@ -46,14 +46,25 @@ function chooseExpiration() {
   return Math.max(tillCooldown, tillNextUtcDay) + randomNoise;
 }
 
-function runSelector(item, selector, attr) {
+function runSelector(item, selector, attr, baseURI) {
   const elem = selector ? item.querySelector(selector) : item;
   if (elem) {
     if (attr === 'textContent') {
       return elem.textContent;
     }
     if (attr === 'href') {
-      return elem.href;
+      // Going throw the attribute "href" avoids some of the problems of using
+      // directly "elem.href". For relative links the DOMParser cannot
+      // accidentally fill in the extension ID as the base. Another advantage
+      // (also for absolute links) is that it avoids a double-encoding problem
+      // in certain DOM parser (doesn't seem to affect Firefox, but linkedom).
+      //
+      // Since this part may dependent on the DOMParse implementation, two
+      // notes about the intended semantic:
+      // * links should be as close to the original page as possible
+      // * extensions IDs must not leak into the output
+      const rawLink = elem.getAttribute('href');
+      return rawLink ? new URL(rawLink, baseURI).href : null;
     }
     if (elem.hasAttribute(attr)) {
       return elem.getAttribute(attr);
@@ -78,11 +89,11 @@ function runTransforms(value, transformSteps = []) {
   return tmpValue ?? null;
 }
 
-function findFirstMatch(rootItem, selectorDef) {
+function findFirstMatch(rootItem, selectorDef, baseURI) {
   // special case: allows to define multiple rules (first matching rule wins)
   if (selectorDef.firstMatch) {
     for (const { select, attr, transform = [] } of selectorDef.firstMatch) {
-      const match = runSelector(rootItem, select, attr) ?? null;
+      const match = runSelector(rootItem, select, attr, baseURI) ?? null;
       if (match !== null) {
         return runTransforms(match, transform);
       }
@@ -91,7 +102,7 @@ function findFirstMatch(rootItem, selectorDef) {
   }
 
   // default case: only one rule
-  return runSelector(rootItem, selectorDef.select, selectorDef.attr) ?? null;
+  return runSelector(rootItem, selectorDef.select, selectorDef.attr, baseURI) ?? null;
 }
 
 export default class SearchExtractor {
@@ -157,6 +168,7 @@ export default class SearchExtractor {
     }
 
     const found = {};
+    const baseURI = doublefetchRequest.url;
 
     const { input = {}, output = {} } = rules[type];
     for (const [selector, selectorDef] of Object.entries(input)) {
@@ -165,7 +177,7 @@ export default class SearchExtractor {
         const item = doc.querySelector(selector);
         if (item) {
           for (const [key, def] of Object.entries(selectorDef.first)) {
-            const value = findFirstMatch(item, def);
+            const value = findFirstMatch(item, def, baseURI);
             found[selector][key] = runTransforms(value, def.transform);
           }
         }
@@ -176,7 +188,7 @@ export default class SearchExtractor {
           for (const [key, def] of Object.entries(selectorDef.all)) {
             found[selector][key] = [];
             for (const rootItem of rootItems) {
-              const item = findFirstMatch(rootItem, def);
+              const item = findFirstMatch(rootItem, def, baseURI);
               found[selector][key].push(runTransforms(item, def.transform));
             }
           }
@@ -189,7 +201,7 @@ export default class SearchExtractor {
     // meta fields, which are provided instead of being extracted
     const context = {
       q: query ?? null,
-      qurl: doublefetchRequest.url ?? null,
+      qurl: doublefetchRequest.url,
       ctry: this.sanitizer.getSafeCountryCode(),
     };
     const isPresent = x => x !== null && x !== undefined && x !== '';
