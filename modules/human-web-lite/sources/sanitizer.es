@@ -173,7 +173,7 @@ export function sanitizeUrl(url) {
     // so it is less likely that sites include secrets or personal
     // identifiers in the hostname.
     const truncate = (reason) => {
-      const safeUrl = `${parsedUrl.protocol}://${parsedUrl.hostname}/ (PROTECTED)`;
+      const safeUrl = `${parsedUrl.protocol}//${parsedUrl.hostname}/ (PROTECTED)`;
       logger.debug('sanitizeUrl truncated URL:', url, '->', safeUrl);
       return {
         result: 'truncated',
@@ -186,7 +186,7 @@ export function sanitizeUrl(url) {
     if (url.hostname > 50) {
       return drop('hostname too long');
     }
-    if (url.length > 200) {
+    if (url.length > 800) {
       return truncate('url too long');
     }
 
@@ -251,10 +251,7 @@ export default class Sanitizer {
   }
 
   maskURL(url) {
-    if (sanitizeUrl(url)) {
-      return url;
-    }
-    return null;
+    return sanitizeUrl(url).safeUrl;
   }
 
   /**

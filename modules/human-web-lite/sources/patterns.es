@@ -152,7 +152,20 @@ const TRANSFORMS = new Map(Object.entries({
 
   decodeURIComponent: (x) => {
     expectString(x);
-    return decodeURIComponent(x);
+    try {
+      return decodeURIComponent(x);
+    } catch (e) {
+      return null;
+    }
+  },
+
+  tryDecodeURIComponent: (x) => {
+    expectString(x);
+    try {
+      return decodeURIComponent(x);
+    } catch (e) {
+      return x;
+    }
   },
 }));
 
