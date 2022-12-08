@@ -1,3 +1,15 @@
+# v1.2.48 (Thu Dec 08 2022)
+
+#### 🐛 Bug Fix
+
+- Fixes in hwlite [#73](https://github.com/ghostery/common/pull/73) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.47 (Thu Dec 01 2022)
 
 #### 🐛 Bug Fix
