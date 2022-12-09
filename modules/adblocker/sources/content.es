@@ -34,3 +34,28 @@ registerContentScript({
     );
   }],
 });
+
+/**
+ * Temporary workaround for a problem with Twitter that we detected after publishing
+ * the changes here (8th December 2022):
+ * https://www.ghostery.com/blog/how-to-read-tweets-without-logging-in
+ *
+ * As an unintended side-effect, we are running in a situation now that the Twitter UI
+ * sometimes doesn't refresh (e.g. if you are scrolling down quickly). This is a hack
+ * to force a resize event every two seconds, which will sync the Twitter UI and make the
+ * content appear.
+ */
+function fixTwitterLostUpdates() {
+  setInterval(() => {
+    window.dispatchEvent(new Event('resize'));
+  }, 2000);
+}
+
+registerContentScript({
+  module: 'human-web',
+  matches: [
+    'https://twitter.com/*',
+  ],
+  js: [fixTwitterLostUpdates],
+  allFrames: false,
+});
