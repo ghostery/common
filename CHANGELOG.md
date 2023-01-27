@@ -1,3 +1,15 @@
+# v1.2.49 (Fri Jan 27 2023)
+
+#### 🐛 Bug Fix
+
+- Update adblocker [#75](https://github.com/ghostery/common/pull/75) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.2.48 (Thu Dec 08 2022)
 
 #### 🐛 Bug Fix
