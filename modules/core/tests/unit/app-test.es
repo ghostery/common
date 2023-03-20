@@ -89,9 +89,6 @@ export default describeModule('core/app',
       'platform/globals': {
         chrome: {},
       },
-      'platform/browser': {
-        forEachWindow() {},
-      },
       'core/platform': {
         default: {},
       },

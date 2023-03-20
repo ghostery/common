@@ -13,9 +13,6 @@ import sleep from '../core/helpers/sleep';
 import getTestUrl from '../platform/integration-tests/test-launcher';
 import {
   getActiveTab,
-  addWindowObserver,
-  removeWindowObserver,
-  forEachWindow,
 } from '../platform/browser';
 import { browser } from '../platform/globals';
 import { newTab } from '../platform/tabs';
@@ -59,13 +56,12 @@ export default {
     };
     browser.runtime.onMessage.addListener(this.mixextlogListener);
 
-    forEachWindow(() => this.startTestsWhenExtensionLoaded());
+    this.startTestsWhenExtensionLoaded();
     this.windowObserver = (w, topic) => {
       if (topic === 'opened') {
         this.startTestsWhenExtensionLoaded();
       }
     };
-    addWindowObserver(this.windowObserver);
   },
 
   unload() {
@@ -73,7 +69,6 @@ export default {
     if (this.logChannel) {
       this.logChannel.close();
     }
-    removeWindowObserver(this.windowObserver);
   },
 
   async startTestsWhenExtensionLoaded() {

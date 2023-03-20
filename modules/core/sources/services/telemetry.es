@@ -8,7 +8,6 @@
 
 import prefs from '../prefs';
 import { subscribe } from '../events';
-import { isPrivateMode, getWindow } from '../browser';
 import inject from '../kord/inject';
 import EventEmitter from '../event-emitter';
 import Logger from '../logger';
@@ -211,20 +210,6 @@ export async function service(app) {
       if (!enabled) {
         // Telemetry is currently disabled (opted-out)
         logger.log('Could not push telemetry: disabled.', schemaName, payload);
-        return Promise.resolve();
-      }
-
-      // IMPORTANT: This check is only an approximation of the expected
-      // behavior. The window returned by `getWindow` is only the currently
-      // focused window. This means that if a private window is open in the
-      // background and that telemetry is sent from it then `isPrivateMode` will
-      // return false. Ideally each caller of telemetry should make sure that if
-      // a window is available, the check is performed before calling
-      // `telemetry.push`. The following check is simply a fallback, to catch as
-      // many cases as possible (although it is not bullet-proof).
-      const currentWindow = getWindow();
-      if (currentWindow && isPrivateMode(currentWindow)) {
-        logger.log('Could not push telemetry: private window.', schemaName, payload);
         return Promise.resolve();
       }
 
