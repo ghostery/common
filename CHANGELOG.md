@@ -1,3 +1,15 @@
+# v1.2.50 (Mon Mar 20 2023)
+
+#### 🐛 Bug Fix
+
+- Core: remove obsolete window observers [#76](https://github.com/ghostery/common/pull/76) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.49 (Fri Jan 27 2023)
 
 #### 🐛 Bug Fix
