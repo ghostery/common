@@ -10,9 +10,6 @@ import { window, chrome, browser } from './globals';
 
 export * from './tabs';
 
-const windowsMap = new Map();
-
-
 export function isTabURL() {
   return false;
 }

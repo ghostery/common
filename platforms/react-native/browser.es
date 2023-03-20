@@ -7,7 +7,6 @@
  */
 
 import { NativeModules } from 'react-native';
-import window from './window';
 
 const nativeWebRequest = NativeModules.WebRequest;
 const LocaleConstants = NativeModules.LocaleConstants;
