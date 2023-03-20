@@ -18,7 +18,7 @@ import Storage from '../platform/human-web/storage';
 import config from '../core/config';
 import { getAllOpenPages } from '../platform/human-web/opentabs';
 import { normalizeAclkUrl } from './ad-detection';
-import { getActiveTab, isPrivateMode, getWindow } from '../core/browser';
+import { getActiveTab } from '../core/browser';
 import DoublefetchHandler from './doublefetch-handler';
 import ContentExtractionPatternsLoader from './content-extraction-patterns-loader';
 import HumanWebPatternsLoader from './human-web-patterns-loader';
@@ -2393,9 +2393,6 @@ const CliqzHumanWeb = {
       if (!CliqzHumanWeb || //might be called after the module gets unloaded
           prefs.get('humanWebOptOut', false)) {
         return discard('human web disabled');
-      }
-      if (isPrivateMode(getWindow())) {
-        return discard('private mode');
       }
 
       // Sanitize message before doing the quorum check.

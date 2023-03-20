@@ -20,16 +20,7 @@ export function checkIsWindowActive() {
   return Promise.resolve(true);
 }
 
-export function forEachWindow() {
-}
-
 export function setOurOwnPrefs() {
-}
-
-export function addWindowObserver() {
-}
-
-export function removeWindowObserver() {
 }
 
 export function addSessionRestoreObserver() {
@@ -62,8 +53,4 @@ export function getCookies() {
 
 export function isDefaultBrowser() {
   return Promise.resolve(null);
-}
-
-export function isPrivateMode() {
-  return false;
 }

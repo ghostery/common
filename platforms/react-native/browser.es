@@ -7,7 +7,6 @@
  */
 
 import { NativeModules } from 'react-native';
-import window from './window';
 
 const nativeWebRequest = NativeModules.WebRequest;
 const LocaleConstants = NativeModules.LocaleConstants;
@@ -34,16 +33,6 @@ export function isWindowActive() {
 
 export function checkIsWindowActive(windowID) {
   return nativeWebRequest.isWindowActive(parseInt(windowID, 10));
-}
-
-export function forEachWindow(cb) {
-  cb(window);
-}
-
-export function addWindowObserver() {
-}
-
-export function removeWindowObserver() {
 }
 
 export function addSessionRestoreObserver() {
@@ -78,10 +67,6 @@ export function getCookies() {
 
 export function isDefaultBrowser() {
   return null;
-}
-
-export function isPrivateMode() {
-  return false;
 }
 
 export function openLink() {
