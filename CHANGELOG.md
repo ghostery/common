@@ -1,3 +1,15 @@
+# v1.3.0 (Thu Mar 23 2023)
+
+#### 🚀 Enhancement
+
+- Remove unused modules anolysis and anti-phishing [#77](https://github.com/ghostery/common/pull/77) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.2.50 (Mon Mar 20 2023)
 
 #### 🐛 Bug Fix
