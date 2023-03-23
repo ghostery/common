@@ -24,7 +24,6 @@ import config, {
 } from './config';
 import { isUrl, parse } from '../core/url';
 import telemetry from '../core/services/telemetry';
-import metrics from './telemetry/metrics';
 
 function isSupportedProtocol(url) {
   return (
@@ -68,7 +67,6 @@ export default background({
   },
 
   async init() {
-    telemetry.register(metrics);
     await this.shallowInit();
   },
 
@@ -80,7 +78,6 @@ export default background({
   },
 
   unload() {
-    telemetry.unregister(metrics);
     this.shallowUnload();
   },
 

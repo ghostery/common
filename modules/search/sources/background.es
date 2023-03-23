@@ -47,17 +47,6 @@ import pluckResults from './operators/streams/pluck-results';
 import { bindAll } from '../core/helpers/bind-functions';
 import { chrome } from '../platform/globals';
 
-// Telemetry schemas
-import historyVisitMetric from './telemetry/metrics/history-visits';
-import latencyMetric from './telemetry/metrics/session/latency';
-import sessionMetric from './telemetry/metrics/session/interaction';
-
-import newsAnalysis from './telemetry/analyses/sessions/news';
-import interactionAnalysis from './telemetry/analyses/sessions/interaction';
-import smartCliqzAnalysis from './telemetry/analyses/sessions/smart-cliqz';
-import searchEnginesAnalysis from './telemetry/analyses/sessions/search-engines';
-import historyVisitAnalysis from './telemetry/analyses/history-visits';
-
 const ADULT_FILTER_PREF = 'adultContentFilter';
 
 const performanceTelemetryEnabled = !!chrome.webRequest;
@@ -115,24 +104,11 @@ export default background({
     'setSearchSession',
   ]),
 
-  telemetrySchemas: [
-    historyVisitMetric,
-    latencyMetric,
-    sessionMetric,
-    newsAnalysis,
-    interactionAnalysis,
-    smartCliqzAnalysis,
-    searchEnginesAnalysis,
-    historyVisitAnalysis,
-  ],
-
   /**
     @method init
     @param settings
   */
   init(settings, browser) {
-    telemetry.register(this.telemetrySchemas);
-
     this.settings = settings;
     this.searchSessions = new Map();
     this.adultAssistant = new AdultAssistant();
@@ -174,8 +150,6 @@ export default background({
   },
 
   unload() {
-    telemetry.unregister(this.telemetrySchemas);
-
     if (performanceTelemetryEnabled) {
       performance.unload();
     }

@@ -17,11 +17,6 @@ import PageStore from './page-store';
 import logger from './logger';
 import CnameUncloaker, { isCnameUncloakSupported } from './cname-uncloak';
 
-// Telemetry schemas
-import performanceMetrics from './telemetry/metrics/performance';
-import performanceAnalysis from './telemetry/analyses/performance';
-
-
 function modifyHeaderByType(headers, name, value) {
   const lowerCaseName = name.toLowerCase();
   const filteredHeaders = headers.filter(h => h.name.toLowerCase() !== lowerCaseName);
@@ -94,10 +89,6 @@ class BlockingResponse {
 export default background({
   initialized: false,
   requiresServices: ['telemetry', 'pacemaker'],
-  telemetrySchemas: [
-    performanceMetrics,
-    performanceAnalysis,
-  ],
 
   enabled() { return true; },
 
@@ -113,8 +104,6 @@ export default background({
       return;
     }
 
-    telemetry.register(this.telemetrySchemas);
-
     this.pipelines = new Map();
     this.pageStore = new PageStore();
     this.pageStore.init();
@@ -126,8 +115,6 @@ export default background({
     if (!this.initialized) {
       return;
     }
-
-    telemetry.unregister(this.telemetrySchemas);
 
     if (this.cnameUncloaker !== null) {
       this.cnameUncloaker.unload();

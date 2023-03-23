@@ -23,11 +23,6 @@ import inject from '../core/kord/inject';
 import { isLegacyEdge } from '../core/platform';
 import { parse } from '../core/url';
 
-// Telemetry schemas
-import popupActionsMetrics from './telemetry/metrics/popup';
-import tokensMetrics from './telemetry/metrics/tokens';
-import tokensAnalyses from './telemetry/analyses/tokens';
-
 function humanwebExistsAndDisabled() {
   const humanweb = inject.module('human-web');
   return humanweb.isPresent() && !humanweb.isEnabled();
@@ -39,11 +34,6 @@ function humanwebExistsAndDisabled() {
 */
 export default background({
   requiresServices: ['domainInfo', 'pacemaker', 'telemetry'],
-  telemetrySchemas: [
-    ...popupActionsMetrics,
-    ...tokensMetrics,
-    ...tokensAnalyses,
-  ],
 
   attrack: null,
 
@@ -52,8 +42,6 @@ export default background({
   * @param settings
   */
   init(settings) {
-    telemetryService.register(this.telemetrySchemas);
-
     // Create new attrack class
     this.settings = settings;
     this.core = inject.module('core');
@@ -96,8 +84,6 @@ export default background({
   * @method unload
   */
   unload() {
-    telemetryService.unregister(this.telemetrySchemas);
-
     if (this.attrack !== null) {
       this.attrack.unload();
       this.attrack = null;

@@ -52,12 +52,6 @@ export default background({
     async sendLegacy(msg) {
       const { action, payload, body, rp } = msg;
       if (action === 'instant') {
-        if (rp === config.settings.BW_URL) {
-          const res = await this.manager.send({ action: 'antiphishingv2', payload: '', method: 'GET', path: `/${payload}` });
-          const text = await res.text();
-          return text;
-        }
-
         if (rp.startsWith(config.settings.ENDPOINT_SAFE_QUORUM_ENDPOINT)) {
           const path = rp.replace((config.settings.ENDPOINT_SAFE_QUORUM_ENDPOINT), '');
           const res = await this.manager.send({ action: 'safe-browsing-quorum', path, payload, method: 'GET' });
