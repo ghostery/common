@@ -6,12 +6,9 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import telemetry from '../core/services/telemetry';
 import pacemaker from '../core/services/pacemaker';
 
 import logger from './logger';
-import LatencyMetrics from './latency-metrics';
-
 
 /**
  * Handles a set of function pipelines. These pipelines start with an initial state
@@ -30,13 +27,6 @@ export default class Pipeline {
     this.name = name;
     this.isBreakable = isBreakable;
 
-    // Collect timings for steps of the pipeline
-    this.measureLatency = telemetry.isEnabled();
-    if (this.measureLatency) {
-      this.latencyMetrics = new LatencyMetrics(name);
-      this.latencyMetrics.init();
-    }
-
     // Init empty pipeline
     this.unload({ shallow: true });
 
@@ -47,13 +37,9 @@ export default class Pipeline {
     return this.pipeline.length;
   }
 
-  unload({ shallow = false } = {}) {
+  unload() {
     this.pipeline = [];
     this.stepNames = new Set();
-
-    if (this.measureLatency && !shallow) {
-      this.latencyMetrics.unload();
-    }
   }
 
   /**
@@ -164,10 +150,8 @@ export default class Pipeline {
    * the webrequest listener.
    */
   execute(webRequestContext, response, canAlterRequest = true) {
-    const measureLatency = this.measureLatency === true && webRequestContext.isPrivate === false;
     for (let i = 0; i < this.pipeline.length; i += 1) {
       // Measure time elapsed while running this step
-      const t0 = measureLatency === true ? performance.now() : 0;
       const { name, fn, spec } = this.pipeline[i];
       let cont = true;
 
@@ -212,11 +196,6 @@ export default class Pipeline {
         default:
           logger.error('Invalid spec for step', this.pipeline[i]);
           break;
-      }
-
-      // Register this step's execution time
-      if (measureLatency === true) {
-        this.latencyMetrics.addTiming(name, performance.now() - t0);
       }
 
       // Handle early termination of the pipeline. If a step returns `false` and

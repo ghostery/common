@@ -23,8 +23,6 @@ import config, {
   USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS,
 } from './config';
 import { isUrl, parse } from '../core/url';
-import telemetry from '../core/services/telemetry';
-import metrics from './telemetry/metrics';
 
 function isSupportedProtocol(url) {
   return (
@@ -38,7 +36,7 @@ function isSupportedProtocol(url) {
 export default background({
   humanWeb: inject.module('human-web'),
   webRequestPipeline: inject.module('webrequest-pipeline'),
-  requiresServices: ['domainInfo', 'pacemaker', 'telemetry'],
+  requiresServices: ['domainInfo', 'pacemaker'],
 
   // Global instance of the adblocker
   adblocker: null,
@@ -68,7 +66,6 @@ export default background({
   },
 
   async init() {
-    telemetry.register(metrics);
     await this.shallowInit();
   },
 
@@ -80,7 +77,6 @@ export default background({
   },
 
   unload() {
-    telemetry.unregister(metrics);
     this.shallowUnload();
   },
 

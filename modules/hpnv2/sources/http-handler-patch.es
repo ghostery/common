@@ -13,10 +13,6 @@ import config from '../core/config';
 import inject from '../core/kord/inject';
 import console from '../core/console';
 
-// HPN will only route based on the build config,
-// changes in prefs (`triggersBE`) will make the singals escape hpn
-const OFFER_TELEMETRY_PREFIX = config.settings.OFFERS_BE_BASE_URL;
-
 let proxyHttpHandler = null;
 export function overRideCliqzResults() {
   const hpnv2 = inject.module('hpnv2');
@@ -42,20 +38,6 @@ export function overRideCliqzResults() {
   }
 
   function httpHandler(method, url, callback, onerror, timeout, data, ...rest) {
-    if (url.startsWith(config.settings.BW_URL)) {
-      const query = url.replace((config.settings.BW_URL), '');
-      sendMessageOverHpn({
-        action: 'instant',
-        type: 'cliqz',
-        ts: '',
-        ver: '1.5',
-        payload: query,
-        rp: config.settings.BW_URL,
-      }, callback, onerror);
-
-      return null;
-    }
-
     if (url.startsWith(config.settings.RESULTS_PROVIDER_LOG)) {
       const query = url.replace((config.settings.RESULTS_PROVIDER_LOG), '');
       sendMessageOverHpn({
@@ -64,20 +46,6 @@ export function overRideCliqzResults() {
         ts: '',
         ver: '1.5',
         payload: query,
-      }, callback, onerror);
-      return null;
-    }
-
-    if (url.startsWith(OFFER_TELEMETRY_PREFIX)) {
-      const query = url.replace(OFFER_TELEMETRY_PREFIX, '');
-      sendMessageOverHpn({
-        action: 'offers-api',
-        type: 'cliqz',
-        ts: '',
-        ver: '1.5',
-        payload: query,
-        rp: OFFER_TELEMETRY_PREFIX,
-        body: data,
       }, callback, onerror);
       return null;
     }

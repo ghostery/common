@@ -33,15 +33,7 @@ module.exports = {
 
     HUMAN_WEB_LITE_COLLECTOR_VIA_PROXY: 'https://collector-hpn.cliqz.com',
     HUMAN_WEB_LITE_COLLECTOR_DIRECT: 'https://collector-hpn.cliqz.com',
-    HW_CHANNEL: 'ios',
-
-    telemetry: {
-      demographics: {
-        brand: 'cliqz',
-        name: 'browser',
-        platform: 'ios',
-      },
-    } },
+    HW_CHANNEL: 'ios' },
   default_prefs: {
   },
   modules: [
@@ -49,7 +41,6 @@ module.exports = {
     'human-web-lite',
     'hpn-lite',
     'search',
-    'anolysis',
     'geolocation',
     'insights',
   ],

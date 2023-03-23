@@ -32,15 +32,6 @@ import { isUrl, fixURL } from '../core/url';
 import { getEngineByQuery } from '../core/search-engines';
 import MyOffrzWatchdog from './myoffrz-watchdog';
 
-// Telemetry schemas
-import TelemetryOptMetric from './telemetry/metrics/telemetry';
-import hourlyPingMetric from './telemetry/metrics/hourly-ping';
-import modulesStartupMetric from './telemetry/metrics/modules-startup';
-import performanceMetric from './telemetry/metrics/performance';
-import resourceLoadersMetric from './telemetry/metrics/resource-loaders';
-import pingMetrics from './telemetry/metrics/ping';
-import performanceAnalysis from './telemetry/analyses/performance';
-
 /**
  * @module core
  * @namespace core
@@ -54,19 +45,8 @@ export default background({
   ],
   hostSettings: inject.service('host-settings', ['get']),
   providesServices,
-  telemetrySchemas: [
-    hourlyPingMetric,
-    modulesStartupMetric,
-    performanceMetric,
-    resourceLoadersMetric,
-    ...pingMetrics,
-    performanceAnalysis,
-    ...TelemetryOptMetric,
-  ],
 
   init(settings) {
-    telemetry.register(this.telemetrySchemas);
-
     enableRequestSanitizer();
 
     this.settings = settings;
@@ -97,7 +77,6 @@ export default background({
   unload() {
     this.myOffrzWatchdog.unload();
 
-    telemetry.unregister(this.telemetrySchemas);
     disableRequestSanitizer();
 
     this.bm.unload();
