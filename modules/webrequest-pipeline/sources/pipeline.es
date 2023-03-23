@@ -10,8 +10,6 @@ import telemetry from '../core/services/telemetry';
 import pacemaker from '../core/services/pacemaker';
 
 import logger from './logger';
-import LatencyMetrics from './latency-metrics';
-
 
 /**
  * Handles a set of function pipelines. These pipelines start with an initial state
@@ -30,13 +28,6 @@ export default class Pipeline {
     this.name = name;
     this.isBreakable = isBreakable;
 
-    // Collect timings for steps of the pipeline
-    this.measureLatency = telemetry.isEnabled();
-    if (this.measureLatency) {
-      this.latencyMetrics = new LatencyMetrics(name);
-      this.latencyMetrics.init();
-    }
-
     // Init empty pipeline
     this.unload({ shallow: true });
 
@@ -50,10 +41,6 @@ export default class Pipeline {
   unload({ shallow = false } = {}) {
     this.pipeline = [];
     this.stepNames = new Set();
-
-    if (this.measureLatency && !shallow) {
-      this.latencyMetrics.unload();
-    }
   }
 
   /**
@@ -212,11 +199,6 @@ export default class Pipeline {
         default:
           logger.error('Invalid spec for step', this.pipeline[i]);
           break;
-      }
-
-      // Register this step's execution time
-      if (measureLatency === true) {
-        this.latencyMetrics.addTiming(name, performance.now() - t0);
       }
 
       // Handle early termination of the pipeline. If a step returns `false` and

@@ -13,10 +13,6 @@ import config from '../core/config';
 import inject from '../core/kord/inject';
 import console from '../core/console';
 
-// HPN will only route based on the build config,
-// changes in prefs (`triggersBE`) will make the singals escape hpn
-const OFFER_TELEMETRY_PREFIX = config.settings.OFFERS_BE_BASE_URL;
-
 let proxyHttpHandler = null;
 export function overRideCliqzResults() {
   const hpnv2 = inject.module('hpnv2');

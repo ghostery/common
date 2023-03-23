@@ -9,7 +9,6 @@
 import background from '../core/base/background';
 import WebRequest, { VALID_RESPONSE_PROPERTIES, EXTRA_INFO_SPEC } from '../core/webrequest';
 import { isWebExtension } from '../core/platform';
-import telemetry from '../core/services/telemetry';
 
 import Pipeline from './pipeline';
 import WebRequestContext from './webrequest-context';
@@ -88,7 +87,7 @@ class BlockingResponse {
 
 export default background({
   initialized: false,
-  requiresServices: ['telemetry', 'pacemaker'],
+  requiresServices: ['pacemaker'],
 
   enabled() { return true; },
 
