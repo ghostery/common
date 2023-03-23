@@ -49,7 +49,6 @@ module.exports = {
     'human-web-lite',
     'hpn-lite',
     'search',
-    'anolysis',
     'geolocation',
     'insights',
   ],
