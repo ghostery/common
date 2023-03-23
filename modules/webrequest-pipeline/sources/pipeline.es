@@ -6,7 +6,6 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import telemetry from '../core/services/telemetry';
 import pacemaker from '../core/services/pacemaker';
 
 import logger from './logger';
@@ -38,7 +37,7 @@ export default class Pipeline {
     return this.pipeline.length;
   }
 
-  unload({ shallow = false } = {}) {
+  unload() {
     this.pipeline = [];
     this.stepNames = new Set();
   }
@@ -151,10 +150,8 @@ export default class Pipeline {
    * the webrequest listener.
    */
   execute(webRequestContext, response, canAlterRequest = true) {
-    const measureLatency = this.measureLatency === true && webRequestContext.isPrivate === false;
     for (let i = 0; i < this.pipeline.length; i += 1) {
       // Measure time elapsed while running this step
-      const t0 = measureLatency === true ? performance.now() : 0;
       const { name, fn, spec } = this.pipeline[i];
       let cont = true;
 
