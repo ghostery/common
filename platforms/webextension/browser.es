@@ -9,6 +9,7 @@
 import { window, chrome, browser } from './globals';
 
 export * from './tabs';
+export * from './windows';
 
 export function isTabURL() {
   return false;
