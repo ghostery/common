@@ -1,3 +1,15 @@
+# v1.3.1 (Thu Mar 23 2023)
+
+#### 🐛 Bug Fix
+
+- Review browser APIs accidentaly deleted #76 [#78](https://github.com/ghostery/common/pull/78) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.0 (Thu Mar 23 2023)
 
 #### 🚀 Enhancement
