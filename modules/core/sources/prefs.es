@@ -82,7 +82,6 @@ const TELEMETRY_WHITELIST = new Set([
   'antitracking.enabled', // anti tracking module state
   'backend_country', // search backend selection
   'cliqz-adb', // ad blocking module state
-  'cliqz-anti-phishing-enabled', // anti phishing module state
   'config_location', // current contry (only a limited set is allowed from the backend)
   'config_ts', // current day YYYYMMDD format
   'developer', // extension developer

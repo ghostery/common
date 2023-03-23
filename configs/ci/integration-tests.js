@@ -42,7 +42,6 @@ module.exports = {
     'webextension-specific/app.bundle.js',
     'human-web/page.bundle.js',
     'human-web/rusha.bundle.js',
-    'anti-phishing/phishing-warning.bundle.js',
     'core/content-tests.bundle.js',
     'integration-tests/run.bundle.js',
     'integration-tests/experimental-apis/test-helpers/api.bundle.js',

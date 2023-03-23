@@ -23,7 +23,6 @@ import config, {
   USE_PUSH_INJECTIONS_ON_NAVIGATION_EVENTS,
 } from './config';
 import { isUrl, parse } from '../core/url';
-import telemetry from '../core/services/telemetry';
 
 function isSupportedProtocol(url) {
   return (
@@ -37,7 +36,7 @@ function isSupportedProtocol(url) {
 export default background({
   humanWeb: inject.module('human-web'),
   webRequestPipeline: inject.module('webrequest-pipeline'),
-  requiresServices: ['domainInfo', 'pacemaker', 'telemetry'],
+  requiresServices: ['domainInfo', 'pacemaker'],
 
   // Global instance of the adblocker
   adblocker: null,

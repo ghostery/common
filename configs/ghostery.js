@@ -43,7 +43,6 @@ module.exports = {
     attrackTelemetryMode: 1,
     attrackDefaultAction: 'placeholder',
     sendAntiTrackingHeader: false,
-    telemetry: true,
     attrackCookieTrustReferers: true,
     'attrack.cookieMode': 'ghostery',
   },
