@@ -1517,7 +1517,7 @@ const CliqzHumanWeb = {
                             return;
                           }
                           getContentDocument(originalURL).then((doc) => {
-                            CliqzHumanWeb.checkURL(doc, url, 'normal');
+                            CliqzHumanWeb.checkURL(doc, originalURL, 'normal');
                           }).catch((e) => {
                             logger.info(`Failed to get content for originalURL=${originalURL} (internalURL=${url}, details=${e})`);
                           });
