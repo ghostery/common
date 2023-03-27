@@ -10,7 +10,6 @@ import { extractHostname } from '../core/tlds';
 import { parse } from '../core/url';
 
 import logger from './logger';
-import { parseURL } from './network';
 
 export function parseQueryString(query) {
   if (query.length === 0) {
@@ -46,21 +45,13 @@ function refineSplitFunc(splitString, splitON, arrPos) {
 // helper function to implement the "parseU" function
 // (part of the DSL used in the patterns description)
 function refineParseURIFunc(url, extractType, keyName) {
-  const urlParts = parseURL(url);
-  if (urlParts && urlParts.query_string) {
-    const parseResult = parseQueryString(urlParts.query_string);
-    if (extractType === 'qs') {
-      if (parseResult[keyName]) {
-        return decodeURIComponent(parseResult[keyName][0]);
-      }
-      return url;
-    }
-    // For now, leave the old semantic.
-    // TODO: Probably, we should return "url" here.
-    return undefined;
+  if (extractType === 'qs') {
+    // Ensure that "+" is preserved as whitespace (%20); otherwise, it will
+    // be impossible to distinguish it later from a real "+" (encoded as %2b).
+    // See https://stackoverflow.com/a/24417399/783510
+    return parse(url.replace(/\+/g, '%20'))?.searchParams.get(keyName) || url;
   }
-
-  return url;
+  return null;
 }
 
 /**
