@@ -350,6 +350,7 @@ export class ContentExtractor {
     const rules = patterns.extractRules[ind];
     const payloadRules = patterns.payloads[ind];
     const idMappings = patterns.idMappings[ind];
+    let query;
 
     for (const key of Object.keys(rules)) {
       const innerDict = {};
@@ -378,20 +379,8 @@ export class ContentExtractor {
             baseURI
           );
         }
-
-        if (rules[key][eachKey].type === 'searchQuery') {
-          if (ruleset === 'normal') {
-            const query = innerDict[eachKey][0];
-            if (query) {
-              logger.debug('Populating query Cache <<<< ', url, ' >>>> ', query);
-              this._CliqzHumanWeb.addStrictQueries(url, query);
-              this._CliqzHumanWeb.queryCache[url] = {
-                d: 0,
-                q: query,
-                t: idMappings
-              };
-            }
-          }
+        if (rules[key][eachKey].type === 'searchQuery' && ruleset === 'normal') {
+          query = query || innerDict[eachKey][0];
         }
       }
 
@@ -407,6 +396,15 @@ export class ContentExtractor {
       if (merged.length > 0) {
         scrapeResults[key] = merged;
       }
+    }
+    if (query) {
+      logger.debug('Populating query Cache <<<< ', url, ' >>>> ', query);
+      this._CliqzHumanWeb.addStrictQueries(url, query);
+      this._CliqzHumanWeb.queryCache[url] = {
+        d: 0,
+        q: query,
+        t: idMappings
+      };
     }
 
     for (const rule of Object.keys(payloadRules || {})) {
