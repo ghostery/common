@@ -351,32 +351,25 @@ export class ContentExtractor {
     const payloadRules = patterns.payloads[ind];
     const idMappings = patterns.idMappings[ind];
 
-    let urlArray = [];
     for (const key of Object.keys(rules)) {
       const innerDict = {};
       for (const eachKey of Object.keys(rules[key])) {
-        if (rules[key][eachKey].type === 'standard') {
-          // Depending on etype, currently only supporting url. Maybe ctry too.
-          if (rules[key][eachKey].etype === 'url') {
-            let qurl = url;
-            const functionsApplied = rules[key][eachKey].functionsApplied || null;
-            // Check if the value needs to be refined or not.
-            if (functionsApplied) {
-              qurl = functionsApplied.reduce((attribVal, e) => {
-                if (Object.prototype.hasOwnProperty.call(this.refineFuncMappings, e[0])) {
-                  return this.refineFuncMappings[e[0]](attribVal, e[1], e[2]);
-                }
-                return attribVal;
-              }, qurl);
-            }
-            innerDict[eachKey] = [qurl];
+        if (rules[key][eachKey].etype === 'url') {
+          let qurl = url;
+          const functionsApplied = rules[key][eachKey].functionsApplied || null;
+          if (functionsApplied) {
+            qurl = functionsApplied.reduce((attribVal, e) => {
+              if (Object.prototype.hasOwnProperty.call(this.refineFuncMappings, e[0])) {
+                return this.refineFuncMappings[e[0]](attribVal, e[1], e[2]);
+              }
+              return attribVal;
+            }, qurl);
           }
-
-          if (rules[key][eachKey].etype === 'ctry') {
-            innerDict[eachKey] = [this._CliqzHumanWeb.getCountryCode()];
-          }
-        } else if (rules[key][eachKey].type === 'searchQuery') {
-          urlArray = this._getAttribute(
+          innerDict[eachKey] = [qurl];
+        } else if (rules[key][eachKey].etype === 'ctry') {
+          innerDict[eachKey] = [this._CliqzHumanWeb.getCountryCode()];
+        } else {
+          innerDict[eachKey] = this._getAttribute(
             cd, key,
             rules[key][eachKey].item,
             rules[key][eachKey].etype,
@@ -384,9 +377,11 @@ export class ContentExtractor {
             rules[key][eachKey].functionsApplied || null,
             baseURI
           );
-          innerDict[eachKey] = urlArray;
+        }
+
+        if (rules[key][eachKey].type === 'searchQuery') {
           if (ruleset === 'normal') {
-            const query = urlArray[0];
+            const query = innerDict[eachKey][0];
             if (query) {
               logger.debug('Populating query Cache <<<< ', url, ' >>>> ', query);
               this._CliqzHumanWeb.addStrictQueries(url, query);
@@ -397,16 +392,6 @@ export class ContentExtractor {
               };
             }
           }
-        } else {
-          urlArray = this._getAttribute(
-            cd, key,
-            rules[key][eachKey].item,
-            rules[key][eachKey].etype,
-            rules[key][eachKey].keyName,
-            rules[key][eachKey].functionsApplied || null,
-            baseURI
-          );
-          innerDict[eachKey] = urlArray;
         }
       }
 
