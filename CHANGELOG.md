@@ -1,3 +1,17 @@
+# v1.3.2 (Tue Mar 28 2023)
+
+#### 🐛 Bug Fix
+
+- Fixed encoding problems by using a full URL parser [#79](https://github.com/ghostery/common/pull/79) ([@philipp-classen](https://github.com/philipp-classen))
+- Do not add queries multiple times [#79](https://github.com/ghostery/common/pull/79) ([@philipp-classen](https://github.com/philipp-classen))
+- simplification: remove special cases in the extractor logic [#79](https://github.com/ghostery/common/pull/79) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.3.1 (Thu Mar 23 2023)
 
 #### 🐛 Bug Fix
