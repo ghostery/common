@@ -33,6 +33,7 @@ import Worker from '../platform/worker';
 import { toUTF8 } from '../core/encoding';
 import pacemaker from '../core/services/pacemaker';
 import SafebrowsingEndpoint from './safebrowsing-endpoint';
+import { isSuspiciousQuery } from './sanitizer';
 
 /*
 Configuration for Bloomfilter
@@ -52,6 +53,19 @@ function getRandomIntInclusive(min, max) {
   const _min = Math.ceil(min);
   const _max = Math.floor(max);
   return Math.floor(random() * (_max - _min + 1)) + min;
+}
+
+/**
+ * Most languages have an alphabet where a word consist of multiple characters.
+ * But other languages (e.g. Chinese) use logograms, where a single character
+ * is equivalent to a word. Thus, heuristics need to adjusted if they count the
+ * number of characters or words ("words" being defined as characters not
+ * separated by whitespace).
+ *
+ * Note: texts in Arabic or European languages should not trigger this check.
+ */
+function hasLogograms(str) {
+  return [...str].some(isLogogramChar);
 }
 
 function cleanFinalUrl(domain, href) {
@@ -2284,7 +2298,7 @@ const CliqzHumanWeb = {
 
         // Check if qr.q is suspicious.
         if(msg.payload.qr){
-          if (CliqzHumanWeb.isSuspiciousQuery(msg.payload.qr.q)) {
+          if (isSuspiciousQuery(msg.payload.qr.q)) {
             delete msg.payload.qr;
           }
         }
@@ -2297,7 +2311,7 @@ const CliqzHumanWeb = {
                 return null;
             }
             else {
-                if (CliqzHumanWeb.isSuspiciousQuery(msg.payload.q)) {
+                if (isSuspiciousQuery(msg.payload.q)) {
                     return null;
                 }
             }
@@ -2987,7 +3001,7 @@ const CliqzHumanWeb = {
         });
 
     },
-    auxGetQuery: function(){
+    auxGetQuery() {
         CliqzHumanWeb.strictQueries.forEach( function(e, idx) {
             var t = Date.now();
             if((t - e.ts) > (e.tDiff * 60 * 1000)) {
@@ -2995,51 +3009,12 @@ const CliqzHumanWeb = {
                     let cd = CliqzHumanWeb.docCache[url]['doc'];
                     CliqzHumanWeb.checkURL(cd, url, "strict");
                 }, function(a,b,c,d){
-                    _log("Error aux>>>> " + d)
+                    _log('Error aux>>>> ', d);
                 });
                 CliqzHumanWeb.strictQueries.splice(idx, 1);
                 CliqzHumanWeb.saveStrictQueries();
             }
-        })
-    },
-    isSuspiciousQuery: function(query) {
-        //Remove the msg if the query is too long,
-        if (query.length > 50) return true;
-        if (query.split(' ').length > 7) return true;
-
-        // Remove the msg if the query contains a number longer than 7 digits
-        // can be 666666 but also things like (090)90-2, 5555 3235
-        // note that full dates will be removed 2014/12/12
-        //
-        var haslongnumber = CliqzHumanWeb.checkForLongNumber(query, 7);
-        if (haslongnumber!=null) return true;
-
-
-        //Remove if email (exact), even if not totally well formed
-        if (CliqzHumanWeb.checkForEmail(query)) {
-          return true;
-        }
-        //Remove if query looks like an http pass
-        if (/[^:]+:[^@]+@/.test(query)) return true;
-
-        var v = query.split(' ');
-        for(let i=0;i<v.length;i++) {
-            if (v[i].length > 20) return true;
-            if (/[^:]+:[^@]+@/.test(v[i])) return true;
-        }
-
-        if (query.length > 12) {
-
-            var cquery = query.replace(/[^A-Za-z0-9]/g,'');
-
-            if (cquery.length > 12) {
-                var pp = CliqzHumanWeb.isHashProb(cquery);
-                // we are a bit more strict here because the query
-                // can have parts well formed
-                if (pp < CliqzHumanWeb.probHashThreshold*1.5) return true;
-            }
-        }
-        return false;
+        });
     },
     sanitizeResultTelemetry: function(data) {
         /*
@@ -3066,7 +3041,7 @@ const CliqzHumanWeb = {
         }
 
         // If suspicious query.
-         if (CliqzHumanWeb.isSuspiciousQuery(query)) {
+         if (isSuspiciousQuery(query)) {
             _log("Query is suspicious");
             sanitisedQuery = "(PROTECTED)";
         }
@@ -3764,7 +3739,7 @@ const CliqzHumanWeb = {
 
       if (CliqzHumanWeb.adDetails[clickedU]) {
         let query = CliqzHumanWeb.adDetails[clickedU].query;
-        if (CliqzHumanWeb.isSuspiciousQuery(query)) {
+        if (isSuspiciousQuery(query)) {
           query = ' (PROTECTED) ';
         }
         const domain = cleanFinalUrl(
@@ -3809,7 +3784,7 @@ const CliqzHumanWeb = {
         return;
     }
 
-    if (CliqzHumanWeb.isSuspiciousQuery(query)) {
+    if (isSuspiciousQuery(query)) {
       _log('Dropping suspicious query before double-fetch:', query);
       return;
     }
