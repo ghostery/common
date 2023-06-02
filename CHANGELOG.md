@@ -1,3 +1,15 @@
+# v1.3.3 (Fri Jun 02 2023)
+
+#### 🐛 Bug Fix
+
+- Improve heuristic to detect suspicious queries [#80](https://github.com/ghostery/common/pull/80) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.3.2 (Tue Mar 28 2023)
 
 #### 🐛 Bug Fix
