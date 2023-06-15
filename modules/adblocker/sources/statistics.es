@@ -208,7 +208,7 @@ export default class AdbStats {
     // Delete stats of closed tabs
     this.tabs.forEach((pageStats, tabId) => {
       promises.push(checkIsWindowActive(tabId).then((active) => {
-        if (active) {
+        if (!active) {
           this.tabs.delete(tabId);
         }
       }));
