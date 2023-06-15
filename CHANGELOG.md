@@ -1,3 +1,15 @@
+# v1.3.4 (Thu Jun 15 2023)
+
+#### 🐛 Bug Fix
+
+- Adblocker: fix stats being cleared every couple minutes [#81](https://github.com/ghostery/common/pull/81) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.3 (Fri Jun 02 2023)
 
 #### 🐛 Bug Fix
