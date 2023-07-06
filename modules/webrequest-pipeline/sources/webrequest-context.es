@@ -8,7 +8,7 @@
 
 import { parse } from '../core/url';
 import logger from './logger';
-
+import { isChromium } from '../core/platform';
 
 /**
  * Transform an array of headers (i.e.: `{ name, value }`) into a `Map`.
@@ -65,8 +65,8 @@ export default class WebRequestContext {
 
     // Cliqz-specific extensions to webRequest details
     context.page = page;
-    context.tabUrl = context.tabUrl || (page && page.getTabUrl());
-    context.frameUrl = context.frameUrl || (page && page.getFrameUrl(context));
+    context.tabUrl = context.tabUrl || (page && page.getTabUrl()) || context.url;
+    context.frameUrl = context.frameUrl || (page && page.getFrameUrl(context)) || context.url;
     context.isPrivate = page ? page.isPrivate : null;
     context.isMainFrame = context.type === 'main_frame';
     context.isRedirect = page && context.isMainFrame && page.isRedirect;
@@ -128,6 +128,19 @@ export default class WebRequestContext {
   }
 
   isBackgroundRequest() {
-    return this.tabId === -1;
+    if (this.tabId !== -1) {
+      return false;
+    }
+    // On Firefox, requests from Service Workers have tabId !== -1.
+    // On Chromium, tabId === -1, so check additionally for the initiator.
+    // Requests from the service worker use a different protocol
+    // (e.g. https). If there is a more direct way to detect requests
+    // from the extension, this could be simplified.
+    if (isChromium && !this.initiator.startsWith('chrome-extensions://')) {
+      return false;
+    }
+
+    // internal requests from the extension
+    return true;
   }
 }
