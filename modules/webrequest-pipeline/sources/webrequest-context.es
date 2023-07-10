@@ -71,8 +71,18 @@ export default class WebRequestContext {
     context.isMainFrame = context.type === 'main_frame';
     context.isRedirect = page && context.isMainFrame && page.isRedirect;
 
-    context.originUrl = context.originUrl || context.initiator || context.frameUrl
-      || context.tabUrl;
+    if (!context.tabUrl) {
+      context.tabUrl = context.originUrl || context.initiator || context.documentUrl;
+    }
+
+    if (!context.frameUrl) {
+      context.frameUrl = context.documentUrl || context.originUrl || context.initiator;
+    }
+
+    if (!context.originUrl) {
+      context.originUrl = context.initiator || context.documentUrl
+        || context.frameUrl || context.tabUrl;
+    }
 
     return new WebRequestContext(context);
   }
@@ -128,9 +138,6 @@ export default class WebRequestContext {
   }
 
   isBackgroundRequest() {
-    return this.tabId === -1 && (
-      this.originUrlParts.protocol === 'chrome-extension:'
-      || this.originUrlParts.protocol === 'moz-extension:'
-    );
+    return this.tabId === -1 && this.originUrlParts.protocol.endsWith('extension:');
   }
 }
