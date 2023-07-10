@@ -128,6 +128,9 @@ export default class WebRequestContext {
   }
 
   isBackgroundRequest() {
-    return this.tabId === -1;
+    return this.tabId === -1 && (
+      this.originUrlParts.protocol === 'chrome-extension:'
+      || this.originUrlParts.protocol === 'moz-extension:'
+    );
   }
 }
