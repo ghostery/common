@@ -138,6 +138,6 @@ export default class WebRequestContext {
   }
 
   isBackgroundRequest() {
-    return this.tabId === -1 && this.originUrlParts.protocol.endsWith('extension:');
+    return this.tabId === -1 && this.originUrlParts?.protocol.endsWith('extension:');
   }
 }
