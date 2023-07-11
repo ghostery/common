@@ -1,3 +1,15 @@
+# v1.3.6 (Tue Jul 11 2023)
+
+#### 🐛 Bug Fix
+
+- WebRequestPipeline: Fix originUrlParts [#84](https://github.com/ghostery/common/pull/84) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.5 (Mon Jul 10 2023)
 
 #### 🐛 Bug Fix
