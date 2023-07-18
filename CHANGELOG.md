@@ -1,3 +1,15 @@
+# v1.3.7 (Tue Jul 18 2023)
+
+#### 🐛 Bug Fix
+
+- Update tldts [#85](https://github.com/ghostery/common/pull/85) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.6 (Tue Jul 11 2023)
 
 #### 🐛 Bug Fix
