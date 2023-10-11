@@ -12,6 +12,8 @@ import { nextTick } from '../core/decorators';
 import TrackerCounter from '../core/helpers/tracker-counter';
 import events from '../core/events';
 import pacemaker from '../core/services/pacemaker';
+import { parse } from '../core/url';
+import { browser } from '../platform/globals';
 
 const FIRSTPARTY = 'First party';
 
@@ -20,6 +22,7 @@ class PageStats {
     this.tabUrl = context.tabUrl;
     this.hostGD = context.tabUrlParts.generalDomain;
     this.blockedRequests = [];
+    this.createdAt = Date.now();
 
     // Lazily computed once a report is requested
     this._counter = new TrackerCounter();
@@ -138,30 +141,51 @@ export default class AdbStats {
   }
 
   init() {
+    browser.webNavigation.onBeforeNavigate.addListener(this.onBeforeNavigate);
     this.clearInterval = pacemaker.everyFewMinutes(() => { this.clearStats(); });
   }
 
   unload() {
+    browser.webNavigation.onBeforeNavigate.removeListener(this.onBeforeNavigate);
     pacemaker.clearTimeout(this.clearInterval);
   }
 
+  onBeforeNavigate = (event) => {
+    if (event.frameId !== 0 || event.frameType === 'outermost_frame') {
+      return;
+    }
+    const urlParts = parse(event.url);
+    this.addNewPage({
+      tabId: event.tabId,
+      tabUrl: event.url,
+      tabUrlParts: urlParts,
+    });
+  };
+
   addBlockedUrl(context) {
-    // Check if we already have a context for this tab
     let page = this.tabs.get(context.tabId);
-    if (page === undefined) {
+
+    if (!page) {
       page = this.addNewPage(context);
     }
 
-    // If it's a new url in an existing tab
-    if (context.tabUrl !== page.tabUrl) {
-      page = this.addNewPage(context);
+    // ignore requests that may related to previous page
+    if (context.tabUrl === page.tabUrl) {
+      page.addBlockedUrl(context);
     }
-
-    page.addBlockedUrl(context);
   }
 
   addNewPage(context) {
     const existingPage = this.tabs.get(context.tabId);
+
+    if (
+      existingPage
+      && existingPage.tabUrl === context.tabUrl
+      && existingPage.createdAt + 200 > Date.now()
+    ) {
+      return existingPage;
+    }
+
     if (existingPage !== undefined) {
       // Emit summary of stats from previous page
       nextTick(() => {

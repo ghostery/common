@@ -290,13 +290,15 @@ export default class Adblocker {
    * engine decides.
    */
   onBeforeRequest(context, response) {
+    if (context.frameId === 0 && context.isMainFrame) {
+      this.stats.addNewPage(context);
+    }
+
     if (this.shouldProcessRequest(context, response) === false) {
       return false;
     }
 
     if (context.isMainFrame) {
-      this.stats.addNewPage(context);
-
       // HTML filtering is a feature from the adblocker which is able to
       // intercept streaming responses from main documents before they are
       // parsed by the browser. This means that we have a chance to remove
