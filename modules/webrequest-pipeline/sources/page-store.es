@@ -136,9 +136,17 @@ export default class PageStore {
   }
 
   onBeforeNavigate = (details) => {
-    const { frameId, tabId, url } = details;
+    const { frameId, tabId, url, timeStamp } = details;
     const tabContext = this.tabs.get(tabId);
     if (frameId === 0) {
+      if (
+        tabContext
+        && tabContext.id === tabId
+        && tabContext.url === url
+        && tabContext.created + 200 > timeStamp
+      ) {
+        return;
+      }
       // We are starting a navigation to a new page - if the previous page is complete (i.e. fully
       // loaded), stage it before we create the new page info.
       if (tabContext && tabContext.state === PAGE_LOADING_STATE.COMPLETE) {
@@ -150,7 +158,8 @@ export default class PageStore {
         id: tabId,
         active: false,
         url,
-        incognito: tabContext ? tabContext.isPrivate : false
+        incognito: tabContext ? tabContext.isPrivate : false,
+        created: timeStamp,
       });
       nextContext.previous = tabContext;
       this.tabs.set(tabId, nextContext);
