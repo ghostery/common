@@ -17,6 +17,10 @@ interface FirefoxWebRequestDetails extends chrome.webRequest.WebRequestDetails {
   documentUrl?: string
 }
 
+interface ExtentedTab extends chrome.tabs.Tab {
+  created: any;
+}
+
 export default class Page {
 
   id: number
@@ -46,13 +50,13 @@ export default class Page {
 
   previous?: Page
 
-  constructor({ id, active, url, incognito }: chrome.tabs.Tab) {
+  constructor({ id, active, url, incognito, created }: ExtentedTab) {
     this.id = id || 0;
     this.url = url;
     this.isRedirect = false;
     this.isPrivate = incognito;
     this.isPrivateServer = false;
-    this.created = Date.now();
+    this.created = created || Date.now();
     this.destroyed = null;
     this.lastRequestId = null;
     this.frames = new Map([[0, {
