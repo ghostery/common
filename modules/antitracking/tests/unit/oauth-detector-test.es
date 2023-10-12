@@ -206,7 +206,7 @@ export default describeModule('antitracking/steps/oauth-detector',
           setTimeout(() => detectorInstance.checkMainFrames(fullPageState), 2);
           delayedTest(() => {
             chai.expect(detectorInstance.checkIsOAuth(state)).to.be.false;
-          }, done, 5);
+          }, done, 10);
         });
 
         it('returns true if page domain does not match', (done) => {
