@@ -90,16 +90,15 @@ export default describeModule('hpn-lite/server-public-key-accessor',
         await storage.set(someStorageKey, entry);
       };
 
-      const oldCrypto = global.crypto;
+      const oldImportKey = global.crypto && global.crypto.subtle.importKey;
+      let hadNoCrypto = false;
       beforeEach(async function () {
         /* eslint-disable-next-line global-require */
-        global.crypto = global.crypto || {
-          subtle: {
-            importKey(...args) {
-              return MOCKS.importKey(...args);
-            },
-          }
-        };
+        if (!global.crypto) {
+          hadNoCrypto = true;
+          global.crypto = { subtle: {} };
+        }
+        global.crypto.subtle.importKey = (...args) => MOCKS.importKey(...args);
 
         // in-memory implementation of storage
         MemoryPersistentMap = (await this.system.import('core/helpers/memory-map')).default;
@@ -117,7 +116,10 @@ export default describeModule('hpn-lite/server-public-key-accessor',
       });
 
       afterEach(function () {
-        global.crypto = oldCrypto;
+        global.crypto.subtle.importKey = oldImportKey;
+        if (hadNoCrypto) {
+          delete global.crypto;
+        }
       });
 
       it('should be able to retrieve a key and cache it (happy path)', async function () {

@@ -15,10 +15,10 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
-      - name: Use Node.js 18
+      - name: Use Node.js 19
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 19.x
 
       - name: Install
         run: npm ci
