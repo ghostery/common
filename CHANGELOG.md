@@ -1,3 +1,16 @@
+# v1.3.8 (Thu Oct 12 2023)
+
+#### 🐛 Bug Fix
+
+- Update Adblocker [#87](https://github.com/ghostery/common/pull/87) ([@chrmod](https://github.com/chrmod))
+- Update CI setup [#90](https://github.com/ghostery/common/pull/90) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.7 (Tue Jul 18 2023)
 
 #### 🐛 Bug Fix
