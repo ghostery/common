@@ -1,3 +1,15 @@
+# v1.3.11 (Thu Oct 12 2023)
+
+#### 🐛 Bug Fix
+
+- Update nodejs [#91](https://github.com/ghostery/common/pull/91) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.10 (Thu Oct 12 2023)
 
 #### 🐛 Bug Fix
