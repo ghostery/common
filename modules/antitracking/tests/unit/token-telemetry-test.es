@@ -47,7 +47,7 @@ class MockQsWhitelist {
   }
 }
 
-const tick = () => new Promise(resolve => setTimeout(resolve, 10));
+const tick = () => new Promise(resolve => setTimeout(resolve, 20));
 
 const mockConfig = {
   telemetryMode: 2,
