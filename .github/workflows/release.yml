@@ -15,8 +15,10 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
-      - name: Upgrade npm
-        run: npm install -g npm
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
       - name: Install
         run: npm ci
