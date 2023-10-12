@@ -1,3 +1,15 @@
+# v1.3.9 (Thu Oct 12 2023)
+
+#### 🐛 Bug Fix
+
+- WebRequest: ignore duplicated onBeforeNavigate [#88](https://github.com/ghostery/common/pull/88) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.8 (Thu Oct 12 2023)
 
 #### 🐛 Bug Fix
