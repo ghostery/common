@@ -1,3 +1,15 @@
+# v1.3.10 (Thu Oct 12 2023)
+
+#### 🐛 Bug Fix
+
+- Adblocker: Do not report requests from previous page [#89](https://github.com/ghostery/common/pull/89) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.9 (Thu Oct 12 2023)
 
 #### 🐛 Bug Fix
