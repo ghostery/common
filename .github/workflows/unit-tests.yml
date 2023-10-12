@@ -14,16 +14,14 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [16.x, 18.x]
 
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Upgrade npm
-      run: npm install -g npm
     - run: npm ci
     - run: ./fern.js build configs/ci/unit-tests.js
     - run: ./fern.js test configs/ci/unit-tests.js -l unit-node --environment testing --no-build --ci report.xml
