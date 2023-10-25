@@ -207,6 +207,15 @@ export default class Adblocker {
       return skip('trusted page');
     }
 
+    // Make sure request is not whitelisted (applies on request context)
+    if (this.whitelistChecks.length !== 0) {
+      for (let i = 0; i < this.whitelistChecks.length; i += 1) {
+        if (this.whitelistChecks[i](details) === true) {
+          return false;
+        }
+      }
+    }
+
     return true;
   }
 
