@@ -1,3 +1,15 @@
+# v1.3.12 (Wed Oct 25 2023)
+
+#### 🐛 Bug Fix
+
+- Skip push injections if Ghostery is paused. [#93](https://github.com/ghostery/common/pull/93) ([@philipp-classen](https://github.com/philipp-classen))
+
+#### Authors: 1
+
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.3.11 (Thu Oct 12 2023)
 
 #### 🐛 Bug Fix
