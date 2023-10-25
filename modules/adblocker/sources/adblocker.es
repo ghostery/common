@@ -201,6 +201,13 @@ export default class Adblocker {
     ) {
       return skip('locally whitelisted');
     }
+    if (this.whitelistChecks.length !== 0) {
+      for (let i = 0; i < this.whitelistChecks.length; i += 1) {
+        if (this.whitelistChecks[i]({ onlyCheckPause: true }) === true) {
+          return skip('paused');
+        }
+      }
+    }
 
     // Skip sites that the user marked as "trusted".
     if (this.trustedSites.has(urlParts.hostname)) {
