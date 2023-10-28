@@ -1,3 +1,15 @@
+# v1.3.13 (Sat Oct 28 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Update adblocker ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.12 (Wed Oct 25 2023)
 
 #### 🐛 Bug Fix
