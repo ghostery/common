@@ -1,5 +1,5 @@
 
-name: Build configs
+name: Build & Test
 
 on:
   push:
@@ -12,16 +12,16 @@ jobs:
 
     runs-on: ubuntu-20.04
 
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x, 19.x]
-        config: ["configs/ghostery.js", "configs/user-agent-ios.js"]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version-file: '.tool-versions'
+        cache: 'npm'
+        cache-dependency-path: ./package-lock.json
     - run: npm ci
-    - run: ./fern.js build ${{ matrix.config }}
+    - run: ./fern.js build configs/user-agent-ios.js
+    - run: ./fern.js build configs/ghostery.js
+    - run: ./fern.js build configs/ci/unit-tests.js
+    - run: ./fern.js test configs/ci/unit-tests.js -l unit-node --environment testing --no-build --ci report.xml
