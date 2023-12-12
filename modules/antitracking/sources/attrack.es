@@ -916,7 +916,7 @@ export default class CliqzAttrack {
   checkCompatibilityList(state) {
     const tpGd = state.urlParts.generalDomain;
     const fpGd = state.tabUrlParts.generalDomain;
-    if (this.config.compabilityList
+    if (this.config.compatibilityList
         && this.config.compatibilityList[tpGd]
         && this.config.compatibilityList[tpGd].indexOf(fpGd) !== -1) {
       return false;
