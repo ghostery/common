@@ -1,3 +1,17 @@
+# v1.3.14 (Tue Dec 12 2023)
+
+#### 🐛 Bug Fix
+
+- Fix the compatibility list for antitracking [#95](https://github.com/ghostery/common/pull/95) ([@philipp-classen](https://github.com/philipp-classen))
+- CI: simplify github actions [#94](https://github.com/ghostery/common/pull/94) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 2
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.3.13 (Sat Oct 28 2023)
 
 #### ⚠️ Pushed to `main`
