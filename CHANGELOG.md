@@ -1,3 +1,19 @@
+# v1.3.15 (Fri Apr 05 2024)
+
+#### 🐛 Bug Fix
+
+- Adblocker: enabled preprocessor [#96](https://github.com/ghostery/common/pull/96) ([@chrmod](https://github.com/chrmod))
+
+#### ⚠️ Pushed to `main`
+
+- CI: fix auto ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 1
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+
+---
+
 # v1.3.14 (Tue Dec 12 2023)
 
 #### 🐛 Bug Fix
