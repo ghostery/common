@@ -12,10 +12,20 @@ import { nextIdle } from '../core/decorators';
 import pacemaker from '../core/services/pacemaker';
 import { fetchJSON, fetchText, fetchTypedArray } from '../core/http';
 import persistentMapFactory from '../core/persistence/map';
+import { isMobile, isFirefox, isChromium, isEdge } from '../core/platform';
 
 import logger from './logger';
 import config from './config';
 import getEnabledRegions from './regions';
+
+const ENV = new Map([
+  ['ext_ghostery', true],
+  ['cap_html_filtering', isFirefox],
+  ['env_firefox', isFirefox],
+  ['env_chromium', isChromium],
+  ['env_edge', isEdge],
+  ['env_mobile', isMobile],
+]);
 
 /**
  * Manages the adblocker WebExtensionEngine state. It allows to initialize, update,
@@ -329,7 +339,7 @@ export default class EngineManager {
     // updated and `false` otherwise.
     timer = this.stopwatch('update engine (update)', 'adblocker');
     const cumulativeDiff = AdblockerLib.mergeDiffs(diffs);
-    let updated = this.engine.updateFromDiff(cumulativeDiff);
+    let updated = this.engine.updateFromDiff(cumulativeDiff, ENV);
     timer.stop();
 
     if (updated === true) {
@@ -384,6 +394,7 @@ export default class EngineManager {
       timer = this.stopwatch('deserialize engine from cache', 'adblocker');
       try {
         this.engine = AdblockerLib.WebExtensionBlocker.deserialize(serialized);
+        this.engine.updateEnv(ENV);
       } catch (ex) {
         // In case there is a mismatch between the version of the code
         // and the serialization format of the engine on disk, we might
@@ -429,6 +440,7 @@ export default class EngineManager {
     timer = this.stopwatch('deserialize remote engine', 'adblocker');
     try {
       this.engine = AdblockerLib.WebExtensionBlocker.deserialize(serialized);
+      this.engine.updateEnv(ENV);
     } catch (ex) {
       logger.error('exception while loading remote engine', ex);
       return null;

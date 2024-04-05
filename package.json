@@ -135,8 +135,8 @@
   },
   "dependencies": {
     "@cliqz-oss/dexie": "^2.0.4",
-    "@cliqz/adblocker-webextension": "^1.26.9",
-    "@cliqz/adblocker-webextension-cosmetics": "^1.26.9",
+    "@cliqz/adblocker-webextension": "^1.27.0",
+    "@cliqz/adblocker-webextension-cosmetics": "^1.27.0",
     "@cliqz/url-parser": "^1.1.5",
     "abortcontroller-polyfill": "^1.5.0",
     "anonymous-credentials": "https://github.com/whotracksme/anonymous-credentials/releases/download/1.0.0/anonymous-credentials-1.0.0.tgz",
