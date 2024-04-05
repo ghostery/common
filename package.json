@@ -63,7 +63,7 @@
     "@types/punycode": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
-    "auto": "^10.4.2",
+    "auto": "^11.1.6",
     "body-parser": "^1.19.1",
     "broccoli": "^3.5.2",
     "broccoli-babel-transpiler": "^7.4.0",
