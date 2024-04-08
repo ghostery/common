@@ -22,7 +22,7 @@ const WHITELIST2_URL = `${SETTINGS.ANTITRACKING_BASE_URL}/whitelist/2`;
 const PROTECTION = 'antitrackingProtectionEnabled';
 
 
-export const VERSION = '0.102';
+export const VERSION = '0.103';
 
 export const TELEMETRY = {
   DISABLED: 0,
