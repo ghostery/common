@@ -1,3 +1,17 @@
+# v1.3.16 (Mon Apr 22 2024)
+
+#### 🐛 Bug Fix
+
+- Upgrade linkedom library [#98](https://github.com/ghostery/common/pull/98) ([@philipp-classen](https://github.com/philipp-classen))
+- AntiTracking version bump [#97](https://github.com/ghostery/common/pull/97) ([@chrmod](https://github.com/chrmod))
+
+#### Authors: 2
+
+- Krzysztof Modras ([@chrmod](https://github.com/chrmod))
+- Philipp Claßen ([@philipp-classen](https://github.com/philipp-classen))
+
+---
+
 # v1.3.15 (Fri Apr 05 2024)
 
 #### 🐛 Bug Fix
